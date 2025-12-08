@@ -14,6 +14,7 @@ import {
 import { Menu, X, Plane, Bell, Plus, User, LayoutDashboard, Settings, LogOut, MessageCircle } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import { mockUsers, mockNotifications } from "@/lib/mock-data"
+import { useLanguage } from "@/lib/language-context"
 
 interface HeaderProps {
   transparent?: boolean
@@ -24,6 +25,7 @@ const unreadNotifs = mockNotifications.filter((n) => !n.read).length
 
 export function Header({ transparent = false }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <header
@@ -42,25 +44,25 @@ export function Header({ transparent = false }: HeaderProps) {
             <span className="text-xl font-bold tracking-tight">KiloShare</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Updated with translations */}
           <nav className="hidden md:flex items-center gap-1">
             <Link
               href="/trips"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Trajets disponibles
+              {t("nav.availableTrips")}
             </Link>
             <Link
               href="/dashboard"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Dashboard
+              {t("nav.dashboard")}
             </Link>
             <Link
               href="/how-it-works"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Comment ça marche
+              {t("nav.howItWorks")}
             </Link>
           </nav>
 
@@ -89,7 +91,7 @@ export function Header({ transparent = false }: HeaderProps) {
             <Link href="/publish">
               <Button variant="outline" size="sm" className="gap-2 bg-transparent">
                 <Plus className="h-4 w-4" />
-                Publier
+                {t("nav.publish")}
               </Button>
             </Link>
 
@@ -116,25 +118,25 @@ export function Header({ transparent = false }: HeaderProps) {
                 <DropdownMenuItem asChild>
                   <Link href="/profile" className="flex items-center gap-2 cursor-pointer">
                     <User className="h-4 w-4" />
-                    Mon profil
+                    {t("nav.profile")}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/dashboard" className="flex items-center gap-2 cursor-pointer">
                     <LayoutDashboard className="h-4 w-4" />
-                    Dashboard
+                    {t("nav.dashboard")}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/settings" className="flex items-center gap-2 cursor-pointer">
                     <Settings className="h-4 w-4" />
-                    Paramètres
+                    {t("nav.settings")}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem className="text-destructive cursor-pointer">
                   <LogOut className="h-4 w-4 mr-2" />
-                  Déconnexion
+                  {t("nav.logout")}
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -147,7 +149,7 @@ export function Header({ transparent = false }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Updated with translations */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-4 space-y-1">
@@ -156,21 +158,21 @@ export function Header({ transparent = false }: HeaderProps) {
               className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Trajets disponibles
+              {t("nav.availableTrips")}
             </Link>
             <Link
               href="/dashboard"
               className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Dashboard
+              {t("nav.dashboard")}
             </Link>
             <Link
               href="/notifications"
               className="flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span>Notifications</span>
+              <span>{t("nav.notifications")}</span>
               {unreadNotifs > 0 && (
                 <span className="h-5 w-5 rounded-full bg-accent text-xs font-bold text-accent-foreground flex items-center justify-center">
                   {unreadNotifs}
@@ -182,13 +184,13 @@ export function Header({ transparent = false }: HeaderProps) {
               className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Paramètres
+              {t("nav.settings")}
             </Link>
             <div className="pt-4 border-t border-border mt-4 space-y-2">
               <Link href="/publish" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="outline" className="w-full gap-2 bg-transparent">
                   <Plus className="h-4 w-4" />
-                  Publier une annonce
+                  {t("nav.publishAd")}
                 </Button>
               </Link>
             </div>

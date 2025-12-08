@@ -7,9 +7,11 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Calendar, Search, ArrowRight } from "@/components/icons"
 import { countries } from "@/lib/mock-data"
+import { useLanguage } from "@/lib/language-context"
 
 export function SearchForm() {
   const router = useRouter()
+  const { language } = useLanguage()
   const [departure, setDeparture] = useState("")
   const [arrival, setArrival] = useState("")
   const [date, setDate] = useState("")
@@ -27,14 +29,14 @@ export function SearchForm() {
           <div className="p-4 md:p-5">
             <label className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-accent" />
-              Départ
+              {language === "fr" ? "Départ" : "Departure"}
             </label>
             <select
               className="w-full bg-transparent text-base font-medium focus:outline-none appearance-none cursor-pointer"
               value={departure}
               onChange={(e) => setDeparture(e.target.value)}
             >
-              <option value="">Choisir un pays</option>
+              <option value="">{language === "fr" ? "Choisir un pays" : "Choose a country"}</option>
               {countries.map((country) => (
                 <option key={country} value={country}>
                   {country}
@@ -52,14 +54,14 @@ export function SearchForm() {
           <div className="p-4 md:p-5">
             <label className="text-xs font-medium text-muted-foreground mb-2 flex items-center gap-1.5">
               <div className="w-2 h-2 rounded-full bg-foreground" />
-              Arrivée
+              {language === "fr" ? "Arrivée" : "Arrival"}
             </label>
             <select
               className="w-full bg-transparent text-base font-medium focus:outline-none appearance-none cursor-pointer"
               value={arrival}
               onChange={(e) => setArrival(e.target.value)}
             >
-              <option value="">Choisir un pays</option>
+              <option value="">{language === "fr" ? "Choisir un pays" : "Choose a country"}</option>
               {countries.map((country) => (
                 <option key={country} value={country}>
                   {country}
@@ -86,7 +88,7 @@ export function SearchForm() {
           <div className="p-4 md:p-3 flex items-center">
             <Button type="submit" size="lg" className="w-full md:w-auto gap-2 h-12 px-6">
               <Search className="h-5 w-5" />
-              <span className="md:hidden lg:inline">Rechercher</span>
+              <span className="md:hidden lg:inline">{language === "fr" ? "Rechercher" : "Search"}</span>
             </Button>
           </div>
         </div>

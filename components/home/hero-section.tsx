@@ -1,9 +1,14 @@
+"use client"
+
 import Image from "next/image"
 import { SearchForm } from "@/components/search/search-form"
 import { TrendingUp, Shield, Clock, Users, Star } from "@/components/icons"
 import { Badge } from "@/components/ui/badge"
+import { useLanguage } from "@/lib/language-context"
 
 export function HeroSection() {
+  const { language, t } = useLanguage()
+
   return (
     <section className="relative overflow-hidden bg-background pt-8 pb-16 md:pt-16 md:pb-24">
       {/* Background Pattern */}
@@ -19,14 +24,23 @@ export function HeroSection() {
             <div className="space-y-4">
               <Badge variant="secondary" className="gap-2 px-4 py-2 bg-accent/10 text-accent border-0">
                 <Star className="h-3.5 w-3.5 fill-current" />
-                +10 000 utilisateurs satisfaits
+                {language === "fr" ? "+10 000 utilisateurs satisfaits" : "+10,000 satisfied users"}
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground text-balance">
-                Envoyez vos colis avec des <span className="text-accent">voyageurs de confiance</span>
+                {language === "fr" ? (
+                  <>
+                    Envoyez vos colis avec des <span className="text-accent">voyageurs de confiance</span>
+                  </>
+                ) : (
+                  <>
+                    Send your packages with <span className="text-accent">trusted travelers</span>
+                  </>
+                )}
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-xl text-pretty">
-                Connectez-vous avec des voyageurs qui ont des kilos disponibles dans leur valise. Simple, rapide et
-                économique.
+                {language === "fr"
+                  ? "Connectez-vous avec des voyageurs qui ont des kilos disponibles dans leur valise. Simple, rapide et économique."
+                  : "Connect with travelers who have available kilos in their luggage. Simple, fast and affordable."}
               </p>
             </div>
 
@@ -42,8 +56,10 @@ export function HeroSection() {
                   <Shield className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-foreground">Vérifiés</p>
-                  <p className="text-xs text-muted-foreground">100% voyageurs</p>
+                  <p className="font-medium text-sm text-foreground">{language === "fr" ? "Vérifiés" : "Verified"}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {language === "fr" ? "100% voyageurs" : "100% travelers"}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -51,8 +67,10 @@ export function HeroSection() {
                   <Clock className="h-5 w-5 text-success" />
                 </div>
                 <div>
-                  <p className="font-medium text-sm text-foreground">Rapide</p>
-                  <p className="text-xs text-muted-foreground">48h en moyenne</p>
+                  <p className="font-medium text-sm text-foreground">{language === "fr" ? "Rapide" : "Fast"}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {language === "fr" ? "48h en moyenne" : "48h average"}
+                  </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -61,7 +79,7 @@ export function HeroSection() {
                 </div>
                 <div>
                   <p className="font-medium text-sm text-foreground">-70%</p>
-                  <p className="text-xs text-muted-foreground">vs transport</p>
+                  <p className="text-xs text-muted-foreground">{language === "fr" ? "vs transport" : "vs shipping"}</p>
                 </div>
               </div>
             </div>
@@ -74,7 +92,7 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent/5 rounded-3xl" />
               <Image
                 src="/traveler-with-suitcase-at-airport-modern-illustrat.jpg"
-                alt="Voyageur avec valise"
+                alt={language === "fr" ? "Voyageur avec valise" : "Traveler with suitcase"}
                 fill
                 className="object-cover rounded-3xl"
               />
@@ -87,7 +105,9 @@ export function HeroSection() {
                   </div>
                   <div>
                     <p className="font-bold text-foreground">2,547</p>
-                    <p className="text-xs text-muted-foreground">Voyageurs actifs</p>
+                    <p className="text-xs text-muted-foreground">
+                      {language === "fr" ? "Voyageurs actifs" : "Active travelers"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -99,7 +119,9 @@ export function HeroSection() {
                   </div>
                   <div>
                     <p className="font-bold text-foreground">4.9/5</p>
-                    <p className="text-xs text-muted-foreground">Note moyenne</p>
+                    <p className="text-xs text-muted-foreground">
+                      {language === "fr" ? "Note moyenne" : "Average rating"}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -21,7 +21,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Star, Shield, ChevronLeft, ThumbsUp, Flag, MessageSquare, Edit3, Check, Clock } from "@/components/icons"
+import { Star, Shield, ChevronLeft, ThumbsUp, Flag, MessageSquare, Edit3, Check } from "@/components/icons"
 import { mockReviews, mockUsers, mockBookings } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
 
@@ -29,7 +29,6 @@ const currentUser = mockUsers[0]
 const receivedReviews = mockReviews.filter((r) => r.reviewedId === currentUser.id)
 const givenReviews = mockReviews.filter((r) => r.reviewerId === currentUser.id)
 
-// Mock: bookings that can be reviewed (delivered, not yet reviewed)
 const reviewableBookings = mockBookings
   .filter((b) => b.status === "delivered")
   .map((b) => ({
@@ -44,6 +43,7 @@ export default function ReviewsPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
   const [selectedUser, setSelectedUser] = useState<(typeof mockUsers)[0] | null>(null)
   const [reviewType, setReviewType] = useState<"buyer" | "seller">("buyer")
+  const [selectedUserId, setSelectedUserId] = useState<string>("")
 
   const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
     rating,
@@ -55,11 +55,11 @@ export default function ReviewsPage() {
   }))
 
   const handleSubmitReview = () => {
-    // In real app, submit to backend
     setIsDialogOpen(false)
     setSelectedRating(0)
     setReviewText("")
     setSelectedUser(null)
+    setSelectedUserId("")
   }
 
   const openReviewDialog = (user: (typeof mockUsers)[0], type: "buyer" | "seller") => {
@@ -68,12 +68,17 @@ export default function ReviewsPage() {
     setIsDialogOpen(true)
   }
 
+  const handleUserSelect = (userId: string) => {
+    setSelectedUserId(userId)
+    const user = mockUsers.find((u) => u.id === userId)
+    if (user) setSelectedUser(user)
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-1 pb-20 md:pb-0 bg-secondary/20">
         <div className="container mx-auto px-4 py-6 max-w-4xl">
-          {/* Back Link */}
           <Link
             href="/profile"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
@@ -82,7 +87,6 @@ export default function ReviewsPage() {
             Retour au profil
           </Link>
 
-          {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <h1 className="text-2xl font-bold text-foreground">Avis et évaluations</h1>
@@ -104,21 +108,69 @@ export default function ReviewsPage() {
                 </DialogHeader>
                 <div className="space-y-4 py-4">
                   {!selectedUser && (
-                    <div>
-                      <Label className="text-sm font-medium mb-2 block">Type d'avis</Label>
-                      <Select value={reviewType} onValueChange={(v) => setReviewType(v as "buyer" | "seller")}>
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="buyer">Évaluer un acheteur (vous êtes voyageur)</SelectItem>
-                          <SelectItem value="seller">Évaluer un voyageur (vous êtes expéditeur)</SelectItem>
-                        </SelectContent>
-                      </Select>
+                    <>
+                      <div>
+                        <Label className="text-sm font-medium mb-2 block">Type d'avis</Label>
+                        <Select value={reviewType} onValueChange={(v) => setReviewType(v as "buyer" | "seller")}>
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="buyer">Évaluer un acheteur (vous êtes voyageur)</SelectItem>
+                            <SelectItem value="seller">Évaluer un voyageur (vous êtes expéditeur)</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <Label className="text-sm font-medium mb-2 block">Sélectionner un utilisateur</Label>
+                        <Select value={selectedUserId} onValueChange={handleUserSelect}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Choisir un utilisateur" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {mockUsers.slice(1).map((user) => (
+                              <SelectItem key={user.id} value={user.id}>
+                                <div className="flex items-center gap-2">
+                                  <span>{user.name}</span>
+                                  {user.verified && <Shield className="h-3 w-3 text-accent" />}
+                                </div>
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </>
+                  )}
+
+                  {selectedUser && (
+                    <div className="p-3 border border-border rounded-lg bg-secondary/30">
+                      <div className="flex items-center gap-3">
+                        <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                          <Image
+                            src={selectedUser.avatar || "/placeholder.svg"}
+                            alt={selectedUser.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <p className="font-medium text-foreground">{selectedUser.name}</p>
+                            {selectedUser.verified && <Shield className="h-4 w-4 text-accent" />}
+                          </div>
+                          <p className="text-xs text-muted-foreground">
+                            {reviewType === "buyer" ? "Acheteur/Expéditeur" : "Voyageur/Transporteur"}
+                          </p>
+                        </div>
+                        {!selectedUserId && (
+                          <Button variant="ghost" size="sm" onClick={() => setSelectedUser(null)}>
+                            Changer
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   )}
 
-                  {/* Rating Selection */}
                   <div>
                     <p className="text-sm font-medium mb-2">Votre note</p>
                     <div className="flex gap-1">
@@ -149,7 +201,6 @@ export default function ReviewsPage() {
                     </p>
                   </div>
 
-                  {/* Review Text */}
                   <div>
                     <p className="text-sm font-medium mb-2">Votre commentaire</p>
                     <Textarea
@@ -163,54 +214,6 @@ export default function ReviewsPage() {
                       rows={4}
                     />
                   </div>
-
-                  {/* Select User */}
-                  <div>
-                    <p className="text-sm font-medium mb-2">Utilisateur à évaluer</p>
-                    {selectedUser ? (
-                      <div className="p-3 border border-border rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <div className="relative h-10 w-10 rounded-full overflow-hidden">
-                            <Image
-                              src={selectedUser.avatar || "/placeholder.svg"}
-                              alt={selectedUser.name}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <div>
-                            <p className="font-medium text-foreground">{selectedUser.name}</p>
-                            <p className="text-xs text-muted-foreground">
-                              {reviewType === "buyer" ? "Acheteur/Expéditeur" : "Voyageur/Transporteur"}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    ) : (
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Sélectionnez un utilisateur" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {mockUsers.slice(1).map((user) => (
-                            <SelectItem key={user.id} value={user.id}>
-                              <div className="flex items-center gap-2">
-                                <div className="relative h-6 w-6 rounded-full overflow-hidden">
-                                  <Image
-                                    src={user.avatar || "/placeholder.svg"}
-                                    alt={user.name}
-                                    fill
-                                    className="object-cover"
-                                  />
-                                </div>
-                                {user.name}
-                              </div>
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    )}
-                  </div>
                 </div>
                 <div className="flex gap-2">
                   <Button
@@ -219,6 +222,7 @@ export default function ReviewsPage() {
                     onClick={() => {
                       setIsDialogOpen(false)
                       setSelectedUser(null)
+                      setSelectedUserId("")
                     }}
                   >
                     Annuler
@@ -226,7 +230,7 @@ export default function ReviewsPage() {
                   <Button
                     className="flex-1"
                     onClick={handleSubmitReview}
-                    disabled={!selectedRating || !reviewText.trim()}
+                    disabled={!selectedRating || !reviewText.trim() || !selectedUser}
                   >
                     Publier l'avis
                   </Button>
@@ -244,11 +248,9 @@ export default function ReviewsPage() {
 
             {/* Received Reviews */}
             <TabsContent value="received" className="space-y-6">
-              {/* Rating Summary */}
               <Card>
                 <CardContent className="p-6">
                   <div className="flex flex-col md:flex-row gap-8">
-                    {/* Overall Rating */}
                     <div className="text-center md:text-left">
                       <p className="text-5xl font-bold text-foreground">{currentUser.rating}</p>
                       <div className="flex justify-center md:justify-start gap-1 my-2">
@@ -264,8 +266,6 @@ export default function ReviewsPage() {
                       </div>
                       <p className="text-sm text-muted-foreground">{currentUser.reviewCount} avis au total</p>
                     </div>
-
-                    {/* Rating Distribution */}
                     <div className="flex-1 space-y-2">
                       {ratingDistribution.map(({ rating, count, percentage }) => (
                         <div key={rating} className="flex items-center gap-3">
@@ -285,25 +285,28 @@ export default function ReviewsPage() {
                 </CardContent>
               </Card>
 
-              {/* Reviews List */}
               <div className="space-y-4">
                 {receivedReviews.map((review) => (
                   <Card key={review.id}>
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
-                        <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-                          <Image
-                            src={review.reviewer.avatar || "/placeholder.svg"}
-                            alt={review.reviewer.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
+                        <Link href={`/user/${review.reviewer.id}`} className="flex-shrink-0">
+                          <div className="relative h-12 w-12 rounded-full overflow-hidden hover:ring-2 hover:ring-accent transition-all">
+                            <Image
+                              src={review.reviewer.avatar || "/placeholder.svg"}
+                              alt={review.reviewer.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                        </Link>
                         <div className="flex-1">
                           <div className="flex items-start justify-between mb-2">
                             <div>
                               <div className="flex items-center gap-2">
-                                <h3 className="font-semibold text-foreground">{review.reviewer.name}</h3>
+                                <Link href={`/user/${review.reviewer.id}`} className="hover:underline">
+                                  <h3 className="font-semibold text-foreground">{review.reviewer.name}</h3>
+                                </Link>
                                 {review.reviewer.verified && <Shield className="h-4 w-4 text-accent" />}
                               </div>
                               <p className="text-sm text-muted-foreground">
@@ -349,6 +352,7 @@ export default function ReviewsPage() {
               </div>
             </TabsContent>
 
+            {/* Given Reviews */}
             <TabsContent value="given" className="space-y-4">
               {givenReviews.length > 0 ? (
                 givenReviews.map((review) => {
@@ -357,19 +361,23 @@ export default function ReviewsPage() {
                     <Card key={review.id}>
                       <CardContent className="p-6">
                         <div className="flex items-start gap-4">
-                          <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
-                            <Image
-                              src={reviewedUser?.avatar || "/placeholder.svg"}
-                              alt={reviewedUser?.name || "User"}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
+                          <Link href={`/user/${reviewedUser?.id}`} className="flex-shrink-0">
+                            <div className="relative h-12 w-12 rounded-full overflow-hidden hover:ring-2 hover:ring-accent transition-all">
+                              <Image
+                                src={reviewedUser?.avatar || "/placeholder.svg"}
+                                alt={reviewedUser?.name || "User"}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                          </Link>
                           <div className="flex-1">
                             <div className="flex items-start justify-between mb-2">
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <h3 className="font-semibold text-foreground">{reviewedUser?.name}</h3>
+                                  <Link href={`/user/${reviewedUser?.id}`} className="hover:underline">
+                                    <h3 className="font-semibold text-foreground">{reviewedUser?.name}</h3>
+                                  </Link>
                                   {reviewedUser?.verified && <Shield className="h-4 w-4 text-accent" />}
                                   <Badge variant="secondary" className="text-xs">
                                     Expéditeur
@@ -421,46 +429,42 @@ export default function ReviewsPage() {
               )}
             </TabsContent>
 
+            {/* Pending Reviews */}
             <TabsContent value="pending">
               <div className="space-y-4">
                 {reviewableBookings.length > 0 ? (
                   reviewableBookings.map((booking) => (
                     <Card key={booking.id}>
                       <CardContent className="p-6">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-4">
-                            <div className="relative h-12 w-12 rounded-full overflow-hidden">
+                        <div className="flex items-center gap-4">
+                          <Link href={`/user/${booking.sender?.id}`} className="flex-shrink-0">
+                            <div className="relative h-12 w-12 rounded-full overflow-hidden hover:ring-2 hover:ring-accent transition-all">
                               <Image
-                                src={booking.sender.avatar || "/placeholder.svg"}
-                                alt={booking.sender.name}
+                                src={booking.sender?.avatar || "/placeholder.svg"}
+                                alt={booking.sender?.name || "User"}
                                 fill
                                 className="object-cover"
                               />
                             </div>
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <h3 className="font-semibold text-foreground">{booking.sender.name}</h3>
-                                <Badge variant="outline" className="text-xs">
-                                  Acheteur
-                                </Badge>
-                              </div>
-                              <p className="text-sm text-muted-foreground">{booking.itemDescription}</p>
-                              <div className="flex items-center gap-2 mt-1">
-                                <Badge
-                                  variant="secondary"
-                                  className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300"
-                                >
-                                  <Check className="h-3 w-3 mr-1" />
-                                  Livraison terminée
-                                </Badge>
-                                <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                  <Clock className="h-3 w-3" />
-                                  {new Intl.DateTimeFormat("fr-FR").format(booking.updatedAt)}
-                                </span>
-                              </div>
+                          </Link>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Link href={`/user/${booking.sender?.id}`} className="hover:underline">
+                                <h3 className="font-semibold text-foreground">{booking.sender?.name}</h3>
+                              </Link>
+                              {booking.sender?.verified && <Shield className="h-4 w-4 text-accent" />}
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              {booking.kgConfirmed || booking.kgRequested} kg - {booking.itemDescription}
+                            </p>
+                            <div className="flex items-center gap-2 mt-1">
+                              <Check className="h-4 w-4 text-success" />
+                              <span className="text-xs text-success">Livraison terminée</span>
                             </div>
                           </div>
-                          <Button onClick={() => openReviewDialog(booking.sender, "buyer")}>Évaluer l'acheteur</Button>
+                          <Button size="sm" onClick={() => booking.sender && openReviewDialog(booking.sender, "buyer")}>
+                            Évaluer
+                          </Button>
                         </div>
                       </CardContent>
                     </Card>
@@ -468,11 +472,9 @@ export default function ReviewsPage() {
                 ) : (
                   <Card>
                     <CardContent className="p-12 text-center">
-                      <Star className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                      <h3 className="font-semibold mb-2 text-foreground">Aucune évaluation en attente</h3>
-                      <p className="text-sm text-muted-foreground">
-                        Vous n'avez pas de livraisons à évaluer pour le moment
-                      </p>
+                      <Check className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="font-semibold mb-2 text-foreground">Tout est à jour</h3>
+                      <p className="text-sm text-muted-foreground">Vous n'avez aucun avis en attente</p>
                     </CardContent>
                   </Card>
                 )}

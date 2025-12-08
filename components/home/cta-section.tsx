@@ -1,8 +1,13 @@
+"use client"
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Plus, Search, ArrowRight, Sparkles } from "@/components/icons"
+import { useLanguage } from "@/lib/language-context"
 
 export function CtaSection() {
+  const { language } = useLanguage()
+
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -14,13 +19,17 @@ export function CtaSection() {
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-foreground/20 mb-6">
                 <Search className="h-7 w-7" />
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Vous avez un colis à envoyer ?</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                {language === "fr" ? "Vous avez un colis à envoyer ?" : "Have a package to send?"}
+              </h3>
               <p className="text-primary-foreground/80 mb-8 text-lg">
-                Trouvez un voyageur de confiance et économisez jusqu'à 70% sur vos frais d'envoi.
+                {language === "fr"
+                  ? "Trouvez un voyageur de confiance et économisez jusqu'à 70% sur vos frais d'envoi."
+                  : "Find a trusted traveler and save up to 70% on your shipping costs."}
               </p>
               <Link href="/trips">
                 <Button size="lg" variant="secondary" className="gap-2 group-hover:translate-x-1 transition-transform">
-                  Trouver un voyageur
+                  {language === "fr" ? "Trouver un voyageur" : "Find a traveler"}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
@@ -37,11 +46,15 @@ export function CtaSection() {
                 <Plus className="h-7 w-7" />
               </div>
               <div className="flex items-center gap-2 mb-4">
-                <h3 className="text-2xl md:text-3xl font-bold">Vous voyagez bientôt ?</h3>
+                <h3 className="text-2xl md:text-3xl font-bold">
+                  {language === "fr" ? "Vous voyagez bientôt ?" : "Traveling soon?"}
+                </h3>
                 <Sparkles className="h-6 w-6 animate-pulse" />
               </div>
               <p className="text-accent-foreground/80 mb-8 text-lg">
-                Rentabilisez vos kilos disponibles et gagnez jusqu'à 300€ par voyage.
+                {language === "fr"
+                  ? "Rentabilisez vos kilos disponibles et gagnez jusqu'à 300€ par voyage."
+                  : "Monetize your available kilos and earn up to €300 per trip."}
               </p>
               <Link href="/publish">
                 <Button
@@ -49,7 +62,7 @@ export function CtaSection() {
                   variant="secondary"
                   className="gap-2 bg-primary-foreground text-primary hover:bg-primary-foreground/90 group-hover:translate-x-1 transition-transform"
                 >
-                  Publier mon trajet
+                  {language === "fr" ? "Publier mon trajet" : "Post my trip"}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>

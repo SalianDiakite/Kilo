@@ -1,13 +1,18 @@
-import { Package, Users, Plane, Globe } from "@/components/icons"
+"use client"
 
-const stats = [
-  { icon: Package, value: "10,000+", label: "Colis livrés" },
-  { icon: Users, value: "5,000+", label: "Utilisateurs" },
-  { icon: Plane, value: "150+", label: "Destinations" },
-  { icon: Globe, value: "45+", label: "Pays couverts" },
-]
+import { Package, Users, Plane, Globe } from "@/components/icons"
+import { useLanguage } from "@/lib/language-context"
 
 export function StatsSection() {
+  const { language } = useLanguage()
+
+  const stats = [
+    { icon: Package, value: "10,000+", label: language === "fr" ? "Colis livrés" : "Packages delivered" },
+    { icon: Users, value: "5,000+", label: language === "fr" ? "Utilisateurs" : "Users" },
+    { icon: Plane, value: "150+", label: "Destinations" },
+    { icon: Globe, value: "45+", label: language === "fr" ? "Pays couverts" : "Countries covered" },
+  ]
+
   return (
     <section className="py-12 bg-secondary/30 border-y border-border">
       <div className="container mx-auto px-4">

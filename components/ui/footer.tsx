@@ -1,7 +1,16 @@
+"use client"
+
 import Link from "next/link"
 import { Plane } from "@/components/icons"
+import { useLanguage } from "@/lib/language-context"
 
 export function Footer() {
+  const { language, setLanguage, t } = useLanguage()
+
+  const toggleLanguage = () => {
+    setLanguage(language === "fr" ? "en" : "fr")
+  }
+
   return (
     <footer className="border-t border-border bg-secondary/30">
       <div className="container mx-auto px-4 py-12">
@@ -14,80 +23,68 @@ export function Footer() {
               </div>
               <span className="text-xl font-bold">KiloShare</span>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              La plateforme de confiance pour envoyer vos colis avec des voyageurs vérifiés.
-            </p>
+            <p className="text-sm text-muted-foreground leading-relaxed">{t("footer.description")}</p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-semibold mb-4">Plateforme</h4>
+            <h4 className="font-semibold mb-4">{language === "fr" ? "Plateforme" : "Platform"}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/trips" className="hover:text-foreground transition-colors">
-                  Trajets
+                  {t("nav.trips")}
                 </Link>
               </li>
               <li>
                 <Link href="/publish" className="hover:text-foreground transition-colors">
-                  Publier
+                  {t("nav.publish")}
                 </Link>
               </li>
               <li>
                 <Link href="/how-it-works" className="hover:text-foreground transition-colors">
-                  Comment ça marche
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="hover:text-foreground transition-colors">
-                  Tarifs
+                  {t("nav.howItWorks")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Support</h4>
+            <h4 className="font-semibold mb-4">{t("footer.support")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/help" className="hover:text-foreground transition-colors">
-                  Centre d'aide
+                  {t("footer.help")}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-foreground transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/safety" className="hover:text-foreground transition-colors">
-                  Sécurité
+                  {t("footer.contact")}
                 </Link>
               </li>
               <li>
                 <Link href="/faq" className="hover:text-foreground transition-colors">
-                  FAQ
+                  {t("footer.faq")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-4">Légal</h4>
+            <h4 className="font-semibold mb-4">{t("footer.legal")}</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href="/terms" className="hover:text-foreground transition-colors">
-                  CGU
+                  {t("footer.terms")}
                 </Link>
               </li>
               <li>
                 <Link href="/privacy" className="hover:text-foreground transition-colors">
-                  Confidentialité
+                  {t("footer.privacy")}
                 </Link>
               </li>
               <li>
                 <Link href="/cookies" className="hover:text-foreground transition-colors">
-                  Cookies
+                  {t("footer.cookies")}
                 </Link>
               </li>
             </ul>
@@ -95,9 +92,14 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">© 2025 KiloShare. Tous droits réservés.</p>
+          <p className="text-sm text-muted-foreground">© 2025 KiloShare. {t("footer.rights")}</p>
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
-            <span>🇫🇷 Français</span>
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1.5 hover:text-foreground transition-colors cursor-pointer"
+            >
+              {language === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}
+            </button>
             <span>€ EUR</span>
           </div>
         </div>

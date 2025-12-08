@@ -4,17 +4,19 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, Search, Plus, MessageCircle, LayoutDashboard } from "@/components/icons"
 import { cn } from "@/lib/utils"
-
-const navItems = [
-  { href: "/", icon: Home, label: "Accueil" },
-  { href: "/trips", icon: Search, label: "Trajets" },
-  { href: "/publish", icon: Plus, label: "Publier", highlight: true },
-  { href: "/messages", icon: MessageCircle, label: "Messages", badge: 2 },
-  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-]
+import { useLanguage } from "@/lib/language-context"
 
 export function MobileNav() {
   const pathname = usePathname()
+  const { t } = useLanguage()
+
+  const navItems = [
+    { href: "/", icon: Home, labelKey: "nav.home" as const },
+    { href: "/trips", icon: Search, labelKey: "nav.trips" as const },
+    { href: "/publish", icon: Plus, labelKey: "nav.publish" as const, highlight: true },
+    { href: "/messages", icon: MessageCircle, labelKey: "nav.messages" as const, badge: 2 },
+    { href: "/dashboard", icon: LayoutDashboard, labelKey: "nav.dashboard" as const },
+  ]
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-background border-t border-border safe-area-pb">
@@ -43,7 +45,7 @@ export function MobileNav() {
               )}
             >
               <Icon className="h-5 w-5" />
-              <span className="text-[10px] font-medium">{item.label}</span>
+              <span className="text-[10px] font-medium">{t(item.labelKey)}</span>
               {item.badge && (
                 <span className="absolute top-1 right-1 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
                   {item.badge}

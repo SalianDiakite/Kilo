@@ -9,8 +9,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import {
   Bell,
   Lock,
@@ -25,9 +27,16 @@ import {
   Trash2,
   Download,
   LogOut,
+  Star,
+  MessageSquare,
+  Heart,
+  Check,
 } from "@/components/icons"
 import { useTheme } from "@/lib/theme-context"
+import { useLanguage } from "@/lib/language-context"
+import type { Language } from "@/lib/translations"
 import type { UserSettings } from "@/lib/types"
+import { cn } from "@/lib/utils"
 
 const defaultSettings: UserSettings = {
   notifications: {
@@ -58,6 +67,14 @@ export default function SettingsPage() {
   const [settings, setSettings] = useState<UserSettings>(defaultSettings)
   const [showPassword, setShowPassword] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { language, setLanguage, t } = useLanguage()
+
+  const [appRating, setAppRating] = useState(0)
+  const [appHoverRating, setAppHoverRating] = useState(0)
+  const [appFeedback, setAppFeedback] = useState("")
+  const [feedbackCategory, setFeedbackCategory] = useState("general")
+  const [isFeedbackDialogOpen, setIsFeedbackDialogOpen] = useState(false)
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false)
 
   const updateNotification = (key: keyof UserSettings["notifications"], value: boolean) => {
     setSettings({
@@ -85,33 +102,53 @@ export default function SettingsPage() {
     toggleTheme()
   }
 
+  const handleLanguageChange = (newLang: string) => {
+    updatePreference("language", newLang)
+    setLanguage(newLang as Language)
+  }
+
+  const handleSubmitFeedback = () => {
+    setFeedbackSubmitted(true)
+    setTimeout(() => {
+      setIsFeedbackDialogOpen(false)
+      setFeedbackSubmitted(false)
+      setAppRating(0)
+      setAppFeedback("")
+      setFeedbackCategory("general")
+    }, 2000)
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
       <main className="flex-1 pb-20 md:pb-0 bg-secondary/20">
         <div className="container mx-auto px-4 py-6 max-w-3xl">
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-foreground">Paramètres</h1>
-            <p className="text-muted-foreground">Gérez vos préférences et votre compte</p>
+            <h1 className="text-2xl font-bold text-foreground">{t("settings.title")}</h1>
+            <p className="text-muted-foreground">{t("settings.subtitle")}</p>
           </div>
 
           <Tabs defaultValue="notifications" className="space-y-6">
             <TabsList className="w-full flex-wrap h-auto gap-1 p-1 bg-secondary">
-              <TabsTrigger value="notifications" className="gap-2 flex-1 min-w-[120px]">
+              <TabsTrigger value="notifications" className="gap-2 flex-1 min-w-[100px]">
                 <Bell className="h-4 w-4" />
-                <span className="hidden sm:inline">Notifications</span>
+                <span className="hidden sm:inline">{t("settings.notifications")}</span>
               </TabsTrigger>
-              <TabsTrigger value="privacy" className="gap-2 flex-1 min-w-[120px]">
+              <TabsTrigger value="privacy" className="gap-2 flex-1 min-w-[100px]">
                 <Lock className="h-4 w-4" />
-                <span className="hidden sm:inline">Confidentialité</span>
+                <span className="hidden sm:inline">{t("settings.privacy")}</span>
               </TabsTrigger>
-              <TabsTrigger value="preferences" className="gap-2 flex-1 min-w-[120px]">
+              <TabsTrigger value="preferences" className="gap-2 flex-1 min-w-[100px]">
                 <Globe className="h-4 w-4" />
-                <span className="hidden sm:inline">Préférences</span>
+                <span className="hidden sm:inline">{t("settings.preferences")}</span>
               </TabsTrigger>
-              <TabsTrigger value="security" className="gap-2 flex-1 min-w-[120px]">
+              <TabsTrigger value="security" className="gap-2 flex-1 min-w-[100px]">
                 <Shield className="h-4 w-4" />
-                <span className="hidden sm:inline">Sécurité</span>
+                <span className="hidden sm:inline">{t("settings.security")}</span>
+              </TabsTrigger>
+              <TabsTrigger value="feedback" className="gap-2 flex-1 min-w-[100px]">
+                <Heart className="h-4 w-4" />
+                <span className="hidden sm:inline">{t("settings.feedback")}</span>
               </TabsTrigger>
             </TabsList>
 
@@ -119,16 +156,16 @@ export default function SettingsPage() {
             <TabsContent value="notifications" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Canaux de notification</CardTitle>
-                  <CardDescription>Choisissez comment vous souhaitez être notifié</CardDescription>
+                  <CardTitle className="text-base">{t("settings.notificationChannels")}</CardTitle>
+                  <CardDescription>{t("settings.notificationChannelsDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <Mail className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <Label className="font-medium">Email</Label>
-                        <p className="text-sm text-muted-foreground">Recevoir les notifications par email</p>
+                        <Label className="font-medium">{t("settings.email")}</Label>
+                        <p className="text-sm text-muted-foreground">{t("settings.emailNotif")}</p>
                       </div>
                     </div>
                     <Switch
@@ -140,8 +177,8 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-3">
                       <Smartphone className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <Label className="font-medium">Push</Label>
-                        <p className="text-sm text-muted-foreground">Notifications push sur mobile</p>
+                        <Label className="font-medium">{t("settings.push")}</Label>
+                        <p className="text-sm text-muted-foreground">{t("settings.pushNotif")}</p>
                       </div>
                     </div>
                     <Switch
@@ -153,8 +190,8 @@ export default function SettingsPage() {
                     <div className="flex items-center gap-3">
                       <Smartphone className="h-5 w-5 text-muted-foreground" />
                       <div>
-                        <Label className="font-medium">SMS</Label>
-                        <p className="text-sm text-muted-foreground">Notifications par SMS</p>
+                        <Label className="font-medium">{t("settings.sms")}</Label>
+                        <p className="text-sm text-muted-foreground">{t("settings.smsNotif")}</p>
                       </div>
                     </div>
                     <Switch
@@ -167,21 +204,21 @@ export default function SettingsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Types de notifications</CardTitle>
-                  <CardDescription>Personnalisez les notifications que vous recevez</CardDescription>
+                  <CardTitle className="text-base">{t("settings.notificationTypes")}</CardTitle>
+                  <CardDescription>{t("settings.notificationTypesDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {[
-                    { key: "newBookings", label: "Nouvelles réservations", desc: "Quand quelqu'un réserve vos kilos" },
-                    { key: "messages", label: "Messages", desc: "Nouveaux messages reçus" },
-                    { key: "reviews", label: "Avis", desc: "Nouveaux avis sur votre profil" },
-                    { key: "reminders", label: "Rappels", desc: "Rappels de trajets à venir" },
-                    { key: "promotions", label: "Promotions", desc: "Offres et actualités KiloShare" },
+                    { key: "newBookings", labelKey: "settings.newBookings", descKey: "settings.newBookingsDesc" },
+                    { key: "messages", labelKey: "settings.messagesNotif", descKey: "settings.messagesNotifDesc" },
+                    { key: "reviews", labelKey: "settings.reviewsNotif", descKey: "settings.reviewsNotifDesc" },
+                    { key: "reminders", labelKey: "settings.reminders", descKey: "settings.remindersDesc" },
+                    { key: "promotions", labelKey: "settings.promotions", descKey: "settings.promotionsDesc" },
                   ].map((item) => (
                     <div key={item.key} className="flex items-center justify-between">
                       <div>
-                        <Label className="font-medium">{item.label}</Label>
-                        <p className="text-sm text-muted-foreground">{item.desc}</p>
+                        <Label className="font-medium">{t(item.labelKey as any)}</Label>
+                        <p className="text-sm text-muted-foreground">{t(item.descKey as any)}</p>
                       </div>
                       <Switch
                         checked={settings.notifications[item.key as keyof typeof settings.notifications]}
@@ -199,14 +236,14 @@ export default function SettingsPage() {
             <TabsContent value="privacy" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Visibilité du profil</CardTitle>
-                  <CardDescription>Contrôlez ce que les autres peuvent voir</CardDescription>
+                  <CardTitle className="text-base">{t("settings.profileVisibility")}</CardTitle>
+                  <CardDescription>{t("settings.profileVisibilityDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="font-medium">Afficher mon téléphone</Label>
-                      <p className="text-sm text-muted-foreground">Visible sur votre profil public</p>
+                      <Label className="font-medium">{t("settings.showPhone")}</Label>
+                      <p className="text-sm text-muted-foreground">{t("settings.showPhoneDesc")}</p>
                     </div>
                     <Switch
                       checked={settings.privacy.showPhone}
@@ -215,8 +252,8 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="font-medium">Afficher mon email</Label>
-                      <p className="text-sm text-muted-foreground">Visible sur votre profil public</p>
+                      <Label className="font-medium">{t("settings.showEmail")}</Label>
+                      <p className="text-sm text-muted-foreground">{t("settings.showEmailDesc")}</p>
                     </div>
                     <Switch
                       checked={settings.privacy.showEmail}
@@ -225,8 +262,8 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="font-medium">Dernière connexion</Label>
-                      <p className="text-sm text-muted-foreground">Afficher quand vous étiez en ligne</p>
+                      <Label className="font-medium">{t("settings.lastSeen")}</Label>
+                      <p className="text-sm text-muted-foreground">{t("settings.lastSeenDesc")}</p>
                     </div>
                     <Switch
                       checked={settings.privacy.showLastSeen}
@@ -235,8 +272,8 @@ export default function SettingsPage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <div>
-                      <Label className="font-medium">Indexation moteurs de recherche</Label>
-                      <p className="text-sm text-muted-foreground">Permettre à Google de référencer votre profil</p>
+                      <Label className="font-medium">{t("settings.searchEngines")}</Label>
+                      <p className="text-sm text-muted-foreground">{t("settings.searchEnginesDesc")}</p>
                     </div>
                     <Switch
                       checked={settings.privacy.allowSearchEngines}
@@ -248,20 +285,20 @@ export default function SettingsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Données personnelles</CardTitle>
-                  <CardDescription>Gérez vos données</CardDescription>
+                  <CardTitle className="text-base">{t("settings.personalData")}</CardTitle>
+                  <CardDescription>{t("settings.personalDataDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <Button variant="outline" className="w-full justify-start gap-3 bg-transparent">
                     <Download className="h-4 w-4" />
-                    Télécharger mes données
+                    {t("settings.downloadData")}
                   </Button>
                   <Button
                     variant="outline"
                     className="w-full justify-start gap-3 text-destructive hover:text-destructive bg-transparent"
                   >
                     <Trash2 className="h-4 w-4" />
-                    Supprimer mon compte
+                    {t("settings.deleteAccount")}
                   </Button>
                 </CardContent>
               </Card>
@@ -271,28 +308,23 @@ export default function SettingsPage() {
             <TabsContent value="preferences" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Langue et région</CardTitle>
+                  <CardTitle className="text-base">{t("settings.languageRegion")}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label>Langue</Label>
-                    <Select
-                      value={settings.preferences.language}
-                      onValueChange={(value) => updatePreference("language", value)}
-                    >
+                    <Label>{t("settings.language")}</Label>
+                    <Select value={language} onValueChange={handleLanguageChange}>
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="fr">Français</SelectItem>
-                        <SelectItem value="en">English</SelectItem>
-                        <SelectItem value="es">Español</SelectItem>
-                        <SelectItem value="ar">العربية</SelectItem>
+                        <SelectItem value="fr">🇫🇷 Français</SelectItem>
+                        <SelectItem value="en">🇬🇧 English</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label>Devise</Label>
+                    <Label>{t("settings.currency")}</Label>
                     <Select
                       value={settings.preferences.currency}
                       onValueChange={(value) => updatePreference("currency", value)}
@@ -309,7 +341,7 @@ export default function SettingsPage() {
                     </Select>
                   </div>
                   <div className="space-y-2">
-                    <Label>Fuseau horaire</Label>
+                    <Label>{t("settings.timezone")}</Label>
                     <Select
                       value={settings.preferences.timezone}
                       onValueChange={(value) => updatePreference("timezone", value)}
@@ -330,7 +362,7 @@ export default function SettingsPage() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Apparence</CardTitle>
+                  <CardTitle className="text-base">{t("settings.appearance")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
@@ -341,9 +373,9 @@ export default function SettingsPage() {
                         <Sun className="h-5 w-5 text-warning" />
                       )}
                       <div>
-                        <Label className="font-medium">Mode sombre</Label>
+                        <Label className="font-medium">{t("settings.darkMode")}</Label>
                         <p className="text-sm text-muted-foreground">
-                          {theme === "dark" ? "Thème sombre activé" : "Thème clair activé"}
+                          {theme === "dark" ? t("settings.darkModeOn") : t("settings.darkModeOff")}
                         </p>
                       </div>
                     </div>
@@ -357,12 +389,12 @@ export default function SettingsPage() {
             <TabsContent value="security" className="space-y-4">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Mot de passe</CardTitle>
-                  <CardDescription>Modifiez votre mot de passe</CardDescription>
+                  <CardTitle className="text-base">{t("settings.password")}</CardTitle>
+                  <CardDescription>{t("settings.passwordDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label>Mot de passe actuel</Label>
+                    <Label>{t("settings.currentPassword")}</Label>
                     <div className="relative">
                       <Input type={showPassword ? "text" : "password"} placeholder="••••••••" />
                       <Button
@@ -376,39 +408,37 @@ export default function SettingsPage() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label>Nouveau mot de passe</Label>
+                    <Label>{t("settings.newPassword")}</Label>
                     <Input type="password" placeholder="••••••••" />
                   </div>
                   <div className="space-y-2">
-                    <Label>Confirmer le mot de passe</Label>
+                    <Label>{t("settings.confirmPassword")}</Label>
                     <Input type="password" placeholder="••••••••" />
                   </div>
-                  <Button>Mettre à jour le mot de passe</Button>
+                  <Button>{t("settings.updatePassword")}</Button>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Authentification à deux facteurs</CardTitle>
-                  <CardDescription>Ajoutez une couche de sécurité supplémentaire</CardDescription>
+                  <CardTitle className="text-base">{t("settings.twoFactor")}</CardTitle>
+                  <CardDescription>{t("settings.twoFactorDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-medium">2FA désactivé</p>
-                      <p className="text-sm text-muted-foreground">
-                        Protégez votre compte avec l'authentification à deux facteurs
-                      </p>
+                      <p className="font-medium">{t("settings.twoFactorDisabled")}</p>
+                      <p className="text-sm text-muted-foreground">{t("settings.twoFactorDesc")}</p>
                     </div>
-                    <Button variant="outline">Activer</Button>
+                    <Button variant="outline">{t("settings.twoFactorEnable")}</Button>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-base">Sessions actives</CardTitle>
-                  <CardDescription>Gérez vos connexions actives</CardDescription>
+                  <CardTitle className="text-base">{t("settings.activeSessions")}</CardTitle>
+                  <CardDescription>{t("settings.activeSessionsDesc")}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
@@ -416,27 +446,102 @@ export default function SettingsPage() {
                       <Smartphone className="h-5 w-5 text-muted-foreground" />
                       <div>
                         <p className="text-sm font-medium">iPhone 15 Pro - Paris</p>
-                        <p className="text-xs text-muted-foreground">Session actuelle</p>
+                        <p className="text-xs text-muted-foreground">{t("settings.currentSession")}</p>
                       </div>
                     </div>
                     <span className="text-xs text-success font-medium">Active</span>
                   </div>
-                  <Button
-                    variant="outline"
-                    className="w-full gap-2 text-destructive hover:text-destructive bg-transparent"
-                  >
-                    <LogOut className="h-4 w-4" />
-                    Déconnecter toutes les sessions
+                  <Button variant="outline" className="w-full bg-transparent">
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {t("settings.logoutAll")}
                   </Button>
                 </CardContent>
               </Card>
             </TabsContent>
-          </Tabs>
 
-          {/* Save Button */}
-          <div className="mt-6 flex justify-end">
-            <Button size="lg">Enregistrer les modifications</Button>
-          </div>
+            {/* Feedback Tab */}
+            <TabsContent value="feedback" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-base">{t("settings.feedbackTitle")}</CardTitle>
+                  <CardDescription>{t("settings.feedbackDesc")}</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  {/* App Rating */}
+                  <div className="space-y-3">
+                    <Label>{t("settings.rateApp")}</Label>
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          onClick={() => setAppRating(star)}
+                          onMouseEnter={() => setAppHoverRating(star)}
+                          onMouseLeave={() => setAppHoverRating(0)}
+                          className="p-1 transition-transform hover:scale-110"
+                        >
+                          <Star
+                            className={cn(
+                              "h-8 w-8 transition-colors",
+                              (appHoverRating || appRating) >= star
+                                ? "fill-warning text-warning"
+                                : "text-muted-foreground",
+                            )}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Feedback Category */}
+                  <div className="space-y-2">
+                    <Label>{t("settings.feedbackCategory")}</Label>
+                    <Select value={feedbackCategory} onValueChange={setFeedbackCategory}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="general">{t("settings.categoryGeneral")}</SelectItem>
+                        <SelectItem value="bug">{t("settings.categoryBug")}</SelectItem>
+                        <SelectItem value="suggestion">{t("settings.categorySuggestion")}</SelectItem>
+                        <SelectItem value="complaint">{t("settings.categoryComplaint")}</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Feedback Text */}
+                  <div className="space-y-2">
+                    <Label>{t("settings.feedback")}</Label>
+                    <Textarea
+                      placeholder={t("settings.feedbackPlaceholder")}
+                      value={appFeedback}
+                      onChange={(e) => setAppFeedback(e.target.value)}
+                      className="min-h-[120px]"
+                    />
+                  </div>
+
+                  <Button onClick={handleSubmitFeedback} disabled={appRating === 0 && !appFeedback} className="w-full">
+                    <MessageSquare className="h-4 w-4 mr-2" />
+                    {t("settings.submitFeedback")}
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Success Dialog */}
+              <Dialog open={feedbackSubmitted} onOpenChange={setFeedbackSubmitted}>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle className="flex items-center gap-2">
+                      <div className="h-10 w-10 rounded-full bg-success/20 flex items-center justify-center">
+                        <Check className="h-5 w-5 text-success" />
+                      </div>
+                      {t("settings.feedbackThanks")}
+                    </DialogTitle>
+                    <DialogDescription>{t("settings.feedbackReceived")}</DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
+            </TabsContent>
+          </Tabs>
         </div>
       </main>
       <Footer />

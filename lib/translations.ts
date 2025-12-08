@@ -1,0 +1,361 @@
+export type Language = "fr" | "en"
+
+export const translations = {
+  // Navigation
+  "nav.home": { fr: "Accueil", en: "Home" },
+  "nav.trips": { fr: "Trajets", en: "Trips" },
+  "nav.publish": { fr: "Publier", en: "Publish" },
+  "nav.messages": { fr: "Messages", en: "Messages" },
+  "nav.dashboard": { fr: "Dashboard", en: "Dashboard" },
+  "nav.availableTrips": { fr: "Trajets disponibles", en: "Available Trips" },
+  "nav.howItWorks": { fr: "Comment ça marche", en: "How it works" },
+  "nav.notifications": { fr: "Notifications", en: "Notifications" },
+  "nav.settings": { fr: "Paramètres", en: "Settings" },
+  "nav.profile": { fr: "Mon profil", en: "My Profile" },
+  "nav.logout": { fr: "Déconnexion", en: "Log out" },
+  "nav.publishAd": { fr: "Publier une annonce", en: "Post an ad" },
+
+  // Hero Section
+  "hero.title": { fr: "Envoyez vos colis partout dans le monde", en: "Send your packages anywhere in the world" },
+  "hero.subtitle": {
+    fr: "Connectez-vous avec des voyageurs qui ont des kilos disponibles dans leur valise. Simple, économique et sécurisé.",
+    en: "Connect with travelers who have available kilos in their luggage. Simple, affordable and secure.",
+  },
+  "hero.searchTrips": { fr: "Rechercher des trajets", en: "Search trips" },
+  "hero.becomeTraveler": { fr: "Devenir voyageur", en: "Become a traveler" },
+  "hero.departure": { fr: "Départ", en: "Departure" },
+  "hero.arrival": { fr: "Arrivée", en: "Arrival" },
+  "hero.date": { fr: "Date", en: "Date" },
+  "hero.search": { fr: "Rechercher", en: "Search" },
+
+  // Stats Section
+  "stats.activeTrips": { fr: "Trajets actifs", en: "Active trips" },
+  "stats.deliveredPackages": { fr: "Colis livrés", en: "Delivered packages" },
+  "stats.countries": { fr: "Pays desservis", en: "Countries served" },
+  "stats.users": { fr: "Utilisateurs actifs", en: "Active users" },
+
+  // How It Works
+  "howItWorks.title": { fr: "Comment ça marche", en: "How it works" },
+  "howItWorks.subtitle": {
+    fr: "En 3 étapes simples, envoyez vos colis avec des voyageurs de confiance",
+    en: "In 3 simple steps, send your packages with trusted travelers",
+  },
+  "howItWorks.step1.title": { fr: "Trouvez un voyageur", en: "Find a traveler" },
+  "howItWorks.step1.desc": {
+    fr: "Parcourez les trajets disponibles et trouvez un voyageur qui correspond à votre besoin.",
+    en: "Browse available trips and find a traveler that matches your needs.",
+  },
+  "howItWorks.step2.title": { fr: "Contactez et réservez", en: "Contact and book" },
+  "howItWorks.step2.desc": {
+    fr: "Discutez avec le voyageur, convenez des détails et réservez vos kilos en toute sécurité.",
+    en: "Chat with the traveler, agree on details and book your kilos securely.",
+  },
+  "howItWorks.step3.title": { fr: "Envoyez votre colis", en: "Send your package" },
+  "howItWorks.step3.desc": {
+    fr: "Remettez votre colis au voyageur et suivez sa livraison jusqu'à destination.",
+    en: "Hand over your package to the traveler and track its delivery to destination.",
+  },
+
+  // Trust Section
+  "trust.title": { fr: "Voyagez et envoyez en toute confiance", en: "Travel and send with confidence" },
+  "trust.subtitle": {
+    fr: "Notre plateforme garantit sécurité et transparence à chaque étape",
+    en: "Our platform guarantees security and transparency at every step",
+  },
+  "trust.verified.title": { fr: "Utilisateurs vérifiés", en: "Verified users" },
+  "trust.verified.desc": {
+    fr: "Tous nos utilisateurs passent par un processus de vérification d'identité strict.",
+    en: "All our users go through a strict identity verification process.",
+  },
+  "trust.payment.title": { fr: "Paiement sécurisé", en: "Secure payment" },
+  "trust.payment.desc": {
+    fr: "Vos paiements sont protégés et libérés uniquement après la livraison confirmée.",
+    en: "Your payments are protected and released only after confirmed delivery.",
+  },
+  "trust.support.title": { fr: "Support 24/7", en: "24/7 Support" },
+  "trust.support.desc": {
+    fr: "Notre équipe est disponible à tout moment pour vous assister.",
+    en: "Our team is available at all times to assist you.",
+  },
+  "trust.insurance.title": { fr: "Assurance incluse", en: "Insurance included" },
+  "trust.insurance.desc": {
+    fr: "Chaque envoi est couvert par notre assurance en cas de problème.",
+    en: "Each shipment is covered by our insurance in case of issues.",
+  },
+
+  // Testimonials
+  "testimonials.title": { fr: "Ce que disent nos utilisateurs", en: "What our users say" },
+  "testimonials.subtitle": {
+    fr: "Des milliers de personnes font confiance à KiloShare pour leurs envois",
+    en: "Thousands of people trust KiloShare for their shipments",
+  },
+
+  // CTA Section
+  "cta.title": { fr: "Prêt à commencer ?", en: "Ready to get started?" },
+  "cta.subtitle": {
+    fr: "Rejoignez des milliers d'utilisateurs qui font confiance à KiloShare",
+    en: "Join thousands of users who trust KiloShare",
+  },
+  "cta.createAccount": { fr: "Créer un compte gratuit", en: "Create free account" },
+  "cta.learnMore": { fr: "En savoir plus", en: "Learn more" },
+
+  // Sponsors
+  "sponsors.title": { fr: "Ils nous font confiance", en: "They trust us" },
+
+  // Footer
+  "footer.description": {
+    fr: "La plateforme de confiance pour envoyer vos colis avec des voyageurs du monde entier.",
+    en: "The trusted platform to send your packages with travelers from around the world.",
+  },
+  "footer.company": { fr: "Entreprise", en: "Company" },
+  "footer.about": { fr: "À propos", en: "About" },
+  "footer.careers": { fr: "Carrières", en: "Careers" },
+  "footer.press": { fr: "Presse", en: "Press" },
+  "footer.support": { fr: "Support", en: "Support" },
+  "footer.help": { fr: "Centre d'aide", en: "Help Center" },
+  "footer.contact": { fr: "Contact", en: "Contact" },
+  "footer.faq": { fr: "FAQ", en: "FAQ" },
+  "footer.legal": { fr: "Légal", en: "Legal" },
+  "footer.privacy": { fr: "Confidentialité", en: "Privacy" },
+  "footer.terms": { fr: "CGU", en: "Terms" },
+  "footer.cookies": { fr: "Cookies", en: "Cookies" },
+  "footer.rights": { fr: "Tous droits réservés.", en: "All rights reserved." },
+
+  // Trip Card & Details
+  "trip.availableKg": { fr: "kg disponibles", en: "kg available" },
+  "trip.perKg": { fr: "/kg", en: "/kg" },
+  "trip.verified": { fr: "Vérifié", en: "Verified" },
+  "trip.seeDetails": { fr: "Voir les détails", en: "See details" },
+  "trip.contact": { fr: "Contacter", en: "Contact" },
+  "trip.contactWhatsApp": { fr: "Contacter sur WhatsApp", en: "Contact on WhatsApp" },
+  "trip.bookKilos": { fr: "Réserver des kilos", en: "Book kilos" },
+  "trip.departureDate": { fr: "Date de départ", en: "Departure date" },
+  "trip.availableWeight": { fr: "Poids disponible", en: "Available weight" },
+  "trip.pricePerKg": { fr: "Prix par kilo", en: "Price per kilo" },
+  "trip.acceptedItems": { fr: "Articles acceptés", en: "Accepted items" },
+  "trip.aboutTraveler": { fr: "À propos du voyageur", en: "About the traveler" },
+  "trip.memberSince": { fr: "Membre depuis", en: "Member since" },
+  "trip.completedTrips": { fr: "trajets effectués", en: "completed trips" },
+  "trip.reviews": { fr: "avis", en: "reviews" },
+  "trip.viewProfile": { fr: "Voir le profil complet", en: "View full profile" },
+
+  // Messages
+  "messages.title": { fr: "Messages", en: "Messages" },
+  "messages.search": { fr: "Rechercher une conversation", en: "Search a conversation" },
+  "messages.noConversation": {
+    fr: "Sélectionnez une conversation pour commencer",
+    en: "Select a conversation to start",
+  },
+  "messages.typeMessage": { fr: "Écrivez votre message...", en: "Write your message..." },
+  "messages.tripInfo": { fr: "Infos trajet", en: "Trip info" },
+  "messages.archive": { fr: "Archiver", en: "Archive" },
+  "messages.delete": { fr: "Supprimer", en: "Delete" },
+
+  // Dashboard
+  "dashboard.title": { fr: "Tableau de bord", en: "Dashboard" },
+  "dashboard.welcome": { fr: "Bienvenue", en: "Welcome" },
+  "dashboard.overview": { fr: "Vue d'ensemble", en: "Overview" },
+  "dashboard.myTrips": { fr: "Mes trajets", en: "My trips" },
+  "dashboard.bookings": { fr: "Réservations", en: "Bookings" },
+  "dashboard.analytics": { fr: "Statistiques", en: "Analytics" },
+  "dashboard.earnings": { fr: "Revenus", en: "Earnings" },
+  "dashboard.activeTrips": { fr: "Trajets actifs", en: "Active trips" },
+  "dashboard.totalBookings": { fr: "Réservations totales", en: "Total bookings" },
+  "dashboard.totalRevenue": { fr: "Revenus totaux", en: "Total revenue" },
+  "dashboard.rating": { fr: "Note moyenne", en: "Average rating" },
+  "dashboard.recentActivity": { fr: "Activité récente", en: "Recent activity" },
+  "dashboard.seeAll": { fr: "Voir tout", en: "See all" },
+  "dashboard.noTrips": { fr: "Aucun trajet actif", en: "No active trips" },
+  "dashboard.createTrip": { fr: "Créer un trajet", en: "Create a trip" },
+
+  // Profile
+  "profile.title": { fr: "Mon profil", en: "My Profile" },
+  "profile.edit": { fr: "Modifier le profil", en: "Edit profile" },
+  "profile.verification": { fr: "Vérification", en: "Verification" },
+  "profile.stats": { fr: "Statistiques", en: "Statistics" },
+  "profile.trips": { fr: "Trajets", en: "Trips" },
+  "profile.reviews": { fr: "Avis", en: "Reviews" },
+  "profile.badges": { fr: "Badges", en: "Badges" },
+  "profile.about": { fr: "À propos", en: "About" },
+  "profile.languages": { fr: "Langues parlées", en: "Languages spoken" },
+  "profile.verifiedProfile": { fr: "Profil vérifié", en: "Verified profile" },
+  "profile.leaveReview": { fr: "Laisser un avis", en: "Leave a review" },
+  "profile.contactUser": { fr: "Contacter", en: "Contact" },
+
+  // Reviews
+  "reviews.title": { fr: "Avis", en: "Reviews" },
+  "reviews.received": { fr: "Avis reçus", en: "Reviews received" },
+  "reviews.given": { fr: "Avis donnés", en: "Reviews given" },
+  "reviews.leaveReview": { fr: "Laisser un avis", en: "Leave a review" },
+  "reviews.selectUser": { fr: "Sélectionner un utilisateur", en: "Select a user" },
+  "reviews.writeReview": { fr: "Écrivez votre avis...", en: "Write your review..." },
+  "reviews.submit": { fr: "Envoyer l'avis", en: "Submit review" },
+  "reviews.thankYou": { fr: "Merci pour votre avis !", en: "Thank you for your review!" },
+  "reviews.asBuyer": { fr: "En tant qu'expéditeur", en: "As a sender" },
+  "reviews.asSeller": { fr: "En tant que voyageur", en: "As a traveler" },
+
+  // Notifications
+  "notifications.title": { fr: "Notifications", en: "Notifications" },
+  "notifications.all": { fr: "Toutes", en: "All" },
+  "notifications.unread": { fr: "Non lues", en: "Unread" },
+  "notifications.markAllRead": { fr: "Tout marquer comme lu", en: "Mark all as read" },
+  "notifications.empty": { fr: "Aucune notification", en: "No notifications" },
+
+  // Settings
+  "settings.title": { fr: "Paramètres", en: "Settings" },
+  "settings.subtitle": { fr: "Gérez vos préférences et votre compte", en: "Manage your preferences and account" },
+  "settings.notifications": { fr: "Notifications", en: "Notifications" },
+  "settings.privacy": { fr: "Confidentialité", en: "Privacy" },
+  "settings.preferences": { fr: "Préférences", en: "Preferences" },
+  "settings.security": { fr: "Sécurité", en: "Security" },
+  "settings.feedback": { fr: "Feedback", en: "Feedback" },
+  "settings.notificationChannels": { fr: "Canaux de notification", en: "Notification channels" },
+  "settings.notificationChannelsDesc": {
+    fr: "Choisissez comment vous souhaitez être notifié",
+    en: "Choose how you want to be notified",
+  },
+  "settings.email": { fr: "Email", en: "Email" },
+  "settings.emailNotif": { fr: "Recevoir les notifications par email", en: "Receive notifications by email" },
+  "settings.push": { fr: "Push", en: "Push" },
+  "settings.pushNotif": { fr: "Notifications push sur mobile", en: "Push notifications on mobile" },
+  "settings.sms": { fr: "SMS", en: "SMS" },
+  "settings.smsNotif": { fr: "Notifications par SMS", en: "Notifications by SMS" },
+  "settings.notificationTypes": { fr: "Types de notifications", en: "Notification types" },
+  "settings.notificationTypesDesc": {
+    fr: "Personnalisez les notifications que vous recevez",
+    en: "Customize the notifications you receive",
+  },
+  "settings.newBookings": { fr: "Nouvelles réservations", en: "New bookings" },
+  "settings.newBookingsDesc": { fr: "Quand quelqu'un réserve vos kilos", en: "When someone books your kilos" },
+  "settings.messagesNotif": { fr: "Messages", en: "Messages" },
+  "settings.messagesNotifDesc": { fr: "Nouveaux messages reçus", en: "New messages received" },
+  "settings.reviewsNotif": { fr: "Avis", en: "Reviews" },
+  "settings.reviewsNotifDesc": { fr: "Nouveaux avis sur votre profil", en: "New reviews on your profile" },
+  "settings.reminders": { fr: "Rappels", en: "Reminders" },
+  "settings.remindersDesc": { fr: "Rappels de trajets à venir", en: "Upcoming trip reminders" },
+  "settings.promotions": { fr: "Promotions", en: "Promotions" },
+  "settings.promotionsDesc": { fr: "Offres et actualités KiloShare", en: "KiloShare offers and news" },
+  "settings.profileVisibility": { fr: "Visibilité du profil", en: "Profile visibility" },
+  "settings.profileVisibilityDesc": {
+    fr: "Contrôlez ce que les autres peuvent voir",
+    en: "Control what others can see",
+  },
+  "settings.showPhone": { fr: "Afficher mon téléphone", en: "Show my phone" },
+  "settings.showPhoneDesc": { fr: "Visible sur votre profil public", en: "Visible on your public profile" },
+  "settings.showEmail": { fr: "Afficher mon email", en: "Show my email" },
+  "settings.showEmailDesc": { fr: "Visible sur votre profil public", en: "Visible on your public profile" },
+  "settings.lastSeen": { fr: "Dernière connexion", en: "Last seen" },
+  "settings.lastSeenDesc": { fr: "Afficher quand vous étiez en ligne", en: "Show when you were online" },
+  "settings.searchEngines": { fr: "Indexation moteurs de recherche", en: "Search engine indexing" },
+  "settings.searchEnginesDesc": {
+    fr: "Permettre à Google de référencer votre profil",
+    en: "Allow Google to index your profile",
+  },
+  "settings.personalData": { fr: "Données personnelles", en: "Personal data" },
+  "settings.personalDataDesc": { fr: "Gérez vos données", en: "Manage your data" },
+  "settings.downloadData": { fr: "Télécharger mes données", en: "Download my data" },
+  "settings.deleteAccount": { fr: "Supprimer mon compte", en: "Delete my account" },
+  "settings.languageRegion": { fr: "Langue et région", en: "Language and region" },
+  "settings.language": { fr: "Langue", en: "Language" },
+  "settings.currency": { fr: "Devise", en: "Currency" },
+  "settings.timezone": { fr: "Fuseau horaire", en: "Timezone" },
+  "settings.appearance": { fr: "Apparence", en: "Appearance" },
+  "settings.darkMode": { fr: "Mode sombre", en: "Dark mode" },
+  "settings.darkModeOn": { fr: "Thème sombre activé", en: "Dark theme enabled" },
+  "settings.darkModeOff": { fr: "Thème clair activé", en: "Light theme enabled" },
+  "settings.password": { fr: "Mot de passe", en: "Password" },
+  "settings.passwordDesc": { fr: "Modifiez votre mot de passe", en: "Change your password" },
+  "settings.currentPassword": { fr: "Mot de passe actuel", en: "Current password" },
+  "settings.newPassword": { fr: "Nouveau mot de passe", en: "New password" },
+  "settings.confirmPassword": { fr: "Confirmer le mot de passe", en: "Confirm password" },
+  "settings.updatePassword": { fr: "Mettre à jour le mot de passe", en: "Update password" },
+  "settings.twoFactor": { fr: "Authentification à deux facteurs", en: "Two-factor authentication" },
+  "settings.twoFactorDesc": {
+    fr: "Ajoutez une couche de sécurité supplémentaire",
+    en: "Add an extra layer of security",
+  },
+  "settings.twoFactorDisabled": { fr: "2FA désactivé", en: "2FA disabled" },
+  "settings.twoFactorEnable": { fr: "Activer", en: "Enable" },
+  "settings.activeSessions": { fr: "Sessions actives", en: "Active sessions" },
+  "settings.activeSessionsDesc": { fr: "Gérez vos connexions actives", en: "Manage your active sessions" },
+  "settings.currentSession": { fr: "Session actuelle", en: "Current session" },
+  "settings.logoutAll": { fr: "Déconnecter toutes les autres sessions", en: "Log out all other sessions" },
+  "settings.feedbackTitle": { fr: "Votre avis sur KiloShare", en: "Your feedback on KiloShare" },
+  "settings.feedbackDesc": {
+    fr: "Aidez-nous à améliorer votre expérience",
+    en: "Help us improve your experience",
+  },
+  "settings.rateApp": { fr: "Notez l'application", en: "Rate the app" },
+  "settings.feedbackCategory": { fr: "Catégorie", en: "Category" },
+  "settings.categoryGeneral": { fr: "Général", en: "General" },
+  "settings.categoryBug": { fr: "Bug / Problème", en: "Bug / Issue" },
+  "settings.categorySuggestion": { fr: "Suggestion", en: "Suggestion" },
+  "settings.categoryComplaint": { fr: "Réclamation", en: "Complaint" },
+  "settings.feedbackPlaceholder": {
+    fr: "Partagez vos idées, suggestions ou problèmes rencontrés...",
+    en: "Share your ideas, suggestions or issues...",
+  },
+  "settings.submitFeedback": { fr: "Envoyer le feedback", en: "Submit feedback" },
+  "settings.feedbackThanks": { fr: "Merci pour votre feedback !", en: "Thank you for your feedback!" },
+  "settings.feedbackReceived": {
+    fr: "Votre avis nous aide à améliorer KiloShare.",
+    en: "Your feedback helps us improve KiloShare.",
+  },
+
+  // Publish
+  "publish.title": { fr: "Publier une annonce", en: "Post an ad" },
+  "publish.subtitle": {
+    fr: "Partagez vos kilos disponibles avec des expéditeurs",
+    en: "Share your available kilos with senders",
+  },
+  "publish.fromCity": { fr: "Ville de départ", en: "Departure city" },
+  "publish.toCity": { fr: "Ville d'arrivée", en: "Arrival city" },
+  "publish.departureDate": { fr: "Date de départ", en: "Departure date" },
+  "publish.availableKg": { fr: "Kilos disponibles", en: "Available kilos" },
+  "publish.pricePerKg": { fr: "Prix par kilo (€)", en: "Price per kilo (€)" },
+  "publish.acceptedItems": { fr: "Articles acceptés", en: "Accepted items" },
+  "publish.description": { fr: "Description (optionnel)", en: "Description (optional)" },
+  "publish.submit": { fr: "Publier l'annonce", en: "Post ad" },
+
+  // Auth
+  "auth.login": { fr: "Connexion", en: "Login" },
+  "auth.register": { fr: "Inscription", en: "Register" },
+  "auth.email": { fr: "Email", en: "Email" },
+  "auth.password": { fr: "Mot de passe", en: "Password" },
+  "auth.forgotPassword": { fr: "Mot de passe oublié ?", en: "Forgot password?" },
+  "auth.noAccount": { fr: "Pas encore de compte ?", en: "Don't have an account?" },
+  "auth.hasAccount": { fr: "Déjà un compte ?", en: "Already have an account?" },
+  "auth.signUp": { fr: "S'inscrire", en: "Sign up" },
+  "auth.signIn": { fr: "Se connecter", en: "Sign in" },
+  "auth.orContinueWith": { fr: "Ou continuer avec", en: "Or continue with" },
+
+  // Common
+  "common.search": { fr: "Rechercher", en: "Search" },
+  "common.cancel": { fr: "Annuler", en: "Cancel" },
+  "common.save": { fr: "Enregistrer", en: "Save" },
+  "common.delete": { fr: "Supprimer", en: "Delete" },
+  "common.edit": { fr: "Modifier", en: "Edit" },
+  "common.confirm": { fr: "Confirmer", en: "Confirm" },
+  "common.back": { fr: "Retour", en: "Back" },
+  "common.next": { fr: "Suivant", en: "Next" },
+  "common.loading": { fr: "Chargement...", en: "Loading..." },
+  "common.seeMore": { fr: "Voir plus", en: "See more" },
+  "common.seeLess": { fr: "Voir moins", en: "See less" },
+  "common.from": { fr: "De", en: "From" },
+  "common.to": { fr: "À", en: "To" },
+  "common.date": { fr: "Date", en: "Date" },
+  "common.price": { fr: "Prix", en: "Price" },
+  "common.status": { fr: "Statut", en: "Status" },
+  "common.pending": { fr: "En attente", en: "Pending" },
+  "common.confirmed": { fr: "Confirmé", en: "Confirmed" },
+  "common.completed": { fr: "Terminé", en: "Completed" },
+  "common.cancelled": { fr: "Annulé", en: "Cancelled" },
+  "common.inTransit": { fr: "En transit", en: "In transit" },
+} as const
+
+export type TranslationKey = keyof typeof translations
+
+export function getTranslation(key: TranslationKey, lang: Language): string {
+  const translation = translations[key]
+  return translation ? translation[lang] : key
+}
