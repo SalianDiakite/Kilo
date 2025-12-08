@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
@@ -29,49 +29,135 @@ import {
   Archive,
   Trash2,
   BellOff,
+  Loader2,
 } from "@/components/icons"
 import { mockConversations } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/lib/hooks/use-auth"
+import { useRealtimeMessages, useRealtimeConversations, type RealtimeMessage } from "@/lib/hooks/use-realtime-messages"
 
-const currentUserId = "1"
+// Flag to switch between mock and realtime data
+const USE_REALTIME = true
 
-function formatMessageTime(date: Date): string {
-  return new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" }).format(date)
+function formatMessageTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date
+  return new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit" }).format(d)
 }
 
-function formatConversationTime(date: Date): string {
+function formatConversationTime(date: Date | string): string {
+  const d = typeof date === "string" ? new Date(date) : date
   const now = new Date()
-  const diff = now.getTime() - date.getTime()
+  const diff = now.getTime() - d.getTime()
   const days = Math.floor(diff / (1000 * 60 * 60 * 24))
 
-  if (days === 0) return formatMessageTime(date)
+  if (days === 0) return formatMessageTime(d)
   if (days === 1) return "Hier"
-  if (days < 7) return new Intl.DateTimeFormat("fr-FR", { weekday: "short" }).format(date)
-  return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" }).format(date)
+  if (days < 7) return new Intl.DateTimeFormat("fr-FR", { weekday: "short" }).format(d)
+  return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "short" }).format(d)
 }
 
 export default function MessagesPage() {
+  const { user, loading: authLoading } = useAuth()
   const [selectedConversation, setSelectedConversation] = useState<string | null>(null)
   const [message, setMessage] = useState("")
   const [searchQuery, setSearchQuery] = useState("")
+  const [isSending, setIsSending] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const selectedConv = mockConversations.find((c) => c.id === selectedConversation)
-  const otherParticipant = selectedConv?.participants.find((p) => p.id !== currentUserId)
+  // Use realtime or mock data based on flag
+  const {
+    conversations: realtimeConversations,
+    isLoading: conversationsLoading,
+    refetch: refetchConversations,
+  } = useRealtimeConversations(USE_REALTIME ? (user?.id ?? null) : null)
 
-  const filteredConversations = mockConversations.filter((conv) => {
-    const otherUser = conv.participants.find((p) => p.id !== currentUserId)
-    return otherUser?.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const handleNewMessage = useCallback(
+    (newMessage: RealtimeMessage) => {
+      // Play sound or show notification for new messages
+      if (newMessage.sender_id !== user?.id) {
+        // Could add notification sound here
+        refetchConversations()
+      }
+    },
+    [user?.id, refetchConversations],
+  )
+
+  const {
+    messages: realtimeMessages,
+    isLoading: messagesLoading,
+    sendMessage: sendRealtimeMessage,
+    markAsRead,
+  } = useRealtimeMessages({
+    conversationId: USE_REALTIME ? selectedConversation : null,
+    userId: user?.id ?? null,
+    onNewMessage: handleNewMessage,
   })
 
+  // Get conversations (realtime or mock)
+  const conversations = USE_REALTIME ? realtimeConversations : mockConversations
+
+  // Get selected conversation details
+  const selectedConv = USE_REALTIME
+    ? conversations.find((c: any) => c.id === selectedConversation)
+    : mockConversations.find((c) => c.id === selectedConversation)
+
+  // Get other participant
+  const currentUserId = USE_REALTIME ? user?.id : "1"
+  const otherParticipant = USE_REALTIME
+    ? selectedConv?.participants?.find((p: any) => p.user_id !== currentUserId)?.user
+    : selectedConv?.participants?.find((p: any) => p.id !== currentUserId)
+
+  // Get messages (realtime or mock)
+  const displayMessages = USE_REALTIME ? realtimeMessages : (selectedConv as any)?.messages || []
+
+  // Filter conversations by search
+  const filteredConversations = conversations.filter((conv: any) => {
+    if (USE_REALTIME) {
+      const otherUser = conv.participants?.find((p: any) => p.user_id !== currentUserId)?.user
+      return otherUser?.full_name?.toLowerCase().includes(searchQuery.toLowerCase())
+    } else {
+      const otherUser = conv.participants?.find((p: any) => p.id !== currentUserId)
+      return otherUser?.name?.toLowerCase().includes(searchQuery.toLowerCase())
+    }
+  })
+
+  // Scroll to bottom on new messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [selectedConv?.messages])
+  }, [displayMessages])
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  // Mark messages as read when conversation is selected
+  useEffect(() => {
+    if (USE_REALTIME && selectedConversation && user?.id) {
+      markAsRead()
+    }
+  }, [selectedConversation, user?.id, markAsRead])
+
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!message.trim()) return
+
+    if (USE_REALTIME) {
+      setIsSending(true)
+      await sendRealtimeMessage(message)
+      setIsSending(false)
+    }
+
     setMessage("")
+  }
+
+  // Show loading state
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex flex-col bg-background">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+        </main>
+        <Footer />
+        <MobileNav />
+      </div>
+    )
   }
 
   return (
@@ -103,11 +189,35 @@ export default function MessagesPage() {
 
               {/* Conversations - scrollable */}
               <div className="flex-1 overflow-y-auto">
-                {filteredConversations.length > 0 ? (
-                  filteredConversations.map((conversation) => {
-                    const otherUser = conversation.participants.find((p) => p.id !== currentUserId)
+                {conversationsLoading && USE_REALTIME ? (
+                  <div className="p-8 text-center">
+                    <Loader2 className="h-8 w-8 animate-spin text-accent mx-auto mb-4" />
+                    <p className="text-sm text-muted-foreground">Chargement...</p>
+                  </div>
+                ) : filteredConversations.length > 0 ? (
+                  filteredConversations.map((conversation: any) => {
+                    const otherUser = USE_REALTIME
+                      ? conversation.participants?.find((p: any) => p.user_id !== currentUserId)?.user
+                      : conversation.participants?.find((p: any) => p.id !== currentUserId)
                     const isSelected = selectedConversation === conversation.id
                     const hasUnread = conversation.unreadCount > 0
+
+                    const userName = USE_REALTIME ? otherUser?.full_name : otherUser?.name
+                    const userAvatar = USE_REALTIME ? otherUser?.avatar_url : otherUser?.avatar
+                    const userVerified = USE_REALTIME ? otherUser?.is_verified : otherUser?.verified
+                    const lastMessageContent = USE_REALTIME
+                      ? conversation.lastMessage?.content
+                      : conversation.lastMessage?.content
+                    const lastMessageSenderId = USE_REALTIME
+                      ? conversation.lastMessage?.sender_id
+                      : conversation.lastMessage?.senderId
+                    const lastMessageDate = USE_REALTIME
+                      ? conversation.lastMessage?.created_at || conversation.updated_at
+                      : conversation.lastMessage?.createdAt || conversation.createdAt
+                    const tripDeparture = USE_REALTIME
+                      ? conversation.trip?.departure_city
+                      : conversation.trip?.departure
+                    const tripArrival = USE_REALTIME ? conversation.trip?.arrival_city : conversation.trip?.arrival
 
                     return (
                       <button
@@ -121,8 +231,8 @@ export default function MessagesPage() {
                         <div className="relative flex-shrink-0">
                           <div className="relative h-12 w-12 rounded-full overflow-hidden">
                             <Image
-                              src={otherUser?.avatar || "/placeholder.svg?height=48&width=48&query=user"}
-                              alt={otherUser?.name || ""}
+                              src={userAvatar || "/placeholder.svg?height=48&width=48&query=user"}
+                              alt={userName || ""}
                               fill
                               className="object-cover"
                             />
@@ -138,18 +248,18 @@ export default function MessagesPage() {
                                   hasUnread ? "text-foreground" : "text-foreground",
                                 )}
                               >
-                                {otherUser?.name}
+                                {userName}
                               </span>
-                              {otherUser?.verified && <Shield className="h-3.5 w-3.5 text-accent" />}
+                              {userVerified && <Shield className="h-3.5 w-3.5 text-accent" />}
                             </div>
                             <span className="text-xs text-muted-foreground flex-shrink-0">
-                              {formatConversationTime(conversation.lastMessage?.createdAt || conversation.createdAt)}
+                              {formatConversationTime(lastMessageDate)}
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-1">
-                            <span className="truncate">{conversation.trip.departure}</span>
+                            <span className="truncate">{tripDeparture}</span>
                             <ArrowRight className="h-3 w-3 flex-shrink-0" />
-                            <span className="truncate">{conversation.trip.arrival}</span>
+                            <span className="truncate">{tripArrival}</span>
                           </div>
                           <div className="flex items-center justify-between">
                             <p
@@ -158,10 +268,10 @@ export default function MessagesPage() {
                                 hasUnread ? "text-foreground font-medium" : "text-muted-foreground",
                               )}
                             >
-                              {conversation.lastMessage?.senderId === currentUserId && (
+                              {lastMessageSenderId === currentUserId && (
                                 <span className="text-muted-foreground">Vous : </span>
                               )}
-                              {conversation.lastMessage?.content}
+                              {lastMessageContent}
                             </p>
                             {hasUnread && (
                               <Badge className="ml-2 h-5 min-w-5 rounded-full p-0 flex items-center justify-center text-xs bg-accent">
@@ -176,7 +286,9 @@ export default function MessagesPage() {
                 ) : (
                   <div className="p-8 text-center">
                     <Search className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                    <p className="text-sm text-muted-foreground">Aucune conversation trouvée</p>
+                    <p className="text-sm text-muted-foreground">
+                      {searchQuery ? "Aucune conversation trouvée" : "Aucune conversation"}
+                    </p>
                   </div>
                 )}
               </div>
@@ -204,24 +316,31 @@ export default function MessagesPage() {
                       </Button>
                       <div className="relative h-10 w-10 rounded-full overflow-hidden">
                         <Image
-                          src={otherParticipant.avatar || "/placeholder.svg?height=40&width=40&query=user"}
-                          alt={otherParticipant.name}
+                          src={
+                            (USE_REALTIME ? otherParticipant.avatar_url : otherParticipant.avatar) ||
+                            "/placeholder.svg?height=40&width=40&query=user"
+                          }
+                          alt={USE_REALTIME ? otherParticipant.full_name : otherParticipant.name}
                           fill
                           className="object-cover"
                         />
                       </div>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-semibold text-sm text-foreground">{otherParticipant.name}</h3>
-                          {otherParticipant.verified && <Shield className="h-3.5 w-3.5 text-accent" />}
+                          <h3 className="font-semibold text-sm text-foreground">
+                            {USE_REALTIME ? otherParticipant.full_name : otherParticipant.name}
+                          </h3>
+                          {(USE_REALTIME ? otherParticipant.is_verified : otherParticipant.verified) && (
+                            <Shield className="h-3.5 w-3.5 text-accent" />
+                          )}
                         </div>
                         <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <span className="flex items-center gap-1">
                             <Star className="h-3 w-3 fill-warning text-warning" />
-                            {otherParticipant.rating}
+                            {otherParticipant.rating || "N/A"}
                           </span>
                           <span>•</span>
-                          <span>En ligne</span>
+                          <span className="text-success">En ligne</span>
                         </div>
                       </div>
                     </div>
@@ -261,71 +380,104 @@ export default function MessagesPage() {
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-foreground">
-                          {selectedConv.trip.departure} → {selectedConv.trip.arrival}
+                          {USE_REALTIME
+                            ? `${selectedConv.trip?.departure_city} → ${selectedConv.trip?.arrival_city}`
+                            : `${selectedConv.trip?.departure} → ${selectedConv.trip?.arrival}`}
                         </span>
                         <Badge variant="outline" className="text-xs">
-                          {selectedConv.trip.availableKg} kg dispo
+                          {USE_REALTIME ? selectedConv.trip?.available_kg : selectedConv.trip?.availableKg} kg dispo
                         </Badge>
                       </div>
-                      <span className="font-semibold text-accent">{selectedConv.trip.pricePerKg}€/kg</span>
+                      <span className="font-semibold text-accent">
+                        {USE_REALTIME ? selectedConv.trip?.price_per_kg : selectedConv.trip?.pricePerKg}€/kg
+                      </span>
                     </div>
                   </div>
 
+                  {/* Messages Area */}
                   <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-0">
-                    {/* Date separator */}
-                    <div className="flex items-center gap-4 my-4">
-                      <div className="flex-1 h-px bg-border" />
-                      <span className="text-xs text-muted-foreground">
-                        {new Intl.DateTimeFormat("fr-FR", {
-                          day: "numeric",
-                          month: "long",
-                        }).format(selectedConv.messages[0]?.createdAt || new Date())}
-                      </span>
-                      <div className="flex-1 h-px bg-border" />
-                    </div>
-
-                    {selectedConv.messages.map((msg, index) => {
-                      const isOwn = msg.senderId === currentUserId
-                      const showAvatar =
-                        !isOwn && (index === 0 || selectedConv.messages[index - 1]?.senderId !== msg.senderId)
-
-                      return (
-                        <div key={msg.id} className={cn("flex items-end gap-2", isOwn && "flex-row-reverse")}>
-                          {!isOwn && showAvatar && (
-                            <div className="relative h-8 w-8 rounded-full overflow-hidden flex-shrink-0">
-                              <Image
-                                src={otherParticipant.avatar || "/placeholder.svg?height=32&width=32&query=user"}
-                                alt=""
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                          )}
-                          {!isOwn && !showAvatar && <div className="w-8" />}
-                          <div
-                            className={cn(
-                              "max-w-[70%] rounded-2xl px-4 py-3",
-                              isOwn
-                                ? "bg-accent text-accent-foreground rounded-br-md"
-                                : "bg-secondary text-secondary-foreground rounded-bl-md",
+                    {messagesLoading && USE_REALTIME ? (
+                      <div className="flex items-center justify-center h-full">
+                        <Loader2 className="h-8 w-8 animate-spin text-accent" />
+                      </div>
+                    ) : displayMessages.length > 0 ? (
+                      <>
+                        {/* Date separator */}
+                        <div className="flex items-center gap-4 my-4">
+                          <div className="flex-1 h-px bg-border" />
+                          <span className="text-xs text-muted-foreground">
+                            {new Intl.DateTimeFormat("fr-FR", {
+                              day: "numeric",
+                              month: "long",
+                            }).format(
+                              new Date(
+                                USE_REALTIME
+                                  ? displayMessages[0]?.created_at
+                                  : displayMessages[0]?.createdAt || new Date(),
+                              ),
                             )}
-                          >
-                            <p className="text-sm leading-relaxed">{msg.content}</p>
-                            <div className={cn("flex items-center gap-1.5 mt-1.5", isOwn && "justify-end")}>
-                              <span className={cn("text-[10px]", isOwn ? "opacity-70" : "text-muted-foreground")}>
-                                {formatMessageTime(msg.createdAt)}
-                              </span>
-                              {isOwn &&
-                                (msg.read ? (
-                                  <CheckCircle2 className="h-3 w-3 opacity-70" />
-                                ) : (
-                                  <Check className="h-3 w-3 opacity-70" />
-                                ))}
-                            </div>
-                          </div>
+                          </span>
+                          <div className="flex-1 h-px bg-border" />
                         </div>
-                      )
-                    })}
+
+                        {displayMessages.map((msg: any, index: number) => {
+                          const isOwn = USE_REALTIME ? msg.sender_id === currentUserId : msg.senderId === currentUserId
+                          const showAvatar =
+                            !isOwn &&
+                            (index === 0 ||
+                              (USE_REALTIME
+                                ? displayMessages[index - 1]?.sender_id !== msg.sender_id
+                                : displayMessages[index - 1]?.senderId !== msg.senderId))
+
+                          return (
+                            <div key={msg.id} className={cn("flex items-end gap-2", isOwn && "flex-row-reverse")}>
+                              {!isOwn && showAvatar && (
+                                <div className="relative h-8 w-8 rounded-full overflow-hidden flex-shrink-0">
+                                  <Image
+                                    src={
+                                      (USE_REALTIME ? otherParticipant.avatar_url : otherParticipant.avatar) ||
+                                      "/placeholder.svg?height=32&width=32&query=user"
+                                    }
+                                    alt=""
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                              )}
+                              {!isOwn && !showAvatar && <div className="w-8" />}
+                              <div
+                                className={cn(
+                                  "max-w-[70%] rounded-2xl px-4 py-3",
+                                  isOwn
+                                    ? "bg-accent text-accent-foreground rounded-br-md"
+                                    : "bg-secondary text-secondary-foreground rounded-bl-md",
+                                )}
+                              >
+                                <p className="text-sm leading-relaxed">{msg.content}</p>
+                                <div className={cn("flex items-center gap-1.5 mt-1.5", isOwn && "justify-end")}>
+                                  <span className={cn("text-[10px]", isOwn ? "opacity-70" : "text-muted-foreground")}>
+                                    {formatMessageTime(USE_REALTIME ? msg.created_at : msg.createdAt)}
+                                  </span>
+                                  {isOwn &&
+                                    (msg.read ? (
+                                      <CheckCircle2 className="h-3 w-3 opacity-70" />
+                                    ) : (
+                                      <Check className="h-3 w-3 opacity-70" />
+                                    ))}
+                                </div>
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </>
+                    ) : (
+                      <div className="flex items-center justify-center h-full text-center">
+                        <div>
+                          <p className="text-muted-foreground text-sm">Aucun message</p>
+                          <p className="text-muted-foreground text-xs mt-1">Commencez la conversation !</p>
+                        </div>
+                      </div>
+                    )}
                     <div ref={messagesEndRef} />
                   </div>
 
@@ -346,6 +498,7 @@ export default function MessagesPage() {
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
                           className="pr-10 bg-secondary border-0"
+                          disabled={isSending}
                         />
                         <Button
                           type="button"
@@ -360,9 +513,9 @@ export default function MessagesPage() {
                         type="submit"
                         size="icon"
                         className="h-10 w-10 bg-accent hover:bg-accent/90"
-                        disabled={!message.trim()}
+                        disabled={!message.trim() || isSending}
                       >
-                        <Send className="h-5 w-5" />
+                        {isSending ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
                       </Button>
                     </form>
                   </div>

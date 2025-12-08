@@ -4,6 +4,7 @@ import { Inter, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/lib/theme-context"
 import { LanguageProvider } from "@/lib/language-context"
+import { DataProvider } from "@/lib/data-provider"
 import "./globals.css"
 
 const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
@@ -33,7 +34,9 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider>
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            <DataProvider>{children}</DataProvider>
+          </LanguageProvider>
         </ThemeProvider>
         <Analytics />
       </body>

@@ -4,30 +4,75 @@ import type React from "react"
 
 import { useState } from "react"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { Plane, ArrowRight, Loader2 } from "@/components/icons"
+import { Plane, ArrowRight, Loader2, AlertCircle, CheckCircle } from "@/components/icons"
+import { signIn, signUp } from "@/lib/db/auth"
+import { useLanguage } from "@/lib/language-context"
 
 export default function LoginPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirect = searchParams.get("redirect") || "/dashboard"
+  const { t } = useLanguage()
+
   const [isLoading, setIsLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [name, setName] = useState("")
+  const [error, setError] = useState<string | null>(null)
+  const [success, setSuccess] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError(null)
+    setSuccess(null)
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    try {
+      if (isRegister) {
+        // Validation
+        if (password !== confirmPassword) {
+          setError("Les mots de passe ne correspondent pas")
+          setIsLoading(false)
+          return
+        }
+        if (password.length < 6) {
+          setError("Le mot de passe doit contenir au moins 6 caractères")
+          setIsLoading(false)
+          return
+        }
 
-    setIsLoading(false)
-    router.push("/")
+        // Sign up with Supabase
+        await signUp(email, password, name)
+        setSuccess("Compte créé ! Vérifiez votre email pour confirmer votre inscription.")
+        setIsRegister(false)
+      } else {
+        // Sign in with Supabase
+        await signIn(email, password)
+        router.push(redirect)
+        router.refresh()
+      }
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Une erreur est survenue"
+      // Traduire les erreurs Supabase courantes
+      if (errorMessage.includes("Invalid login credentials")) {
+        setError("Email ou mot de passe incorrect")
+      } else if (errorMessage.includes("Email not confirmed")) {
+        setError("Veuillez confirmer votre email avant de vous connecter")
+      } else if (errorMessage.includes("User already registered")) {
+        setError("Un compte existe déjà avec cet email")
+      } else {
+        setError(errorMessage)
+      }
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -44,11 +89,27 @@ export default function LoginPage() {
         <Card>
           <CardContent className="p-6 md:p-8">
             <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold mb-2">{isRegister ? "Créer un compte" : "Connexion"}</h1>
+              <h1 className="text-2xl font-bold mb-2">{isRegister ? t("register") : t("login")}</h1>
               <p className="text-muted-foreground">
                 {isRegister ? "Rejoignez la communauté KiloShare" : "Accédez à votre espace personnel"}
               </p>
             </div>
+
+            {/* Error message */}
+            {error && (
+              <div className="mb-4 p-3 rounded-lg bg-destructive/10 border border-destructive/20 flex items-center gap-2 text-sm text-destructive">
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                {error}
+              </div>
+            )}
+
+            {/* Success message */}
+            {success && (
+              <div className="mb-4 p-3 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+                <CheckCircle className="h-4 w-4 shrink-0" />
+                {success}
+              </div>
+            )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {isRegister && (
@@ -60,6 +121,7 @@ export default function LoginPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required={isRegister}
+                    disabled={isLoading}
                   />
                 </div>
               )}
@@ -73,6 +135,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
+                  disabled={isLoading}
                 />
               </div>
 
@@ -92,8 +155,26 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
+                  disabled={isLoading}
+                  minLength={6}
                 />
               </div>
+
+              {isRegister && (
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Confirmer le mot de passe</Label>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="••••••••"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    disabled={isLoading}
+                    minLength={6}
+                  />
+                </div>
+              )}
 
               <Button type="submit" className="w-full gap-2" disabled={isLoading}>
                 {isLoading ? (
@@ -103,7 +184,7 @@ export default function LoginPage() {
                   </>
                 ) : (
                   <>
-                    {isRegister ? "Créer mon compte" : "Se connecter"}
+                    {isRegister ? "Créer mon compte" : t("login")}
                     <ArrowRight className="h-4 w-4" />
                   </>
                 )}
@@ -116,9 +197,14 @@ export default function LoginPage() {
                 <button
                   type="button"
                   className="font-medium text-accent hover:underline"
-                  onClick={() => setIsRegister(!isRegister)}
+                  onClick={() => {
+                    setIsRegister(!isRegister)
+                    setError(null)
+                    setSuccess(null)
+                  }}
+                  disabled={isLoading}
                 >
-                  {isRegister ? "Se connecter" : "S'inscrire"}
+                  {isRegister ? t("login") : t("register")}
                 </button>
               </p>
             </div>
@@ -128,7 +214,7 @@ export default function LoginPage() {
         <p className="text-center text-xs text-muted-foreground mt-6">
           En continuant, vous acceptez nos{" "}
           <Link href="/terms" className="underline hover:text-foreground">
-            Conditions d'utilisation
+            Conditions d&apos;utilisation
           </Link>{" "}
           et notre{" "}
           <Link href="/privacy" className="underline hover:text-foreground">

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -13,19 +14,35 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Menu, X, Plane, Bell, Plus, User, LayoutDashboard, Settings, LogOut, MessageCircle } from "@/components/icons"
 import { cn } from "@/lib/utils"
-import { mockUsers, mockNotifications } from "@/lib/mock-data"
 import { useLanguage } from "@/lib/language-context"
+import { useData } from "@/lib/data-provider"
+import { signOut } from "@/lib/db/auth"
 
 interface HeaderProps {
   transparent?: boolean
 }
 
-const currentUser = mockUsers[0]
-const unreadNotifs = mockNotifications.filter((n) => !n.read).length
-
 export function Header({ transparent = false }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
   const { t } = useLanguage()
+  const router = useRouter()
+
+  const { currentUser, notifications, isAuthenticated } = useData()
+  const unreadNotifs = notifications.filter((n) => !n.read).length
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true)
+    try {
+      await signOut()
+      router.push("/")
+      router.refresh()
+    } catch (error) {
+      console.error("Logout error:", error)
+    } finally {
+      setIsLoggingOut(false)
+    }
+  }
 
   return (
     <header
@@ -44,7 +61,7 @@ export function Header({ transparent = false }: HeaderProps) {
             <span className="text-xl font-bold tracking-tight">KiloShare</span>
           </Link>
 
-          {/* Desktop Navigation - Updated with translations */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             <Link
               href="/trips"
@@ -68,78 +85,97 @@ export function Header({ transparent = false }: HeaderProps) {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2">
-            <Link href="/notifications">
-              <Button variant="ghost" size="icon" className="relative">
-                <Bell className="h-5 w-5" />
-                {unreadNotifs > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
-                    {unreadNotifs}
-                  </span>
-                )}
-              </Button>
-            </Link>
+            {isAuthenticated && currentUser ? (
+              <>
+                <Link href="/notifications">
+                  <Button variant="ghost" size="icon" className="relative">
+                    <Bell className="h-5 w-5" />
+                    {unreadNotifs > 0 && (
+                      <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
+                        {unreadNotifs}
+                      </span>
+                    )}
+                  </Button>
+                </Link>
 
-            <Link href="/messages">
-              <Button variant="ghost" size="icon" className="relative">
-                <MessageCircle className="h-5 w-5" />
-                <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
-                  2
-                </span>
-              </Button>
-            </Link>
+                <Link href="/messages">
+                  <Button variant="ghost" size="icon" className="relative">
+                    <MessageCircle className="h-5 w-5" />
+                    <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
+                      2
+                    </span>
+                  </Button>
+                </Link>
 
-            <Link href="/publish">
-              <Button variant="outline" size="sm" className="gap-2 bg-transparent">
-                <Plus className="h-4 w-4" />
-                {t("nav.publish")}
-              </Button>
-            </Link>
+                <Link href="/publish">
+                  <Button variant="outline" size="sm" className="gap-2 bg-transparent">
+                    <Plus className="h-4 w-4" />
+                    {t("nav.publish")}
+                  </Button>
+                </Link>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="gap-2 pl-2">
-                  <div className="relative h-7 w-7 rounded-full overflow-hidden">
-                    <Image
-                      src={currentUser.avatar || "/placeholder.svg?height=28&width=28&query=user"}
-                      alt={currentUser.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <span className="max-w-[100px] truncate">{currentUser.name.split(" ")[0]}</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                <div className="px-2 py-1.5">
-                  <p className="text-sm font-medium">{currentUser.name}</p>
-                  <p className="text-xs text-muted-foreground">{currentUser.email}</p>
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="flex items-center gap-2 cursor-pointer">
-                    <User className="h-4 w-4" />
-                    {t("nav.profile")}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/dashboard" className="flex items-center gap-2 cursor-pointer">
-                    <LayoutDashboard className="h-4 w-4" />
-                    {t("nav.dashboard")}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/settings" className="flex items-center gap-2 cursor-pointer">
-                    <Settings className="h-4 w-4" />
-                    {t("nav.settings")}
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-destructive cursor-pointer">
-                  <LogOut className="h-4 w-4 mr-2" />
-                  {t("nav.logout")}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="sm" className="gap-2 pl-2">
+                      <div className="relative h-7 w-7 rounded-full overflow-hidden">
+                        <Image
+                          src={currentUser.avatar || "/placeholder.svg?height=28&width=28&query=user"}
+                          alt={currentUser.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <span className="max-w-[100px] truncate">{currentUser.name.split(" ")[0]}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <div className="px-2 py-1.5">
+                      <p className="text-sm font-medium">{currentUser.name}</p>
+                      <p className="text-xs text-muted-foreground">{currentUser.email}</p>
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild>
+                      <Link href="/profile" className="flex items-center gap-2 cursor-pointer">
+                        <User className="h-4 w-4" />
+                        {t("nav.profile")}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/dashboard" className="flex items-center gap-2 cursor-pointer">
+                        <LayoutDashboard className="h-4 w-4" />
+                        {t("nav.dashboard")}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem asChild>
+                      <Link href="/settings" className="flex items-center gap-2 cursor-pointer">
+                        <Settings className="h-4 w-4" />
+                        {t("nav.settings")}
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      className="text-destructive cursor-pointer"
+                      onClick={handleLogout}
+                      disabled={isLoggingOut}
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      {isLoggingOut ? "Déconnexion..." : t("nav.logout")}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </>
+            ) : (
+              <>
+                <Link href="/login">
+                  <Button variant="ghost" size="sm">
+                    {t("login")}
+                  </Button>
+                </Link>
+                <Link href="/login">
+                  <Button size="sm">{t("register")}</Button>
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -149,7 +185,7 @@ export function Header({ transparent = false }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile Menu - Updated with translations */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-background">
           <nav className="container mx-auto px-4 py-4 space-y-1">
@@ -187,12 +223,32 @@ export function Header({ transparent = false }: HeaderProps) {
               {t("nav.settings")}
             </Link>
             <div className="pt-4 border-t border-border mt-4 space-y-2">
-              <Link href="/publish" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full gap-2 bg-transparent">
-                  <Plus className="h-4 w-4" />
-                  {t("nav.publishAd")}
-                </Button>
-              </Link>
+              {isAuthenticated ? (
+                <>
+                  <Link href="/publish" onClick={() => setMobileMenuOpen(false)}>
+                    <Button variant="outline" className="w-full gap-2 bg-transparent">
+                      <Plus className="h-4 w-4" />
+                      {t("nav.publishAd")}
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="ghost"
+                    className="w-full gap-2 text-destructive hover:text-destructive hover:bg-destructive/10"
+                    onClick={() => {
+                      setMobileMenuOpen(false)
+                      handleLogout()
+                    }}
+                    disabled={isLoggingOut}
+                  >
+                    <LogOut className="h-4 w-4" />
+                    {isLoggingOut ? "Déconnexion..." : t("nav.logout")}
+                  </Button>
+                </>
+              ) : (
+                <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                  <Button className="w-full">{t("login")}</Button>
+                </Link>
+              )}
             </div>
           </nav>
         </div>
