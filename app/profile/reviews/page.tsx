@@ -1,0 +1,488 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import { Header } from "@/components/ui/header"
+import { Footer } from "@/components/ui/footer"
+import { MobileNav } from "@/components/ui/mobile-nav"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Star, Shield, ChevronLeft, ThumbsUp, Flag, MessageSquare, Edit3, Check, Clock } from "@/components/icons"
+import { mockReviews, mockUsers, mockBookings } from "@/lib/mock-data"
+import { cn } from "@/lib/utils"
+
+const currentUser = mockUsers[0]
+const receivedReviews = mockReviews.filter((r) => r.reviewedId === currentUser.id)
+const givenReviews = mockReviews.filter((r) => r.reviewerId === currentUser.id)
+
+// Mock: bookings that can be reviewed (delivered, not yet reviewed)
+const reviewableBookings = mockBookings
+  .filter((b) => b.status === "delivered")
+  .map((b) => ({
+    ...b,
+    canReview: true,
+  }))
+
+export default function ReviewsPage() {
+  const [selectedRating, setSelectedRating] = useState(0)
+  const [hoverRating, setHoverRating] = useState(0)
+  const [reviewText, setReviewText] = useState("")
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<(typeof mockUsers)[0] | null>(null)
+  const [reviewType, setReviewType] = useState<"buyer" | "seller">("buyer")
+
+  const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
+    rating,
+    count: receivedReviews.filter((r) => r.rating === rating).length,
+    percentage:
+      receivedReviews.length > 0
+        ? Math.round((receivedReviews.filter((r) => r.rating === rating).length / receivedReviews.length) * 100)
+        : 0,
+  }))
+
+  const handleSubmitReview = () => {
+    // In real app, submit to backend
+    setIsDialogOpen(false)
+    setSelectedRating(0)
+    setReviewText("")
+    setSelectedUser(null)
+  }
+
+  const openReviewDialog = (user: (typeof mockUsers)[0], type: "buyer" | "seller") => {
+    setSelectedUser(user)
+    setReviewType(type)
+    setIsDialogOpen(true)
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-background">
+      <Header />
+      <main className="flex-1 pb-20 md:pb-0 bg-secondary/20">
+        <div className="container mx-auto px-4 py-6 max-w-4xl">
+          {/* Back Link */}
+          <Link
+            href="/profile"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            Retour au profil
+          </Link>
+
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <div>
+              <h1 className="text-2xl font-bold text-foreground">Avis et évaluations</h1>
+              <p className="text-muted-foreground">Consultez et gérez vos avis</p>
+            </div>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="gap-2">
+                  <Edit3 className="h-4 w-4" />
+                  Laisser un avis
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Laisser un avis</DialogTitle>
+                  <DialogDescription>
+                    {reviewType === "buyer" ? "Évaluez cet acheteur/expéditeur" : "Évaluez ce voyageur/transporteur"}
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  {!selectedUser && (
+                    <div>
+                      <Label className="text-sm font-medium mb-2 block">Type d'avis</Label>
+                      <Select value={reviewType} onValueChange={(v) => setReviewType(v as "buyer" | "seller")}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="buyer">Évaluer un acheteur (vous êtes voyageur)</SelectItem>
+                          <SelectItem value="seller">Évaluer un voyageur (vous êtes expéditeur)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
+
+                  {/* Rating Selection */}
+                  <div>
+                    <p className="text-sm font-medium mb-2">Votre note</p>
+                    <div className="flex gap-1">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setSelectedRating(star)}
+                          onMouseEnter={() => setHoverRating(star)}
+                          onMouseLeave={() => setHoverRating(0)}
+                          className="p-1"
+                        >
+                          <Star
+                            className={cn(
+                              "h-8 w-8 transition-colors",
+                              star <= (hoverRating || selectedRating) ? "fill-warning text-warning" : "text-muted",
+                            )}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {selectedRating === 1 && "Très insatisfait"}
+                      {selectedRating === 2 && "Insatisfait"}
+                      {selectedRating === 3 && "Correct"}
+                      {selectedRating === 4 && "Satisfait"}
+                      {selectedRating === 5 && "Excellent"}
+                    </p>
+                  </div>
+
+                  {/* Review Text */}
+                  <div>
+                    <p className="text-sm font-medium mb-2">Votre commentaire</p>
+                    <Textarea
+                      placeholder={
+                        reviewType === "buyer"
+                          ? "Comment s'est passée l'expérience avec cet expéditeur ? Ponctualité, emballage du colis..."
+                          : "Comment s'est passée la livraison ? Fiabilité, communication..."
+                      }
+                      value={reviewText}
+                      onChange={(e) => setReviewText(e.target.value)}
+                      rows={4}
+                    />
+                  </div>
+
+                  {/* Select User */}
+                  <div>
+                    <p className="text-sm font-medium mb-2">Utilisateur à évaluer</p>
+                    {selectedUser ? (
+                      <div className="p-3 border border-border rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                            <Image
+                              src={selectedUser.avatar || "/placeholder.svg"}
+                              alt={selectedUser.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div>
+                            <p className="font-medium text-foreground">{selectedUser.name}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {reviewType === "buyer" ? "Acheteur/Expéditeur" : "Voyageur/Transporteur"}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <Select>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Sélectionnez un utilisateur" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {mockUsers.slice(1).map((user) => (
+                            <SelectItem key={user.id} value={user.id}>
+                              <div className="flex items-center gap-2">
+                                <div className="relative h-6 w-6 rounded-full overflow-hidden">
+                                  <Image
+                                    src={user.avatar || "/placeholder.svg"}
+                                    alt={user.name}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                </div>
+                                {user.name}
+                              </div>
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    )}
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="flex-1 bg-transparent"
+                    onClick={() => {
+                      setIsDialogOpen(false)
+                      setSelectedUser(null)
+                    }}
+                  >
+                    Annuler
+                  </Button>
+                  <Button
+                    className="flex-1"
+                    onClick={handleSubmitReview}
+                    disabled={!selectedRating || !reviewText.trim()}
+                  >
+                    Publier l'avis
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+          <Tabs defaultValue="received" className="space-y-6">
+            <TabsList className="bg-secondary">
+              <TabsTrigger value="received">Reçus ({receivedReviews.length})</TabsTrigger>
+              <TabsTrigger value="given">Donnés ({givenReviews.length})</TabsTrigger>
+              <TabsTrigger value="pending">À évaluer ({reviewableBookings.length})</TabsTrigger>
+            </TabsList>
+
+            {/* Received Reviews */}
+            <TabsContent value="received" className="space-y-6">
+              {/* Rating Summary */}
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row gap-8">
+                    {/* Overall Rating */}
+                    <div className="text-center md:text-left">
+                      <p className="text-5xl font-bold text-foreground">{currentUser.rating}</p>
+                      <div className="flex justify-center md:justify-start gap-1 my-2">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <Star
+                            key={star}
+                            className={cn(
+                              "h-5 w-5",
+                              star <= Math.round(currentUser.rating) ? "fill-warning text-warning" : "text-muted",
+                            )}
+                          />
+                        ))}
+                      </div>
+                      <p className="text-sm text-muted-foreground">{currentUser.reviewCount} avis au total</p>
+                    </div>
+
+                    {/* Rating Distribution */}
+                    <div className="flex-1 space-y-2">
+                      {ratingDistribution.map(({ rating, count, percentage }) => (
+                        <div key={rating} className="flex items-center gap-3">
+                          <span className="text-sm text-muted-foreground w-4">{rating}</span>
+                          <Star className="h-4 w-4 fill-warning text-warning" />
+                          <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-warning rounded-full transition-all duration-500"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                          <span className="text-sm text-muted-foreground w-8">{count}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Reviews List */}
+              <div className="space-y-4">
+                {receivedReviews.map((review) => (
+                  <Card key={review.id}>
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+                          <Image
+                            src={review.reviewer.avatar || "/placeholder.svg"}
+                            alt={review.reviewer.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between mb-2">
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <h3 className="font-semibold text-foreground">{review.reviewer.name}</h3>
+                                {review.reviewer.verified && <Shield className="h-4 w-4 text-accent" />}
+                              </div>
+                              <p className="text-sm text-muted-foreground">
+                                {new Intl.DateTimeFormat("fr-FR", {
+                                  day: "numeric",
+                                  month: "long",
+                                  year: "numeric",
+                                }).format(review.createdAt)}
+                              </p>
+                            </div>
+                            <div className="flex gap-1">
+                              {[1, 2, 3, 4, 5].map((star) => (
+                                <Star
+                                  key={star}
+                                  className={cn(
+                                    "h-4 w-4",
+                                    star <= review.rating ? "fill-warning text-warning" : "text-muted",
+                                  )}
+                                />
+                              ))}
+                            </div>
+                          </div>
+                          <p className="text-foreground mb-4">{review.comment}</p>
+                          <div className="flex items-center gap-4">
+                            <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground">
+                              <ThumbsUp className="h-4 w-4" />
+                              Utile
+                            </Button>
+                            <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground">
+                              <MessageSquare className="h-4 w-4" />
+                              Répondre
+                            </Button>
+                            <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground">
+                              <Flag className="h-4 w-4" />
+                              Signaler
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            <TabsContent value="given" className="space-y-4">
+              {givenReviews.length > 0 ? (
+                givenReviews.map((review) => {
+                  const reviewedUser = mockUsers.find((u) => u.id === review.reviewedId)
+                  return (
+                    <Card key={review.id}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start gap-4">
+                          <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+                            <Image
+                              src={reviewedUser?.avatar || "/placeholder.svg"}
+                              alt={reviewedUser?.name || "User"}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-start justify-between mb-2">
+                              <div>
+                                <div className="flex items-center gap-2">
+                                  <h3 className="font-semibold text-foreground">{reviewedUser?.name}</h3>
+                                  {reviewedUser?.verified && <Shield className="h-4 w-4 text-accent" />}
+                                  <Badge variant="secondary" className="text-xs">
+                                    Expéditeur
+                                  </Badge>
+                                </div>
+                                <p className="text-sm text-muted-foreground">
+                                  {new Intl.DateTimeFormat("fr-FR", {
+                                    day: "numeric",
+                                    month: "long",
+                                    year: "numeric",
+                                  }).format(review.createdAt)}
+                                </p>
+                              </div>
+                              <div className="flex gap-1">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                  <Star
+                                    key={star}
+                                    className={cn(
+                                      "h-4 w-4",
+                                      star <= review.rating ? "fill-warning text-warning" : "text-muted",
+                                    )}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                            <p className="text-foreground mb-4">{review.comment}</p>
+                            <div className="flex items-center gap-4">
+                              <Button variant="ghost" size="sm" className="gap-2 text-muted-foreground">
+                                <Edit3 className="h-4 w-4" />
+                                Modifier
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )
+                })
+              ) : (
+                <Card>
+                  <CardContent className="p-12 text-center">
+                    <Star className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                    <h3 className="font-semibold mb-2 text-foreground">Aucun avis donné</h3>
+                    <p className="text-sm text-muted-foreground mb-4">
+                      Vous n'avez pas encore laissé d'avis à d'autres utilisateurs
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+            </TabsContent>
+
+            <TabsContent value="pending">
+              <div className="space-y-4">
+                {reviewableBookings.length > 0 ? (
+                  reviewableBookings.map((booking) => (
+                    <Card key={booking.id}>
+                      <CardContent className="p-6">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-4">
+                            <div className="relative h-12 w-12 rounded-full overflow-hidden">
+                              <Image
+                                src={booking.sender.avatar || "/placeholder.svg"}
+                                alt={booking.sender.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <div>
+                              <div className="flex items-center gap-2">
+                                <h3 className="font-semibold text-foreground">{booking.sender.name}</h3>
+                                <Badge variant="outline" className="text-xs">
+                                  Acheteur
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground">{booking.itemDescription}</p>
+                              <div className="flex items-center gap-2 mt-1">
+                                <Badge
+                                  variant="secondary"
+                                  className="bg-green-50 text-green-700 dark:bg-green-950 dark:text-green-300"
+                                >
+                                  <Check className="h-3 w-3 mr-1" />
+                                  Livraison terminée
+                                </Badge>
+                                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                  <Clock className="h-3 w-3" />
+                                  {new Intl.DateTimeFormat("fr-FR").format(booking.updatedAt)}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <Button onClick={() => openReviewDialog(booking.sender, "buyer")}>Évaluer l'acheteur</Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))
+                ) : (
+                  <Card>
+                    <CardContent className="p-12 text-center">
+                      <Star className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                      <h3 className="font-semibold mb-2 text-foreground">Aucune évaluation en attente</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Vous n'avez pas de livraisons à évaluer pour le moment
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+      <Footer />
+      <MobileNav />
+    </div>
+  )
+}
