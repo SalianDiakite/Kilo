@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+import { useData } from "@/lib/data-provider"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
@@ -10,7 +12,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
-import { Calendar, Weight, ChevronRight, ChevronLeft, Check, Plane, Info } from "@/components/icons"
+import { Calendar, Weight, ChevronRight, ChevronLeft, Check, Plane, Info, Loader2 } from "@/components/icons"
 import { countries } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
 
@@ -22,7 +24,9 @@ const steps = [
 
 export default function PublishPage() {
   const router = useRouter()
+  const { currentUser, createTrip, useMockData } = useData()
   const [currentStep, setCurrentStep] = useState(1)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     departureCountry: "",
     departureCity: "",
@@ -34,12 +38,49 @@ export default function PublishPage() {
     description: "",
   })
 
+  const handleSubmit = async () => {
+    if (!currentUser) {
+      alert("Vous devez être connecté pour publier un trajet.")
+      return
+    }
+    setIsSubmitting(true)
+    try {
+      const newTrip = await createTrip({
+        userId: currentUser.id,
+        departure: formData.departureCity,
+        departureCountry: formData.departureCountry,
+        arrival: formData.arrivalCity,
+        arrivalCountry: formData.arrivalCountry,
+        departureDate: formData.departureDate,
+        availableKg: Number(formData.availableKg),
+        pricePerKg: Number(formData.pricePerKg),
+        description: formData.description,
+      })
+
+      if (useMockData) {
+        // In mock mode, we don't get a real trip back, so we just log it and redirect.
+        console.log("Mock trip created:", formData)
+        alert("Trajet publié avec succès (simulation) !")
+        router.push("/dashboard")
+      } else if (newTrip) {
+        alert("Trajet publié avec succès !")
+        router.push(`/trips/${newTrip.id}`)
+      } else {
+        throw new Error("La création du trajet a échoué.")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Une erreur est survenue lors de la publication.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   const handleNext = () => {
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1)
     } else {
-      // Submit form
-      router.push("/trips")
+      handleSubmit()
     }
   }
 
@@ -51,6 +92,24 @@ export default function PublishPage() {
 
   const updateForm = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-2">Accès refusé</h2>
+            <p className="text-muted-foreground mb-4">Vous devez être connecté pour publier un trajet.</p>
+            <Link href="/login">
+              <Button>Se connecter</Button>
+            </Link>
+          </div>
+        </div>
+        <MobileNav />
+      </div>
+    )
   }
 
   return (
@@ -258,13 +317,21 @@ export default function PublishPage() {
 
                 {/* Navigation Buttons */}
                 <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
-                  <Button variant="ghost" onClick={handleBack} disabled={currentStep === 1} className="gap-2">
+                  <Button variant="ghost" onClick={handleBack} disabled={currentStep === 1 || isSubmitting} className="gap-2">
                     <ChevronLeft className="h-4 w-4" />
                     Retour
                   </Button>
-                  <Button onClick={handleNext} className="gap-2">
-                    {currentStep === 3 ? "Publier" : "Continuer"}
-                    {currentStep < 3 && <ChevronRight className="h-4 w-4" />}
+                  <Button onClick={handleNext} disabled={isSubmitting} className="gap-2 w-32">
+                    {isSubmitting ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : currentStep === 3 ? (
+                      "Publier"
+                    ) : (
+                      <>
+                        Continuer
+                        <ChevronRight className="h-4 w-4" />
+                      </>
+                    )}
                   </Button>
                 </div>
               </CardContent>

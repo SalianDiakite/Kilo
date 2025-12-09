@@ -1,0 +1,10 @@
+{
+  "/dashboard/bookings/page": "app/dashboard/bookings/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/messages/page": "app/messages/page.js",
+  "/notifications/page": "app/notifications/page.js",
+  "/page": "app/page.js",
+  "/settings/page": "app/settings/page.js",
+  "/trips/[id]/page": "app/trips/[id]/page.js",
+  "/trips/page": "app/trips/page.js"
+}

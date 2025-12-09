@@ -1,0 +1,209 @@
+[00:00:00.959] Server  LOG      ✓ Ready in 630ms
+[00:00:20.280] Server  LOG      ○ Compiling /dashboard/bookings ...
+[00:00:25.059] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard/bookings","route":"/dashboard/bookings"}
+[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/bookings color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/bookings","o":"http://localhost:3000/dashboard/bookings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245745973}
+[00:00:32.849] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245752463}
+[00:00:36.222] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245755838}
+[00:00:42.466] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245762080}
+[00:00:58.610] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/settings color: rgb(120, 120, 120) color: inherit {"dp":"/settings","o":"http://localhost:3000/settings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245778226}
+[00:01:23.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245802659}
+[00:01:30.126] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/3 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/3","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245809748}
+[00:01:35.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245814724}
+[00:01:57.145] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245836762}
+[00:02:00.911] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245840525}
+[00:08:33.245] Server  LOG      ✓ Compiled in 80ms
+[00:08:33.335] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [, async ()=>{
+            if (!userId) {
+                setConversations([]);
+                setIsLoading(false);
+                return;
+            }
+            setIsLoading(true);
+            try {
+                // Get conversation IDs where user is a participant
+                const { data: participations } = await supabaseRef.current.from("conversation_participants").select("conversation_id").eq("user_id", userId);
+                if (!participations || participations.length === 0) {
+                    setConversations([]);
+                    setIsLoading(false);
+                    return;
+                }
+                const conversationIds = participations.map({
+                    "useRealtimeConversations.useCallback[fetchConversations].conversationIds": (p)=>p.conversation_id
+                }["useRealtimeConversations.useCallback[fetchConversations].conversationIds"]);
+                const { data, error } = await supabaseRef.current.from("conversations").select(`
+          *,
+          trip:trips(id, departure_city, arrival_city, departure_date, available_kg, price_per_kg),
+          participants:conversation_participants(
+            user_id,
+            last_read_at,
+            user:profiles(id, full_name, avatar_url, is_verified, rating)
+          )
+        `).in("id", conversationIds).order("updated_at", {
+                    ascending: false
+                });
+                if (error) throw error;
+                // Fetch last message and unread count for each conversation
+                const conversationsWithMessages = await Promise.all((data || []).map({
+                    "useRealtimeConversations.useCallback[fetchConversations]": async (conv)=>{
+                        const { data: lastMessage } = await supabaseRef.current.from("messages").select("*").eq("conversation_id", conv.id).order("created_at", {
+                            ascending: false
+                        }).limit(1).single();
+                        const { count: unreadCount } = await supabaseRef.current.from("messages").select("*", {
+                            count: "exact",
+                            head: true
+                        }).eq("conversation_id", conv.id).eq("read", false).neq("sender_id", userId);
+                        return {
+                            ...conv,
+                            lastMessage,
+                            unreadCount: unreadCount || 0
+                        };
+                    }
+                }["useRealtimeConversations.useCallback[fetchConversations]"]));
+                setConversations(conversationsWithMessages);
+            } catch (err) {
+                console.error("Failed to fetch conversations:", err);
+            } finally{
+                setIsLoading(false);
+            }
+        }] [, async ()=>{
+            if (!userId) {
+                setConversations([]);
+                setIsLoading(false);
+                return;
+            }
+            setIsLoading(true);
+            try {
+                // Call the RPC function
+                const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
+                    p_user_id: userId
+                });
+                if (error) throw error;
+                // Transform the data to match the component's expected structure
+                const transformedConversations = (data || []).map({
+                    "useRealtimeConversations.useCallback[fetchConversations].transformedConversations": (c)=>({
+                            id: c.id,
+                            created_at: c.created_at,
+                            updated_at: c.updated_at,
+                            unreadCount: c.unread_count,
+                            trip: {
+                                id: c.trip_id,
+                                departure_city: c.trip_departure_city,
+                                arrival_city: c.trip_arrival_city,
+                                available_kg: c.trip_available_kg,
+                                price_per_kg: c.trip_price_per_kg
+                            },
+                            lastMessage: c.last_message_content ? {
+                                content: c.last_message_content,
+                                created_at: c.last_message_created_at,
+                                sender_id: c.last_message_sender_id
+                            } : null,
+                            participants: c.participants
+                        })
+                }["useRealtimeConversations.useCallback[fetchConversations].transformedConversations"]);
+                setConversations(transformedConversations);
+            } catch (err) {
+                console.error("Failed to fetch conversations via RPC:", err);
+            } finally{
+                setIsLoading(false);
+            }
+        }, ]
+[00:09:06.362] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246265982}
+[00:10:02.773] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246322390}
+[00:16:09.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246689775}
+[00:16:15.971] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246695587}
+[00:16:18.312] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246697934}
+[00:17:01.152] Server  LOG      ✓ Compiled in 206ms
+[00:17:01.240] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+
+Previous: %s
+Incoming: %s useEffect [, async ()=>{
+            if (!userId) {
+                setConversations([]);
+                setIsLoading(false);
+                return;
+            }
+            setIsLoading(true);
+            try {
+                // Call the RPC function
+                const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
+                    p_user_id: userId
+                });
+                if (error) throw error;
+                // Transform the data to match the component's expected structure
+                const transformedConversations = (data || []).map({
+                    "useRealtimeConversations.useCallback[fetchConversations].transformedConversations": (c)=>({
+                            id: c.id,
+                            created_at: c.created_at,
+                            updated_at: c.updated_at,
+                            unreadCount: c.unread_count,
+                            trip: {
+                                id: c.trip_id,
+                                departure_city: c.trip_departure_city,
+                                arrival_city: c.trip_arrival_city,
+                                available_kg: c.trip_available_kg,
+                                price_per_kg: c.trip_price_per_kg
+                            },
+                            lastMessage: c.last_message_content ? {
+                                content: c.last_message_content,
+                                created_at: c.last_message_created_at,
+                                sender_id: c.last_message_sender_id
+                            } : null,
+                            participants: c.participants
+                        })
+                }["useRealtimeConversations.useCallback[fetchConversations].transformedConversations"]);
+                setConversations(transformedConversations);
+            } catch (err) {
+                console.error("Failed to fetch conversations via RPC:", err);
+            } finally{
+                setIsLoading(false);
+            }
+        }, ] [, async ()=>{
+            if (!userId) {
+                setConversations([]);
+                setIsLoading(false);
+                return;
+            }
+            setIsLoading(true);
+            try {
+                // Call the RPC function
+                const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
+                    p_user_id: userId
+                });
+                if (error) throw error;
+                // Transform the data to match the component's expected structure
+                const transformedConversations = (data || []).map({
+                    "useRealtimeConversations.useCallback[fetchConversations].transformedConversations": (c)=>({
+                            id: c.id,
+                            created_at: c.created_at,
+                            updated_at: c.updated_at,
+                            unreadCount: c.unread_count,
+                            trip: {
+                                id: c.trip_id,
+                                departure_city: c.trip_departure_city,
+                                arrival_city: c.trip_arrival_city,
+                                available_kg: c.trip_available_kg,
+                                price_per_kg: c.trip_price_per_kg
+                            },
+                            lastMessage: c.last_message_content ? {
+                                content: c.last_message_content,
+                                created_at: c.last_message_created_at,
+                                sender_id: c.last_message_sender_id
+                            } : null,
+                            participants: c.participants
+                        })
+                }["useRealtimeConversations.useCallback[fetchConversations].transformedConversations"]);
+                setConversations(transformedConversations);
+            } catch (err) {
+                console.error("Failed to fetch conversations via RPC:", err);
+            } finally{
+                setIsLoading(false);
+            }
+        }]

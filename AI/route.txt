@@ -1,0 +1,45 @@
+Plan de finalisation KiloShare
+Problème
+Le projet a toutes les fonctionnalités codées avec des données mock mais la connexion à Supabase n'est pas proprement intégrée. Il faut:
+Centraliser la logique de switch mock/DB dans le DataProvider
+Connecter toutes les pages à utiliser ce provider de manière cohérente
+S'assurer que quand la DB sera peuplée, un simple flag permettra de basculer
+État actuel
+DataProvider existe avec un flag useMockData = true
+Les fonctions CRUD dans lib/db/* sont complètes et bien codées
+Les hooks SWR dans lib/hooks/* existent mais ne sont pas utilisés
+Chaque page importe directement mockData au lieu de passer par le provider
+L'authentification fonctionne mais currentUser est toujours mock
+Solution
+1. Améliorer le DataProvider
+Ajouter des fonctions utilitaires pour convertir DB types → App types
+Exposer les fonctions CRUD via le provider
+Garder le fallback sur mock data si DB vide ou erreur
+2. Créer un service de données unifié
+Nouveau fichier lib/services/data-service.ts qui:
+Expose des fonctions qui essaient la DB d'abord, puis fallback sur mock
+Gère les conversions de types automatiquement
+Permet un basculement facile
+3. Mettre à jour les pages clés
+app/trips/page.tsx - utiliser le service au lieu de mockTrips direct
+app/trips/[id]/page.tsx - idem
+app/dashboard/page.tsx - utiliser currentUser du provider
+app/profile/page.tsx - idem
+app/publish/page.tsx - connecter createTrip
+app/notifications/page.tsx - utiliser service
+app/messages/page.tsx - déjà bien fait avec le flag USE_REALTIME
+4. Fixer les imports serveur
+Les fichiers lib/db/trips.ts et lib/db/profiles.ts importent le client serveur ce qui cause des erreurs. Séparer les fonctions serveur dans des fichiers dédiés.
+Fichiers à modifier/créer
+lib/db/trips-server.ts - extraire getTripsServer
+lib/db/profiles-server.ts - extraire getProfileServer
+lib/db/trips.ts - retirer import serveur
+lib/db/profiles.ts - retirer import serveur
+lib/services/data-service.ts - nouveau service unifié
+lib/data-provider.tsx - améliorer avec les conversions
+app/trips/page.tsx - utiliser service
+app/trips/[id]/page.tsx - utiliser service
+app/dashboard/page.tsx - utiliser provider
+app/profile/page.tsx - utiliser provider
+app/publish/page.tsx - connecter createTrip
+app/notifications/page.tsx - utiliser service

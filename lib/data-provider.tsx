@@ -2,13 +2,30 @@
 
 import type React from "react"
 
-import { createContext, useContext, useMemo } from "react"
+import { createContext, useContext, useMemo, useState, useEffect, useCallback } from "react"
 import { useAuth } from "@/lib/hooks/use-auth"
 import { mockTrips, mockUsers, mockConversations, mockBookings, mockNotifications, mockReviews } from "@/lib/mock-data"
 import type { Trip, User, Conversation, Booking, Notification, Review } from "@/lib/types"
+import {
+  USE_MOCK_DATA,
+  dbProfileToUser,
+  fetchTrips,
+  fetchUserTrips,
+  fetchUserBookings,
+  fetchNotifications,
+  fetchUserReviews,
+  createNewTrip,
+  type CreateTripInput,
+} from "@/lib/services/data-service"
 
-// Ce provider permet de basculer entre données mock et données Supabase
-// Pour l'instant, on utilise les données mock car la base est vide
+/**
+ * DataProvider - Fournit les données de l'application
+ * 
+ * Basculement automatique entre données mock et Supabase:
+ * - Modifiez USE_MOCK_DATA dans lib/services/data-service.ts pour basculer
+ * - Quand USE_MOCK_DATA = true: utilise les données mockées
+ * - Quand USE_MOCK_DATA = false: utilise Supabase avec fallback sur mock si erreur
+ */
 
 interface DataContextType {
   // Auth
@@ -16,13 +33,18 @@ interface DataContextType {
   isAuthenticated: boolean
   loading: boolean
 
-  // Data (mock pour l'instant)
+  // Data
   trips: Trip[]
   users: User[]
   conversations: Conversation[]
   bookings: Booking[]
   notifications: Notification[]
   reviews: Review[]
+
+  // Actions
+  refreshTrips: () => Promise<void>
+  refreshNotifications: () => Promise<void>
+  createTrip: (input: CreateTripInput) => Promise<Trip | null>
 
   // Helpers
   useMockData: boolean
@@ -31,51 +53,102 @@ interface DataContextType {
 const DataContext = createContext<DataContextType | undefined>(undefined)
 
 export function DataProvider({ children }: { children: React.ReactNode }) {
-  const { user, profile, loading, isAuthenticated } = useAuth()
+  const { user, profile, loading: authLoading, isAuthenticated: authIsAuthenticated } = useAuth()
 
-  // Pour l'instant, on utilise les données mock
-  // Quand la base sera peuplée, on basculera sur les vraies données
-  const useMockData = true
+  // State pour les données
+  const [trips, setTrips] = useState<Trip[]>(mockTrips)
+  const [bookings, setBookings] = useState<Booking[]>(mockBookings)
+  const [notifications, setNotifications] = useState<Notification[]>(mockNotifications)
+  const [reviews, setReviews] = useState<Review[]>(mockReviews)
+  const [dataLoading, setDataLoading] = useState(false)
 
+  // Utilisateur courant
   const currentUser = useMemo(() => {
-    if (useMockData) {
+    if (USE_MOCK_DATA) {
       return mockUsers[0] // Mock current user
     }
     if (profile) {
-      return {
-        id: profile.id,
-        name: profile.name,
-        email: profile.email || undefined,
-        phone: profile.phone || undefined,
-        whatsapp: profile.whatsapp || undefined,
-        avatar: profile.avatar || undefined,
-        bio: profile.bio || undefined,
-        rating: profile.rating,
-        reviewCount: profile.review_count,
-        verified: profile.verified,
-        createdAt: new Date(profile.created_at),
-        languages: profile.languages,
-        responseRate: profile.response_rate,
-        responseTime: profile.response_time || undefined,
-      } as User
+      return dbProfileToUser(profile)
     }
     return null
-  }, [profile, useMockData])
+  }, [profile])
+
+  const currentUserId = USE_MOCK_DATA ? "1" : user?.id
+
+  // Charger les données au montage
+  useEffect(() => {
+    const loadData = async () => {
+      if (!currentUserId) return
+      
+      setDataLoading(true)
+      try {
+        const [tripsData, bookingsData, notifsData, reviewsData] = await Promise.all([
+          fetchTrips(),
+          fetchUserBookings(currentUserId, "owner"),
+          fetchNotifications(currentUserId),
+          fetchUserReviews(currentUserId),
+        ])
+        
+        setTrips(tripsData)
+        setBookings(bookingsData)
+        setNotifications(notifsData)
+        setReviews(reviewsData)
+      } catch (error) {
+        console.error("Error loading data:", error)
+        // En cas d'erreur, on garde les données mock
+      } finally {
+        setDataLoading(false)
+      }
+    }
+
+    loadData()
+  }, [currentUserId])
+
+  // Actions
+  const refreshTrips = useCallback(async () => {
+    try {
+      const tripsData = await fetchTrips()
+      setTrips(tripsData)
+    } catch (error) {
+      console.error("Error refreshing trips:", error)
+    }
+  }, [])
+
+  const refreshNotifications = useCallback(async () => {
+    if (!currentUserId) return
+    try {
+      const notifsData = await fetchNotifications(currentUserId)
+      setNotifications(notifsData)
+    } catch (error) {
+      console.error("Error refreshing notifications:", error)
+    }
+  }, [currentUserId])
+
+  const handleCreateTrip = useCallback(async (input: CreateTripInput): Promise<Trip | null> => {
+    const trip = await createNewTrip(input)
+    if (trip) {
+      setTrips(prev => [trip, ...prev])
+    }
+    return trip
+  }, [])
 
   const value = useMemo(
     () => ({
       currentUser,
-      isAuthenticated: useMockData ? true : isAuthenticated,
-      loading: useMockData ? false : loading,
-      trips: mockTrips,
-      users: mockUsers,
-      conversations: mockConversations,
-      bookings: mockBookings,
-      notifications: mockNotifications,
-      reviews: mockReviews,
-      useMockData,
+      isAuthenticated: USE_MOCK_DATA ? true : authIsAuthenticated,
+      loading: USE_MOCK_DATA ? false : (authLoading || dataLoading),
+      trips,
+      users: mockUsers, // Les users autres que currentUser restent mock pour l'instant
+      conversations: mockConversations, // Géré par useRealtimeMessages séparément
+      bookings,
+      notifications,
+      reviews,
+      refreshTrips,
+      refreshNotifications,
+      createTrip: handleCreateTrip,
+      useMockData: USE_MOCK_DATA,
     }),
-    [currentUser, isAuthenticated, loading, useMockData],
+    [currentUser, authIsAuthenticated, authLoading, dataLoading, trips, bookings, notifications, reviews, refreshTrips, refreshNotifications, handleCreateTrip],
   )
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>

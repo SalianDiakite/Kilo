@@ -22,11 +22,11 @@ import {
   Info,
 } from "@/components/icons"
 import { WhatsAppIcon } from "@/components/icons"
-import { mockTrips } from "@/lib/mock-data"
+import { fetchTrip } from "@/lib/services/data-service"
 
 export default async function TripDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
-  const trip = mockTrips.find((t) => t.id === id)
+  const trip = await fetchTrip(id)
 
   if (!trip) {
     notFound()

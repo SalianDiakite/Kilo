@@ -1,5 +1,4 @@
 import { createClient } from "@/lib/supabase/client"
-import { createClient as createServerClient } from "@/lib/supabase/server"
 import type { DbProfile, DbProfileUpdate } from "./types"
 
 // Client-side
@@ -19,15 +18,6 @@ export async function updateProfile(userId: string, updates: DbProfileUpdate) {
     .eq("id", userId)
     .select()
     .single()
-
-  if (error) throw error
-  return data as DbProfile
-}
-
-// Server-side
-export async function getProfileServer(userId: string) {
-  const supabase = await createServerClient()
-  const { data, error } = await supabase.from("profiles").select("*").eq("id", userId).single()
 
   if (error) throw error
   return data as DbProfile

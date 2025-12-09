@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { Header } from "@/components/ui/header"
@@ -27,13 +29,10 @@ import {
   CheckCircle2,
   Languages,
   BadgeCheck,
+  Loader2,
 } from "@/components/icons"
-import { mockUsers, mockTrips, mockReviews } from "@/lib/mock-data"
+import { useData } from "@/lib/data-provider"
 import { TripCard } from "@/components/trip/trip-card"
-
-const currentUser = mockUsers[0]
-const userTrips = mockTrips.filter((t) => t.userId === currentUser.id)
-const userReviews = mockReviews.filter((r) => r.reviewedId === currentUser.id)
 
 const menuItems = [
   { icon: User, label: "Informations personnelles", href: "/profile/edit" },
@@ -45,12 +44,46 @@ const menuItems = [
 ]
 
 export default function ProfilePage() {
+  const { currentUser, trips, reviews, loading } = useData()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <Loader2 className="h-10 w-10 animate-spin text-accent" />
+        </div>
+        <MobileNav />
+      </div>
+    )
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-2">Vous n'êtes pas connecté</h2>
+            <p className="text-muted-foreground mb-4">Connectez-vous pour voir votre profil.</p>
+            <Link href="/login">
+              <Button>Se connecter</Button>
+            </Link>
+          </div>
+        </div>
+        <MobileNav />
+      </div>
+    )
+  }
+
+  const userTrips = trips.filter((t) => t.userId === currentUser.id)
+  const userReviews = reviews.filter((r) => r.reviewedId === currentUser.id)
+
   const memberSince = new Intl.DateTimeFormat("fr-FR", {
     month: "long",
     year: "numeric",
   }).format(currentUser.createdAt)
 
-  const completedTrips = userTrips.filter((t) => t.status === "completed").length
   const verificationProgress = 90
 
   return (

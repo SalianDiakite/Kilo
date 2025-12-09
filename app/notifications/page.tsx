@@ -1,17 +1,16 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useData } from "@/lib/data-provider"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { mockNotifications } from "@/lib/mock-data"
 import {
   Bell,
   BellOff,
@@ -24,6 +23,7 @@ import {
   Check,
   Trash2,
   Settings,
+  Loader2,
 } from "@/components/icons"
 import { cn } from "@/lib/utils"
 import type { Notification } from "@/lib/types"
@@ -53,6 +53,7 @@ function formatTimeAgo(date: Date): string {
   const hours = Math.floor(minutes / 60)
   const days = Math.floor(hours / 24)
 
+  if (minutes < 1) return "À l'instant"
   if (minutes < 60) return `Il y a ${minutes} min`
   if (hours < 24) return `Il y a ${hours}h`
   if (days === 1) return "Hier"
@@ -61,24 +62,61 @@ function formatTimeAgo(date: Date): string {
 }
 
 export default function NotificationsPage() {
-  const [notifications, setNotifications] = useState(mockNotifications)
+  const { currentUser, notifications, loading, refreshNotifications } = useData()
 
-  const unreadCount = notifications.filter((n) => !n.read).length
-
-  const markAllAsRead = () => {
-    setNotifications(notifications.map((n) => ({ ...n, read: true })))
+  // Actions - these should call functions from the data provider in the future
+  const handleMarkAsRead = (id: string) => {
+    console.log(`TODO: Mark notification ${id} as read`)
+    // Optimistic update example:
+    // const newNotifs = notifications.map((n) => (n.id === id ? { ...n, read: true } : n));
+    // setNotifications(newNotifs); // Assuming setNotifications is exposed by useData
   }
 
-  const markAsRead = (id: string) => {
-    setNotifications(notifications.map((n) => (n.id === id ? { ...n, read: true } : n)))
+  const handleMarkAllAsRead = () => {
+    console.log("TODO: Mark all notifications as read")
   }
 
-  const deleteNotification = (id: string) => {
-    setNotifications(notifications.filter((n) => n.id !== id))
+  const handleDeleteNotification = (id: string) => {
+    console.log(`TODO: Delete notification ${id}`)
   }
 
-  const allNotifications = notifications
-  const unreadNotifications = notifications.filter((n) => !n.read)
+  const sortedNotifications = useMemo(
+    () => [...notifications].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime()),
+    [notifications],
+  )
+
+  const unreadNotifications = useMemo(() => sortedNotifications.filter((n) => !n.read), [sortedNotifications])
+  const unreadCount = unreadNotifications.length
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <Loader2 className="h-10 w-10 animate-spin text-accent" />
+        </div>
+        <MobileNav />
+      </div>
+    )
+  }
+
+  if (!currentUser) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-2">Accès refusé</h2>
+            <p className="text-muted-foreground mb-4">Connectez-vous pour voir vos notifications.</p>
+            <Link href="/login">
+              <Button>Se connecter</Button>
+            </Link>
+          </div>
+        </div>
+        <MobileNav />
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -95,7 +133,7 @@ export default function NotificationsPage() {
             </div>
             <div className="flex items-center gap-2">
               {unreadCount > 0 && (
-                <Button variant="ghost" size="sm" onClick={markAllAsRead} className="gap-2">
+                <Button variant="ghost" size="sm" onClick={handleMarkAllAsRead} className="gap-2">
                   <Check className="h-4 w-4" />
                   Tout marquer comme lu
                 </Button>
@@ -112,25 +150,25 @@ export default function NotificationsPage() {
           <Tabs defaultValue="all" className="space-y-4">
             <TabsList className="w-full">
               <TabsTrigger value="all" className="flex-1">
-                Toutes ({allNotifications.length})
+                Toutes ({sortedNotifications.length})
               </TabsTrigger>
               <TabsTrigger value="unread" className="flex-1">
-                Non lues ({unreadNotifications.length})
+                Non lues ({unreadCount})
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="all" className="space-y-2">
-              {allNotifications.length > 0 ? (
-                allNotifications.map((notif) => {
+              {sortedNotifications.length > 0 ? (
+                sortedNotifications.map((notif) => {
                   const Icon = notificationIcons[notif.type]
                   return (
                     <Card
                       key={notif.id}
                       className={cn(
-                        "transition-colors cursor-pointer hover:shadow-sm",
+                        "transition-colors cursor-pointer hover:shadow-sm group",
                         !notif.read && "bg-accent/5 border-accent/20",
                       )}
-                      onClick={() => markAsRead(notif.id)}
+                      onClick={() => handleMarkAsRead(notif.id)}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">
@@ -166,10 +204,10 @@ export default function NotificationsPage() {
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-8 w-8 flex-shrink-0 opacity-0 group-hover:opacity-100 hover:opacity-100"
+                            className="h-8 w-8 flex-shrink-0 opacity-0 group-hover:opacity-100"
                             onClick={(e) => {
                               e.stopPropagation()
-                              deleteNotification(notif.id)
+                              handleDeleteNotification(notif.id)
                             }}
                           >
                             <Trash2 className="h-4 w-4 text-muted-foreground" />
@@ -198,7 +236,7 @@ export default function NotificationsPage() {
                     <Card
                       key={notif.id}
                       className="bg-accent/5 border-accent/20 transition-colors cursor-pointer hover:shadow-sm"
-                      onClick={() => markAsRead(notif.id)}
+                      onClick={() => handleMarkAsRead(notif.id)}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">

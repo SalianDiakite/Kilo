@@ -225,90 +225,55 @@ export function useRealtimeConversations(userId: string | null) {
     setIsLoading(true)
 
     try {
-      // Get conversation IDs where user is a participant
-      const { data: participations } = await supabaseRef.current
-        .from("conversation_participants")
-        .select("conversation_id")
-        .eq("user_id", userId)
-
-      if (!participations || participations.length === 0) {
-        setConversations([])
-        setIsLoading(false)
-        return
-      }
-
-      const conversationIds = participations.map((p) => p.conversation_id)
-
-      const { data, error } = await supabaseRef.current
-        .from("conversations")
-        .select(`
-          *,
-          trip:trips(id, departure_city, arrival_city, departure_date, available_kg, price_per_kg),
-          participants:conversation_participants(
-            user_id,
-            last_read_at,
-            user:profiles(id, full_name, avatar_url, is_verified, rating)
-          )
-        `)
-        .in("id", conversationIds)
-        .order("updated_at", { ascending: false })
+      // Call the RPC function
+      const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
+        p_user_id: userId,
+      })
 
       if (error) throw error
 
-      // Fetch last message and unread count for each conversation
-      const conversationsWithMessages = await Promise.all(
-        (data || []).map(async (conv) => {
-          const { data: lastMessage } = await supabaseRef.current
-            .from("messages")
-            .select("*")
-            .eq("conversation_id", conv.id)
-            .order("created_at", { ascending: false })
-            .limit(1)
-            .single()
+      // Transform the data to match the component's expected structure
+      const transformedConversations = (data || []).map((c) => ({
+        id: c.id,
+        created_at: c.created_at,
+        updated_at: c.updated_at,
+        unreadCount: c.unread_count,
+        trip: {
+          id: c.trip_id,
+          departure_city: c.trip_departure_city,
+          arrival_city: c.trip_arrival_city,
+          available_kg: c.trip_available_kg,
+          price_per_kg: c.trip_price_per_kg,
+        },
+        lastMessage: c.last_message_content
+          ? {
+              content: c.last_message_content,
+              created_at: c.last_message_created_at,
+              sender_id: c.last_message_sender_id,
+            }
+          : null,
+        participants: c.participants,
+      }))
 
-          const { count: unreadCount } = await supabaseRef.current
-            .from("messages")
-            .select("*", { count: "exact", head: true })
-            .eq("conversation_id", conv.id)
-            .eq("read", false)
-            .neq("sender_id", userId)
-
-          return {
-            ...conv,
-            lastMessage,
-            unreadCount: unreadCount || 0,
-          }
-        }),
-      )
-
-      setConversations(conversationsWithMessages)
+      setConversations(transformedConversations)
     } catch (err) {
-      console.error("Failed to fetch conversations:", err)
+      console.error("Failed to fetch conversations via RPC:", err)
     } finally {
       setIsLoading(false)
     }
   }, [userId])
 
   useEffect(() => {
-    if (!userId) return
+    if (!userId) {
+      setIsLoading(false)
+      return
+    }
 
     fetchConversations()
 
-    // Subscribe to conversation updates (new messages will update conversations)
+    // Setup a single, stable channel for all updates related to this user's conversations
     const channel = supabaseRef.current
-      .channel(`user-conversations:${userId}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "*",
-          schema: "public",
-          table: "conversations",
-        },
-        () => {
-          // Refetch conversations when any conversation is updated
-          fetchConversations()
-        },
-      )
+      .channel(`user-conversations-updates:${userId}`)
       .on(
         "postgres_changes",
         {
@@ -317,7 +282,21 @@ export function useRealtimeConversations(userId: string | null) {
           table: "messages",
         },
         () => {
-          // Refetch when new messages arrive to update unread counts
+          // A new message was inserted somewhere. Refetch conversations to update last_message and unread_count.
+          // This is a broad trigger but effective now that the fetch is a single RPC call.
+          fetchConversations()
+        },
+      )
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "conversation_participants",
+          filter: `user_id=eq.${userId}`,
+        },
+        () => {
+          // The user was added to a new conversation. Refetch the list.
           fetchConversations()
         },
       )
@@ -325,6 +304,7 @@ export function useRealtimeConversations(userId: string | null) {
 
     channelRef.current = channel
 
+    // Cleanup on unmount or user change
     return () => {
       if (channelRef.current) {
         supabaseRef.current.removeChannel(channelRef.current)

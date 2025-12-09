@@ -1,9 +1,8 @@
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
-import { TripList } from "@/components/trip/trip-list"
 import { SearchForm } from "@/components/search/search-form"
-import { mockTrips } from "@/lib/mock-data"
+import { TripsPageClient } from "./trips-client"
 
 export default function TripsPage() {
   return (
@@ -21,7 +20,7 @@ export default function TripsPage() {
         {/* Trip List */}
         <section className="py-8">
           <div className="container mx-auto px-4">
-            <TripList trips={mockTrips} />
+            <TripsPageClient />
           </div>
         </section>
       </main>
