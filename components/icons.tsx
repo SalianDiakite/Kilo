@@ -98,6 +98,7 @@ import {
   CalendarDays,
   Target,
   Award,
+  ShoppingBag,
 } from "lucide-react"
 
 export const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -206,4 +207,5 @@ export {
   CalendarDays,
   Target,
   Award,
+  ShoppingBag,
 }

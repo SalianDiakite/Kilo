@@ -1,171 +1,307 @@
-[00:00:00.959] Server  LOG      ✓ Ready in 630ms
-[00:00:20.280] Server  LOG      ○ Compiling /dashboard/bookings ...
-[00:00:25.059] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard/bookings","route":"/dashboard/bookings"}
-[00:00:26.363] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/bookings color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/bookings","o":"http://localhost:3000/dashboard/bookings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245745973}
-[00:00:32.849] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245752463}
-[00:00:36.222] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245755838}
-[00:00:42.466] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245762080}
-[00:00:58.610] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/settings color: rgb(120, 120, 120) color: inherit {"dp":"/settings","o":"http://localhost:3000/settings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245778226}
-[00:01:23.045] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245802659}
-[00:01:30.126] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/3 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/3","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245809748}
-[00:01:35.105] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245814724}
-[00:01:57.145] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245836762}
-[00:02:00.911] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765245840525}
-[00:08:33.245] Server  LOG      ✓ Compiled in 80ms
-[00:08:33.335] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
+[00:00:01.345] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:01.506] Server  LOG      ✓ Ready in 1123ms
+[00:00:04.941] Server  LOG      ○ Compiling / ...
+[00:00:07.557] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\node_modules_4c7d4da9._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:07.558] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\[root-of-the-server]__00b99ae7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:07.560] Server  WARN    Error: Route "/" used `headers().get`. `headers()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:07.564] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\[root-of-the-server]__00b99ae7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:07.564] Server  ERROR   Could not read language cookie from headers. Defaulting to 'fr'. Error: TypeError: headerStore.get is not a function
+[00:00:08.468] Server  LOG     DataProvider - No profile available to derive currentUser
+[00:00:09.064] Server  WARN    Currency conversion warning: € or EUR not found
+[00:00:09.278] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\node_modules_4c7d4da9._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:09.279] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\[root-of-the-server]__00b99ae7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:09.279] Server  WARN    Error: Route "/" used `headers().get`. `headers()` returns a Promise and must be unwrapped with `await` or `React.use()` before accessing its properties. Learn more: https://nextjs.org/docs/messages/sync-dynamic-apis
+[00:00:09.281] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\chunks\ssr\[root-of-the-server]__00b99ae7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:09.281] Server  ERROR   Could not read language cookie from headers. Defaulting to 'fr'. Error: TypeError: headerStore.get is not a function
+[00:00:09.438] Server  LOG     DataProvider - No profile available to derive currentUser
+[00:00:09.623] Server  WARN    Currency conversion warning: € or EUR not found
+[00:00:09.890] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:10.354] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:10.354] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:10.354] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:10.354] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:10.354] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:10.354] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:10.354] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765827387523}
+[00:00:10.354] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[00:00:10.354] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:10.354] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.354] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.748] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:10.748] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:10.748] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or EUR not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:10.748] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:10.748] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:10.748] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:10.748] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:13.802] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:02:50.735] Server  LOG      ✓ Compiled in 560ms
+[00:02:52.004] Browser WARN    Currency conversion warning: € or CAD not found
+[00:02:52.004] Browser WARN    Currency conversion warning: € or CAD not found
+[00:02:52.139] Browser WARN    Currency conversion warning: € or CAD not found
+[00:02:52.139] Browser WARN    Currency conversion warning: € or CAD not found
+[00:03:30.139] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765827587338}
+[00:03:30.523] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[00:57:10.962] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[00:57:10.962] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[00:57:10.962] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:57:10.962] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:57:11.653] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:57:11.653] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:22:16.056] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:22:16.057] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:22:16.057] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:22:16.057] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:22:16.996] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:22:16.996] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:23:17.628] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765832374735}
+[01:23:17.862] Browser WARN    Currency conversion warning: € or CAD not found
+[01:23:17.862] Browser WARN    Currency conversion warning: € or CAD not found
+[01:23:17.998] Browser WARN    Currency conversion warning: € or CAD not found
+[01:23:17.998] Browser WARN    Currency conversion warning: € or CAD not found
+[01:34:19.464] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:34:19.464] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:19.464] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:19.464] Browser WARN    Currency conversion warning: € or CAD not found
+[01:34:19.464] Browser WARN    Currency conversion warning: € or CAD not found
+[01:34:20.213] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:20.213] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:20.213] Browser WARN    Currency conversion warning: € or CAD not found
+[01:34:20.213] Browser WARN    Currency conversion warning: € or CAD not found
+[01:34:28.096] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833045236}
+[01:34:28.096] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:34:48.719] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:34:49.017] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:34:49.246] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:34:49.246] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:34:49.246] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:49.246] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:34:49.246] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/privacy","route":"/privacy"}
+[01:34:49.246] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/privacy color: rgb(120, 120, 120) color: inherit {"dp":"/privacy","o":"http://localhost:3000/privacy","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833066426}
+[01:34:49.377] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:49.377] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:49.705] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:49.705] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:49.705] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:49.705] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:53.452] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:34:54.744] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:34:55.212] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:34:55.212] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:34:55.212] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <SegmentViewNode type="page" pagePath="(protected...">
+      <SegmentTrieNode>
+      <ClientPageRoot Component={function SuspendedMessagesPage} serverProvidedParams={{...}}>
+        <SuspendedMessagesPage params={Promise} searchParams={Promise}>
+          <Suspense fallback={<div>}>
+            <MessagesPageWrapper>
+              <MessagesPage initialConversationId={null}>
+                <div className="min-h-scre...">
+                  <Header>
+                  <main>
+                  <Footer>
+                  <MobileNav>
+                    <nav className="md:hidden ...">
+                      <div className="flex items...">
+                        <LinkComponent href="/" className="flex flex-...">
+                          <a
++                           className="flex flex-col items-center justify-center gap-1 px-3 py-2 relative text-foreground"
+-                           className="flex flex-col items-center justify-center gap-1 px-3 py-2 relative text-muted-f..."
+                            ref={function}
+                            onClick={function onClick}
+                            onMouseEnter={function onMouseEnter}
+                            onTouchStart={function onTouchStart}
+                            href="/"
+                          >
+                        ...
+    ...
+
+[01:34:55.212] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:55.212] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:55.212] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:34:55.212] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:55.212] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:34:55.212] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:34:55.212] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:34:55.212] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:34:55.212] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833072390}
+[01:34:55.377] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:55.377] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:55.378] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:34:55.378] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:08.249] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\node_modules\next\dist\shared\lib\turbopack\internal-error.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:35:08.253] Server  ERROR    ⨯ TurbopackInternalError: failed to write to C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\static\chunks\app_layout_tsx_78cdd4a3._.js
+
+Caused by:
+- The requested operation cannot be performed on a file with a user-mapped section open. (os error 1224)
+[01:35:10.885] Server  ERROR   C:\Users\user\Projet-01\projet-perso\Kilo\node_modules\next\dist\shared\lib\turbopack\internal-error.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[01:35:10.886] Server  ERROR    ⨯ TurbopackInternalError: failed to write to C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\static\chunks\app_layout_tsx_78cdd4a3._.js
+
+Caused by:
+- The requested operation cannot be performed on a file with a user-mapped section open. (os error 1224)
+[01:35:11.090] Browser ERROR   uncaughtError: Error: An unexpected Turbopack error occurred. Please see the output of `next dev` for more details.
+[01:35:19.506] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:35:20.002] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:35:20.223] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:35:20.745] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:35:20.745] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:35:20.745] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:35:20.745] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:35:20.745] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:35:20.745] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[01:35:20.745] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833097695}
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:20.745] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:35:27.677] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833104873}
+[01:35:39.815] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833116916}
+[01:35:40.209] Browser WARN    Currency conversion warning: € or CAD not found
+[01:35:40.209] Browser WARN    Currency conversion warning: € or CAD not found
+[01:35:40.209] Browser WARN    Currency conversion warning: € or CAD not found
+[01:35:40.209] Browser WARN    Currency conversion warning: € or CAD not found
+[01:35:56.898] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833134045}
+[01:35:56.898] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:37:17.697] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833214896}
+[01:37:28.973] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/trips color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/trips","o":"http://localhost:3000/dashboard/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833226170}
+[01:37:33.241] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/bookings color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/bookings","o":"http://localhost:3000/dashboard/bookings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833230436}
+[01:37:40.298] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/analytics color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/analytics","o":"http://localhost:3000/dashboard/analytics","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833237493}
+[01:37:47.158] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833244347}
+[01:43:26.946] Server  LOG      ✓ Compiled in 223ms
+[01:43:58.878] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:43:58.878] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:43:58.878] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:43:59.341] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:43:59.341] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:44:09.285] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833626420}
+[01:44:09.285] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:46:30.833] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/hooks/use-realtime-messages.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:46:30.866] Server  LOG      ✓ Compiled in 218ms
+[01:46:31.679] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:46:32.051] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:46:32.377] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:46:32.377] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:46:32.377] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:46:32.377] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:46:32.377] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[01:46:32.377] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833769526}
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:46:32.377] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:32.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:46:48.579] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833785776}
+[01:46:50.594] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833787719}
+[01:46:50.595] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:49:24.669] Server  LOG      ✓ Compiled in 222ms
+[01:49:24.831] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
 
 Previous: %s
-Incoming: %s useEffect [, async ()=>{
-            if (!userId) {
-                setConversations([]);
-                setIsLoading(false);
-                return;
-            }
-            setIsLoading(true);
+Incoming: %s useEffect [a01b4b20-35e6-43a1-bbc9-9dc8f4f172ce, d74045f6-340b-4750-9f24-e812ee89d606, async ()=>{
+            if (!conversationId || !userId) return;
             try {
-                // Get conversation IDs where user is a participant
-                const { data: participations } = await supabaseRef.current.from("conversation_participants").select("conversation_id").eq("user_id", userId);
-                if (!participations || participations.length === 0) {
-                    setConversations([]);
-                    setIsLoading(false);
-                    return;
-                }
-                const conversationIds = participations.map({
-                    "useRealtimeConversations.useCallback[fetchConversations].conversationIds": (p)=>p.conversation_id
-                }["useRealtimeConversations.useCallback[fetchConversations].conversationIds"]);
-                const { data, error } = await supabaseRef.current.from("conversations").select(`
-          *,
-          trip:trips(id, departure_city, arrival_city, departure_date, available_kg, price_per_kg),
-          participants:conversation_participants(
-            user_id,
-            last_read_at,
-            user:profiles(id, full_name, avatar_url, is_verified, rating)
-          )
-        `).in("id", conversationIds).order("updated_at", {
-                    ascending: false
-                });
-                if (error) throw error;
-                // Fetch last message and unread count for each conversation
-                const conversationsWithMessages = await Promise.all((data || []).map({
-                    "useRealtimeConversations.useCallback[fetchConversations]": async (conv)=>{
-                        const { data: lastMessage } = await supabaseRef.current.from("messages").select("*").eq("conversation_id", conv.id).order("created_at", {
-                            ascending: false
-                        }).limit(1).single();
-                        const { count: unreadCount } = await supabaseRef.current.from("messages").select("*", {
-                            count: "exact",
-                            head: true
-                        }).eq("conversation_id", conv.id).eq("read", false).neq("sender_id", userId);
-                        return {
-                            ...conv,
-                            lastMessage,
-                            unreadCount: unreadCount || 0
-                        };
-                    }
-                }["useRealtimeConversations.useCallback[fetchConversations]"]));
-                setConversations(conversationsWithMessages);
+                // Mark all unread messages from other users as read
+                await supabaseRef.current.from("messages").update({
+                    read: true
+                }).eq("conversation_id", conversationId).neq("sender_id", userId).eq("read", false);
+                // Update local state
+                setMessages({
+                    "useRealtimeMessages.useCallback[markAsRead]": (prev)=>prev.map({
+                            "useRealtimeMessages.useCallback[markAsRead]": (msg)=>msg.sender_id !== userId ? {
+                                    ...msg,
+                                    read: true
+                                } : msg
+                        }["useRealtimeMessages.useCallback[markAsRead]"])
+                }["useRealtimeMessages.useCallback[markAsRead]"]);
+                // Update participant's last_read_at
+                await supabaseRef.current.from("conversation_participants").update({
+                    last_read_at: new Date().toISOString()
+                }).eq("conversation_id", conversationId).eq("user_id", userId);
             } catch (err) {
-                console.error("Failed to fetch conversations:", err);
-            } finally{
-                setIsLoading(false);
+                console.error("Failed to mark messages as read:", err);
             }
-        }] [, async ()=>{
-            if (!userId) {
-                setConversations([]);
-                setIsLoading(false);
-                return;
-            }
-            setIsLoading(true);
+        }] [a01b4b20-35e6-43a1-bbc9-9dc8f4f172ce, d74045f6-340b-4750-9f24-e812ee89d606, async ()=>{
+            if (!conversationId || !userId) return;
             try {
-                // Call the RPC function
-                const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
-                    p_user_id: userId
-                });
-                if (error) throw error;
-                // Transform the data to match the component's expected structure
-                const transformedConversations = (data || []).map({
-                    "useRealtimeConversations.useCallback[fetchConversations].transformedConversations": (c)=>({
-                            id: c.id,
-                            created_at: c.created_at,
-                            updated_at: c.updated_at,
-                            unreadCount: c.unread_count,
-                            trip: {
-                                id: c.trip_id,
-                                departure_city: c.trip_departure_city,
-                                arrival_city: c.trip_arrival_city,
-                                available_kg: c.trip_available_kg,
-                                price_per_kg: c.trip_price_per_kg
-                            },
-                            lastMessage: c.last_message_content ? {
-                                content: c.last_message_content,
-                                created_at: c.last_message_created_at,
-                                sender_id: c.last_message_sender_id
-                            } : null,
-                            participants: c.participants
-                        })
-                }["useRealtimeConversations.useCallback[fetchConversations].transformedConversations"]);
-                setConversations(transformedConversations);
+                // Mark all unread messages from other users as read
+                await supabaseRef.current.from("messages").update({
+                    read: true
+                }).eq("conversation_id", conversationId).neq("sender_id", userId).eq("read", false);
+                // Update local state
+                setMessages({
+                    "useRealtimeMessages.useCallback[markAsRead]": (prev)=>prev.map({
+                            "useRealtimeMessages.useCallback[markAsRead]": (msg)=>msg.sender_id !== userId ? {
+                                    ...msg,
+                                    read: true
+                                } : msg
+                        }["useRealtimeMessages.useCallback[markAsRead]"])
+                }["useRealtimeMessages.useCallback[markAsRead]"]);
+                // Update participant's last_read_at
+                await supabaseRef.current.from("conversation_participants").update({
+                    last_read_at: new Date().toISOString()
+                }).eq("conversation_id", conversationId).eq("user_id", userId);
             } catch (err) {
-                console.error("Failed to fetch conversations via RPC:", err);
-            } finally{
-                setIsLoading(false);
+                console.error("Failed to mark messages as read:", err);
             }
-        }, ]
-[00:09:06.362] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246265982}
-[00:10:02.773] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246322390}
-[00:16:09.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
-[00:16:10.151] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246689775}
-[00:16:15.971] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246695587}
-[00:16:18.312] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765246697934}
-[00:17:01.152] Server  LOG      ✓ Compiled in 206ms
-[00:17:01.240] Browser ERROR   The final argument passed to %s changed size between renders. The order and size of this array must remain constant.
-
-Previous: %s
-Incoming: %s useEffect [, async ()=>{
-            if (!userId) {
-                setConversations([]);
-                setIsLoading(false);
-                return;
-            }
-            setIsLoading(true);
-            try {
-                // Call the RPC function
-                const { data, error } = await supabaseRef.current.rpc("get_conversations_for_user", {
-                    p_user_id: userId
-                });
-                if (error) throw error;
-                // Transform the data to match the component's expected structure
-                const transformedConversations = (data || []).map({
-                    "useRealtimeConversations.useCallback[fetchConversations].transformedConversations": (c)=>({
-                            id: c.id,
-                            created_at: c.created_at,
-                            updated_at: c.updated_at,
-                            unreadCount: c.unread_count,
-                            trip: {
-                                id: c.trip_id,
-                                departure_city: c.trip_departure_city,
-                                arrival_city: c.trip_arrival_city,
-                                available_kg: c.trip_available_kg,
-                                price_per_kg: c.trip_price_per_kg
-                            },
-                            lastMessage: c.last_message_content ? {
-                                content: c.last_message_content,
-                                created_at: c.last_message_created_at,
-                                sender_id: c.last_message_sender_id
-                            } : null,
-                            participants: c.participants
-                        })
-                }["useRealtimeConversations.useCallback[fetchConversations].transformedConversations"]);
-                setConversations(transformedConversations);
-            } catch (err) {
-                console.error("Failed to fetch conversations via RPC:", err);
-            } finally{
-                setIsLoading(false);
-            }
-        }, ] [, async ()=>{
+        }, async ()=>{
             if (!userId) {
                 setConversations([]);
                 setIsLoading(false);
@@ -207,3 +343,228 @@ Incoming: %s useEffect [, async ()=>{
                 setIsLoading(false);
             }
         }]
+[01:49:24.831] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:50:09.656] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/notifications color: rgb(120, 120, 120) color: inherit {"dp":"/notifications","o":"http://localhost:3000/notifications","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833986849}
+[01:50:12.046] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765833989194}
+[01:50:12.046] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:50:24.619] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:50:25.113] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:50:25.317] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:50:25.317] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:50:25.317] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[01:50:25.762] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:50:25.762] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:50:25.762] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:50:25.762] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:50:25.762] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:50:25.762] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:50:25.762] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:50:25.762] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834002744}
+[01:50:25.762] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:50:25.762] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:50:25.762] Browser WARN    Currency conversion warning: € or EUR not found
+[01:50:25.762] Browser WARN    Currency conversion warning: € or EUR not found
+[01:50:25.762] Browser WARN    Currency conversion warning: € or EUR not found
+[01:50:25.762] Browser WARN    Currency conversion warning: € or EUR not found
+[01:50:25.762] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:50:25.762] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:50:25.762] Browser WARN    Currency conversion warning: € or CAD not found
+[01:50:25.763] Browser WARN    Currency conversion warning: € or CAD not found
+[01:50:29.035] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834006233}
+[01:50:29.421] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:53:58.664] Server  LOG      ✓ Compiled in 235ms
+[01:53:58.668] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/hooks/use-realtime-messages.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[01:53:59.529] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:53:59.872] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:01.523] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:54:01.523] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:54:01.523] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:01.523] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:01.523] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:54:01.524] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[01:54:01.524] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834217558}
+[01:54:01.524] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:54:01.524] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:01.524] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:01.524] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:54:01.524] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:01.524] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:01.524] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:01.524] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:38.909] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:54:38.909] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:54:38.909] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:38.909] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:39.498] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:39.498] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:46.330] Server  LOG     DataProvider - No profile available to derive currentUser
+[01:54:46.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:54:46.912] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:54:46.913] Browser LOG     DataProvider - No profile available to derive currentUser
+[01:54:46.913] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:54:46.913] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[01:54:46.913] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834263982}
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[01:54:46.913] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[01:54:46.913] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:46.913] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:47.141] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:47.141] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:47.141] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:54:47.141] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:55:17.003] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[01:55:17.004] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[01:55:17.004] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:55:17.004] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:55:17.107] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[01:55:17.107] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:31.553] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/hooks/use-realtime-messages.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[02:03:31.561] Server  LOG      ✓ Compiled in 72ms
+[02:03:32.120] Server  LOG     DataProvider - No profile available to derive currentUser
+[02:03:32.462] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:03:33.521] Browser LOG     DataProvider - No profile available to derive currentUser
+[02:03:33.521] Browser LOG     DataProvider - No profile available to derive currentUser
+[02:03:33.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:33.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:33.521] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:03:33.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:33.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:33.521] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:03:33.521] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[02:03:33.521] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834790409}
+[02:03:33.521] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:03:34.520] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:34.520] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:34.520] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:34.520] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:48.121] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/hooks/use-realtime-messages.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[02:03:48.152] Server  LOG      ✓ Compiled in 67ms
+[02:03:48.497] Server  LOG     DataProvider - No profile available to derive currentUser
+[02:03:48.751] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:03:50.521] Browser LOG     DataProvider - No profile available to derive currentUser
+[02:03:50.521] Browser LOG     DataProvider - No profile available to derive currentUser
+[02:03:50.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:50.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:50.521] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:03:50.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:50.521] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[02:03:50.521] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[02:03:50.521] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[02:03:50.521] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834806468}
+[02:03:50.521] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:03:50.521] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:50.521] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:50.521] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:03:50.521] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:04:11.805] Server  LOG      ✓ Compiled in 85ms
+[02:04:12.525] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:06:45.699] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[02:06:45.699] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[02:06:45.699] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:06:45.699] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:06:46.151] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:06:46.151] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:06:52.627] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834989723}
+[02:06:52.840] Browser WARN    Currency conversion warning: € or CAD not found
+[02:06:52.840] Browser WARN    Currency conversion warning: € or CAD not found
+[02:06:52.840] Browser WARN    Currency conversion warning: € or CAD not found
+[02:06:52.840] Browser WARN    Currency conversion warning: € or CAD not found
+[02:06:56.138] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765834993281}
+[02:06:56.138] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:07:26.909] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835024062}
+[02:07:26.910] Browser WARN    Currency conversion warning: € or CAD not found
+[02:07:26.910] Browser WARN    Currency conversion warning: € or CAD not found
+[02:07:32.419] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835029622}
+[02:07:32.959] Browser WARN    Currency conversion warning: € or CAD not found
+[02:07:32.959] Browser WARN    Currency conversion warning: € or CAD not found
+[02:07:32.959] Browser WARN    Currency conversion warning: € or CAD not found
+[02:07:32.959] Browser WARN    Currency conversion warning: € or CAD not found
+[02:08:10.249] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835067446}
+[02:10:00.692] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835177845}
+[02:10:00.692] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[02:10:45.100] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[02:10:45.100] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[02:10:45.100] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:10:45.100] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:10:45.276] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:10:45.276] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[02:10:58.943] Browser WARN    Currency conversion warning: € or CAD not found
+[02:10:58.943] Browser WARN    Currency conversion warning: € or CAD not found
+[02:10:58.943] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835236143}
+[02:11:18.840] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/trips color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/trips","o":"http://localhost:3000/dashboard/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835256034}
+[02:11:24.033] Browser WARN    Currency conversion warning: € or CAD not found
+[02:11:24.033] Browser WARN    Currency conversion warning: € or CAD not found
+[02:11:24.033] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835261229}
+[02:13:46.458] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
+[02:13:46.458] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
+[02:13:46.458] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/edit color: rgb(120, 120, 120) color: inherit {"dp":"/profile/edit","o":"http://localhost:3000/profile/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835403596}
+[02:13:57.068] Browser WARN    Currency conversion warning: € or CAD not found
+[02:13:57.068] Browser WARN    Currency conversion warning: € or CAD not found
+[02:13:57.068] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765835414265}
+[03:10:07.856] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[03:10:07.856] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:07.856] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:07.856] Browser WARN    Currency conversion warning: € or CAD not found
+[03:10:07.856] Browser WARN    Currency conversion warning: € or CAD not found
+[03:10:08.405] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:08.405] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:08.405] Browser WARN    Currency conversion warning: € or CAD not found
+[03:10:08.405] Browser WARN    Currency conversion warning: € or CAD not found
+[03:10:15.110] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765838792304}
+[03:10:22.004] Server  LOG     DataProvider - No profile available to derive currentUser
+[03:10:22.268] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:10:22.545] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:10:22.545] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:10:22.545] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:10:22.545] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:10:22.545] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:10:22.545] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:10:22.545] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[03:10:22.545] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765838799733}
+[03:10:22.545] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:10:22.545] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:10:22.741] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:22.741] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:22.935] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:10:22.935] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:11:35.289] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765838872480}
+[03:11:35.658] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:12:56.075] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[03:12:56.082] Server  LOG      ✓ Compiled in 57ms
+[03:12:56.587] Server  LOG     DataProvider - No profile available to derive currentUser
+[03:12:56.779] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:12:57.177] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:12:57.177] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:12:57.177] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:12:57.177] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/messages","route":"/messages"}
+[03:12:57.177] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765838954292}
+[03:12:57.177] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:12:57.177] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:12:57.681] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:14:29.723] Browser WARN    Currency conversion warning: € or CAD not found
+[03:14:29.723] Browser WARN    Currency conversion warning: € or CAD not found
+[03:14:29.723] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765839046910}

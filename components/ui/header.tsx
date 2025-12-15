@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -18,6 +18,8 @@ import { useLanguage } from "@/lib/language-context"
 import { useData } from "@/lib/data-provider"
 import { signOut } from "@/lib/db/auth"
 
+
+
 interface HeaderProps {
   transparent?: boolean
 }
@@ -28,8 +30,10 @@ export function Header({ transparent = false }: HeaderProps) {
   const { t } = useLanguage()
   const router = useRouter()
 
-  const { currentUser, notifications, isAuthenticated } = useData()
-  const unreadNotifs = notifications.filter((n) => !n.read).length
+  const { currentUser, notifications, totalUnreadMessages, totalUnreadNotifications, isAuthenticated } = useData()
+
+  // Afficher le menu utilisateur si authentifié et currentUser existe
+  const showUserMenu = isAuthenticated && !!currentUser
 
   const handleLogout = async () => {
     setIsLoggingOut(true)
@@ -69,12 +73,14 @@ export function Header({ transparent = false }: HeaderProps) {
             >
               {t("nav.availableTrips")}
             </Link>
-            <Link
-              href="/dashboard"
-              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              {t("nav.dashboard")}
-            </Link>
+            {isAuthenticated && (
+              <Link
+                href="/dashboard"
+                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {t("nav.dashboard")}
+              </Link>
+            )}
             <Link
               href="/how-it-works"
               className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
@@ -85,14 +91,15 @@ export function Header({ transparent = false }: HeaderProps) {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2">
-            {isAuthenticated && currentUser ? (
+
+            {showUserMenu ? (
               <>
                 <Link href="/notifications">
                   <Button variant="ghost" size="icon" className="relative">
                     <Bell className="h-5 w-5" />
-                    {unreadNotifs > 0 && (
+                    {totalUnreadNotifications > 0 && (
                       <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
-                        {unreadNotifs}
+                        {totalUnreadNotifications}
                       </span>
                     )}
                   </Button>
@@ -101,9 +108,11 @@ export function Header({ transparent = false }: HeaderProps) {
                 <Link href="/messages">
                   <Button variant="ghost" size="icon" className="relative">
                     <MessageCircle className="h-5 w-5" />
+                    {totalUnreadMessages > 0 && (
                     <span className="absolute -top-0.5 -right-0.5 h-4 w-4 rounded-full bg-accent text-[10px] font-bold text-accent-foreground flex items-center justify-center">
-                      2
+                      {totalUnreadMessages}
                     </span>
+                    )}
                   </Button>
                 </Link>
 
@@ -117,21 +126,33 @@ export function Header({ transparent = false }: HeaderProps) {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="sm" className="gap-2 pl-2">
-                      <div className="relative h-7 w-7 rounded-full overflow-hidden">
-                        <Image
-                          src={currentUser.avatar || "/placeholder.svg?height=28&width=28&query=user"}
-                          alt={currentUser.name}
-                          fill
-                          className="object-cover"
-                        />
+                      <div className="relative h-7 w-7 rounded-full overflow-hidden bg-secondary">
+                        {currentUser?.avatar ? (
+                          <Image
+                            src={currentUser.avatar}
+                            alt={currentUser.name || "User"}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="flex items-center justify-center h-full w-full bg-primary text-primary-foreground text-xs font-semibold">
+                            {(currentUser?.name || "U")[0].toUpperCase()}
+                          </div>
+                        )}
                       </div>
-                      <span className="max-w-[100px] truncate">{currentUser.name.split(" ")[0]}</span>
+                      <span className="max-w-[100px] truncate">
+                        {currentUser?.name || "User"}
+                      </span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
                     <div className="px-2 py-1.5">
-                      <p className="text-sm font-medium">{currentUser.name}</p>
-                      <p className="text-xs text-muted-foreground">{currentUser.email}</p>
+                      <p className="text-sm font-medium">
+                        {currentUser?.name || "Utilisateur"}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {currentUser?.email || ""}
+                      </p>
                     </div>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
@@ -196,34 +217,40 @@ export function Header({ transparent = false }: HeaderProps) {
             >
               {t("nav.availableTrips")}
             </Link>
-            <Link
-              href="/dashboard"
-              className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.dashboard")}
-            </Link>
-            <Link
-              href="/notifications"
-              className="flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <span>{t("nav.notifications")}</span>
-              {unreadNotifs > 0 && (
-                <span className="h-5 w-5 rounded-full bg-accent text-xs font-bold text-accent-foreground flex items-center justify-center">
-                  {unreadNotifs}
-                </span>
-              )}
-            </Link>
-            <Link
-              href="/settings"
-              className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t("nav.settings")}
-            </Link>
+            {showUserMenu && (
+              <Link
+                href="/dashboard"
+                className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t("nav.dashboard")}
+              </Link>
+            )}
+            {showUserMenu && (
+              <>
+                <Link
+                  href="/notifications"
+                  className="flex items-center justify-between px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span>{t("nav.notifications")}</span>
+                  {totalUnreadNotifications > 0 && (
+                    <span className="h-5 w-5 rounded-full bg-accent text-xs font-bold text-accent-foreground flex items-center justify-center">
+                      {totalUnreadNotifications}
+                    </span>
+                  )}
+                </Link>
+                <Link
+                  href="/settings"
+                  className="block px-4 py-3 text-sm font-medium rounded-lg hover:bg-secondary transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {t("nav.settings")}
+                </Link>
+              </>
+            )}
             <div className="pt-4 border-t border-border mt-4 space-y-2">
-              {isAuthenticated ? (
+              {showUserMenu ? (
                 <>
                   <Link href="/publish" onClick={() => setMobileMenuOpen(false)}>
                     <Button variant="outline" className="w-full gap-2 bg-transparent">

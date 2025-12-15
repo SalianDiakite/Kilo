@@ -50,6 +50,7 @@
 .dark {
   --background: oklch(0.13 0 0);
   --foreground: oklch(0.96 0 0);
+  color-scheme: dark;
   --card: oklch(0.18 0 0);
   --card-foreground: oklch(0.96 0 0);
   --popover: oklch(0.18 0 0);

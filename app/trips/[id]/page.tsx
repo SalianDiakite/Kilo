@@ -1,3 +1,4 @@
+import { createClient } from "@/lib/supabase/server"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -13,7 +14,6 @@ import {
   Star,
   ArrowRight,
   Shield,
-  MessageCircle,
   Check,
   X,
   ChevronLeft,
@@ -21,8 +21,10 @@ import {
   Heart,
   Info,
 } from "@/components/icons"
-import { WhatsAppIcon } from "@/components/icons"
 import { fetchTrip } from "@/lib/services/data-service"
+import { TripContactActions } from "@/components/trip/trip-contact-actions"
+import { TripPriceDisplay } from "@/components/trip/trip-price-display"
+import { TripViewTracker } from "@/components/trip/trip-view-tracker"
 
 export default async function TripDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params
@@ -31,6 +33,9 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
   if (!trip) {
     notFound()
   }
+
+  const supabase = await createClient()
+  const { data: whatsapp } = await supabase.rpc("get_user_whatsapp", { user_id_in: trip.userId })
 
   const formattedDate = new Intl.DateTimeFormat("fr-FR", {
     weekday: "long",
@@ -44,14 +49,15 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
     year: "numeric",
   }).format(trip.user.createdAt)
 
-  const whatsappLink = trip.user.whatsapp
-    ? `https://wa.me/${trip.user.whatsapp}?text=${encodeURIComponent(`Bonjour ! Je suis intéressé(e) par votre offre de kilos ${trip.departure} → ${trip.arrival} sur KiloShare.`)}`
+  const whatsappLink = whatsapp
+    ? `https://wa.me/${whatsapp}?text=${encodeURIComponent(`Bonjour ! Je suis intéressé(e) par votre offre de kilos ${trip.departure} → ${trip.arrival} sur KiloShare.`)}`
     : null
 
   return (
     <div className="min-h-screen flex flex-col bg-secondary/20">
       <Header />
       <main className="flex-1 pb-28 md:pb-0">
+        <TripViewTracker tripId={trip.id} />
         {/* Back Button */}
         <div className="container mx-auto px-4 py-4">
           <Link
@@ -116,9 +122,12 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
                       <p className="text-xs text-muted-foreground">Disponibles</p>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-accent">
-                        {trip.pricePerKg}
-                        {trip.currency}
+                      <div className="text-2xl font-bold text-accent justify-center flex">
+                        <TripPriceDisplay 
+                          amount={trip.pricePerKg} 
+                          currencyCode={trip.currency} 
+                          perKg={false}
+                        />
                       </div>
                       <p className="text-xs text-muted-foreground">par kilo</p>
                     </div>
@@ -215,27 +224,15 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
                     </div>
                   )}
 
-                  <div className="space-y-3">
-                    <Link href="/messages" className="block">
-                      <Button className="w-full gap-2" size="lg">
-                        <MessageCircle className="h-5 w-5" />
-                        Contacter via l'app
-                      </Button>
-                    </Link>
-
-                    {whatsappLink && (
-                      <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="block">
-                        <Button
-                          variant="outline"
-                          className="w-full gap-2 bg-[#25D366] hover:bg-[#20BD5A] text-white border-[#25D366] hover:border-[#20BD5A]"
-                          size="lg"
-                        >
-                          <WhatsAppIcon className="h-5 w-5" />
-                          Contacter via WhatsApp
-                        </Button>
-                      </a>
-                    )}
-                  </div>
+                  <TripContactActions 
+                    tripId={trip.id}
+                    supplierId={trip.userId}
+                    whatsappLink={whatsappLink} 
+                    pricePerKg={trip.pricePerKg}
+                    currency={trip.currency}
+                    availableKg={trip.availableKg}
+                    variant="desktop" 
+                  />
                 </CardContent>
               </Card>
 
@@ -257,36 +254,28 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
           </div>
         </div>
 
-        {/* Mobile CTA - Added WhatsApp option */}
+        {/* Mobile CTA */}
         <div className="fixed bottom-16 md:hidden left-0 right-0 p-4 bg-background border-t border-border">
           <div className="flex items-center justify-between gap-4">
             <div>
               <div className="text-2xl font-bold">
-                {trip.pricePerKg}
-                {trip.currency}
-                <span className="text-sm font-normal text-muted-foreground">/kg</span>
+                <TripPriceDisplay 
+                  amount={trip.pricePerKg} 
+                  currencyCode={trip.currency} 
+                  perKg={true}
+                />
               </div>
               <p className="text-sm text-muted-foreground">{trip.availableKg} kg disponibles</p>
             </div>
-            <div className="flex gap-2">
-              {whatsappLink && (
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-[#25D366] hover:bg-[#20BD5A] text-white border-[#25D366]"
-                  >
-                    <WhatsAppIcon className="h-5 w-5" />
-                  </Button>
-                </a>
-              )}
-              <Link href="/messages">
-                <Button size="lg" className="gap-2">
-                  <MessageCircle className="h-5 w-5" />
-                  Chat
-                </Button>
-              </Link>
-            </div>
+            <TripContactActions 
+              tripId={trip.id}
+              supplierId={trip.userId}
+              whatsappLink={whatsappLink} 
+              pricePerKg={trip.pricePerKg}
+              currency={trip.currency}
+              availableKg={trip.availableKg}
+              variant="mobile" 
+            />
           </div>
         </div>
       </main>

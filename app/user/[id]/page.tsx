@@ -1,9 +1,10 @@
 "use client"
 
-import { useState, use } from "react"
+import { useState, use, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { useData } from "@/lib/data-provider"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
@@ -34,24 +35,51 @@ import {
   Edit3,
 } from "@/components/icons"
 import { WhatsAppIcon } from "@/components/icons"
-import { mockUsers, mockTrips, mockReviews } from "@/lib/mock-data"
 import { cn } from "@/lib/utils"
+import { fetchPublicProfile } from "@/lib/services/data-service"
+import type { User } from "@/lib/types"
 
 export default function UserProfilePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
-  const user = mockUsers.find((u) => u.id === id)
+  const { trips, reviews, createReview, currentUser } = useData()
+
+  const [user, setUser] = useState<User | null>(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      setLoading(true)
+      const userProfile = await fetchPublicProfile(id)
+      if (userProfile) {
+        setUser(userProfile)
+      } else {
+        notFound()
+      }
+      setLoading(false)
+    }
+    loadProfile()
+  }, [id])
 
   const [selectedRating, setSelectedRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
   const [reviewText, setReviewText] = useState("")
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  if (!user) {
-    notFound()
+  if (loading || !user) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-1 flex items-center justify-center">
+          <p>Chargement du profil...</p>
+        </div>
+        <Footer />
+      </div>
+    )
   }
 
-  const userTrips = mockTrips.filter((t) => t.userId === user.id && t.status === "active")
-  const userReviews = mockReviews.filter((r) => r.reviewedId === user.id)
+  const userTrips = trips.filter((t) => t.userId === user.id && t.status === "active")
+  const userReviews = reviews.filter((r) => r.reviewedId === user.id)
 
   const memberSince = new Intl.DateTimeFormat("fr-FR", {
     month: "long",
@@ -62,10 +90,35 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
     ? `https://wa.me/${user.whatsapp}?text=${encodeURIComponent(`Bonjour ${user.name} ! Je vous contacte via KiloShare.`)}`
     : null
 
-  const handleSubmitReview = () => {
-    setIsDialogOpen(false)
-    setSelectedRating(0)
-    setReviewText("")
+  const handleSubmitReview = async () => {
+    if (!currentUser) {
+      alert("Vous devez être connecté pour laisser un avis.")
+      return
+    }
+    setIsSubmitting(true)
+    try {
+      const newReview = await createReview({
+        reviewerId: currentUser.id,
+        reviewedId: user.id,
+        rating: selectedRating,
+        comment: reviewText,
+        tripId: "", // Avis général, pas lié à un trajet spécifique
+      })
+
+      if (newReview) {
+        alert("Avis publié avec succès !")
+        setIsDialogOpen(false)
+        setSelectedRating(0)
+        setReviewText("")
+      } else {
+        throw new Error("La publication de l'avis a échoué.")
+      }
+    } catch (error) {
+      console.error(error)
+      alert("Une erreur est survenue lors de la publication de l'avis.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const ratingDistribution = [5, 4, 3, 2, 1].map((rating) => ({
@@ -293,7 +346,7 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
                                 {new Intl.DateTimeFormat("fr-FR", {
                                   day: "numeric",
                                   month: "long",
-                                }).format(trip.departureDate)}
+                                }).format(new Date(trip.departureDate))}
                               </div>
                               <div className="flex items-center gap-1">
                                 <Weight className="h-4 w-4" />
@@ -397,7 +450,7 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
                                     day: "numeric",
                                     month: "long",
                                     year: "numeric",
-                                  }).format(review.createdAt)}
+                                  }).format(new Date(review.createdAt))}
                                 </p>
                               </div>
                               <div className="flex gap-1">

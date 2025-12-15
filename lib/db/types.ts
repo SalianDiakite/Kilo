@@ -13,6 +13,7 @@ export interface DbProfile {
   languages: string[]
   response_rate: number
   response_time: string | null
+  role: 'user' | 'admin' | 'moderator'
   created_at: string
   updated_at: string
 }
@@ -22,8 +23,10 @@ export interface DbTrip {
   user_id: string
   departure: string
   departure_country: string
+  departure_city_id: string | null
   arrival: string
   arrival_country: string
+  arrival_city_id: string | null
   departure_date: string
   available_kg: number
   total_kg: number
@@ -85,7 +88,7 @@ export interface DbMessage {
   sender_id: string
   content: string
   type: "text" | "image" | "system"
-  read: boolean
+  read_by: string[]
   created_at: string
   // Relations
   sender?: DbProfile

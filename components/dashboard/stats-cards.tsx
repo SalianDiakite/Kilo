@@ -1,5 +1,7 @@
 "use client"
 
+import { useLanguage } from "@/lib/language-context"
+import { useCurrency } from "@/lib/hooks/use-currency"
 import type React from "react"
 
 import { Card, CardContent } from "@/components/ui/card"
@@ -55,37 +57,46 @@ interface StatsCardsProps {
     totalViews: number
     totalEarnings: number
   }
+  changes: {
+    activeTrips: number
+    totalBookings: number
+    totalViews: number
+    totalEarnings: number
+  }
 }
 
-export function StatsCards({ stats }: StatsCardsProps) {
+export function StatsCards({ stats, changes }: StatsCardsProps) {
+  const { t } = useLanguage()
+  const { formatPrice } = useCurrency()
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       <StatCard
-        title="Trajets actifs"
+        title={t("dashboard.client.activeTrips")}
         value={stats.activeTrips}
-        change={12}
-        changeLabel="ce mois"
+        change={changes.activeTrips}
+        changeLabel={t("common.thisMonth")}
         icon={<Package className="h-5 w-5 text-muted-foreground" />}
       />
       <StatCard
-        title="Réservations"
+        title={t("dashboard.client.totalBookings")}
         value={stats.totalBookings}
-        change={8}
-        changeLabel="ce mois"
+        change={changes.totalBookings}
+        changeLabel={t("common.thisMonth")}
         icon={<MessageCircle className="h-5 w-5 text-muted-foreground" />}
       />
       <StatCard
-        title="Vues totales"
+        title={t("dashboard.analytics.totalViews")}
         value={stats.totalViews}
-        change={24}
-        changeLabel="cette semaine"
+        change={changes.totalViews}
+        changeLabel={t("common.thisMonth")}
         icon={<Eye className="h-5 w-5 text-muted-foreground" />}
       />
       <StatCard
-        title="Revenus"
-        value={`${stats.totalEarnings}€`}
-        change={15}
-        changeLabel="ce mois"
+        title={t("dashboard.analytics.revenue")}
+        value={formatPrice(stats.totalEarnings)}
+        change={changes.totalEarnings}
+        changeLabel={t("common.thisMonth")}
         icon={<Wallet className="h-5 w-5 text-muted-foreground" />}
       />
     </div>

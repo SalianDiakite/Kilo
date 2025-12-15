@@ -14,8 +14,8 @@ export interface RealtimeMessage {
   created_at: string
   sender?: {
     id: string
-    full_name: string
-    avatar_url: string | null
+    name: string
+    avatar: string | null
   }
 }
 
@@ -48,7 +48,7 @@ export function useRealtimeMessages({ conversationId, userId, onNewMessage }: Us
         .from("messages")
         .select(`
           *,
-          sender:profiles(id, full_name, avatar_url)
+          sender:profiles(id, name, avatar)
         `)
         .eq("conversation_id", conversationId)
         .order("created_at", { ascending: true })
@@ -75,21 +75,32 @@ export function useRealtimeMessages({ conversationId, userId, onNewMessage }: Us
             sender_id: userId,
             content: content.trim(),
             type: "text",
-            read: false,
           })
           .select(`
           *,
-          sender:profiles(id, full_name, avatar_url)
+          sender:profiles(id, name, avatar)
         `)
           .single()
 
         if (sendError) throw sendError
+
+        // Add the new message to the local state immediately
+        if (data) {
+          setMessages((prev) => [...prev, data as RealtimeMessage])
+        }
 
         // Update conversation timestamp
         await supabaseRef.current
           .from("conversations")
           .update({ updated_at: new Date().toISOString() })
           .eq("id", conversationId)
+
+        // Mark the message as read by the sender
+        await supabaseRef.current
+          .from("conversation_participants")
+          .update({ last_read_at: new Date().toISOString() })
+          .eq("conversation_id", conversationId)
+          .eq("user_id", userId)
 
         return data
       } catch (err) {
@@ -105,23 +116,15 @@ export function useRealtimeMessages({ conversationId, userId, onNewMessage }: Us
     if (!conversationId || !userId) return
 
     try {
-      // Mark all unread messages from other users as read
-      await supabaseRef.current
-        .from("messages")
-        .update({ read: true })
-        .eq("conversation_id", conversationId)
-        .neq("sender_id", userId)
-        .eq("read", false)
-
-      // Update local state
-      setMessages((prev) => prev.map((msg) => (msg.sender_id !== userId ? { ...msg, read: true } : msg)))
-
       // Update participant's last_read_at
       await supabaseRef.current
         .from("conversation_participants")
         .update({ last_read_at: new Date().toISOString() })
         .eq("conversation_id", conversationId)
         .eq("user_id", userId)
+        
+      // No need to update 'read' column on messages anymore as it's removed.
+      // The unread status is now solely derived from last_read_at in RPC.
     } catch (err) {
       console.error("Failed to mark messages as read:", err)
     }
@@ -152,7 +155,7 @@ export function useRealtimeMessages({ conversationId, userId, onNewMessage }: Us
           if (!newMessage.sender) {
             const { data: sender } = await supabaseRef.current
               .from("profiles")
-              .select("id, full_name, avatar_url")
+              .select("id, name, avatar")
               .eq("id", newMessage.sender_id)
               .single()
 
@@ -282,11 +285,22 @@ export function useRealtimeConversations(userId: string | null) {
           table: "messages",
         },
         () => {
-          // A new message was inserted somewhere. Refetch conversations to update last_message and unread_count.
-          // This is a broad trigger but effective now that the fetch is a single RPC call.
           fetchConversations()
         },
       )
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "conversation_participants",
+          filter: `user_id=eq.${userId}`,
+        },
+        () => {
+          fetchConversations()
+        },
+      )
+      .subscribe()
       .on(
         "postgres_changes",
         {

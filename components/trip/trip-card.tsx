@@ -1,10 +1,14 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import type { Trip } from "@/lib/types"
+import { useLanguage } from "@/lib/language-context"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar, Weight, Star, ArrowRight, Shield, ChevronRight } from "@/components/icons"
+import { TripPriceDisplay } from "@/components/trip/trip-price-display"
 
 interface TripCardProps {
   trip: Trip
@@ -12,7 +16,9 @@ interface TripCardProps {
 }
 
 export function TripCard({ trip, variant = "default" }: TripCardProps) {
-  const formattedDate = new Intl.DateTimeFormat("fr-FR", {
+  const { t, language } = useLanguage()
+
+  const formattedDate = new Intl.DateTimeFormat(language, {
     day: "numeric",
     month: "short",
     year: "numeric",
@@ -27,7 +33,7 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
               <div className="relative h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
                 <Image
                   src={trip.user.avatar || "/placeholder.svg?height=48&width=48&query=user avatar"}
-                  alt={trip.user.name}
+                  alt={trip.user.name || "User avatar"}
                   fill
                   className="object-cover"
                 />
@@ -46,8 +52,11 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
               </div>
               <div className="text-right">
                 <div className="font-semibold">
-                  {trip.pricePerKg}
-                  {trip.currency}/kg
+                  <TripPriceDisplay 
+                    amount={trip.pricePerKg} 
+                    currencyCode={trip.currency} 
+                    perKg={true}
+                  />
                 </div>
                 <ChevronRight className="h-4 w-4 text-muted-foreground ml-auto mt-1" />
               </div>
@@ -77,7 +86,7 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
                 </div>
               </div>
               <Badge variant="secondary" className="text-xs">
-                {trip.status === "active" ? "Disponible" : trip.status}
+                {trip.status === "active" ? t("trip.card.available") : trip.status}
               </Badge>
             </div>
 
@@ -96,8 +105,11 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
             {/* Price */}
             <div className="flex items-baseline gap-1">
               <span className="text-2xl font-bold">
-                {trip.pricePerKg}
-                {trip.currency}
+                <TripPriceDisplay 
+                  amount={trip.pricePerKg} 
+                  currencyCode={trip.currency} 
+                  perKg={false}
+                />
               </span>
               <span className="text-muted-foreground text-sm">/ kg</span>
             </div>
@@ -110,7 +122,7 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
                 <div className="relative h-10 w-10 rounded-full overflow-hidden">
                   <Image
                     src={trip.user.avatar || "/placeholder.svg?height=40&width=40&query=user avatar"}
-                    alt={trip.user.name}
+                    alt={trip.user.name || "User avatar"}
                     fill
                     className="object-cover"
                   />
@@ -123,7 +135,7 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Star className="h-3 w-3 fill-warning text-warning" />
                     <span>{trip.user.rating}</span>
-                    <span>({trip.user.reviewCount} avis)</span>
+                    <span>({trip.user.reviewCount} {t("trip.card.reviews")})</span>
                   </div>
                 </div>
               </div>
@@ -132,7 +144,7 @@ export function TripCard({ trip, variant = "default" }: TripCardProps) {
                 variant="ghost"
                 className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
               >
-                Voir
+                {t("trip.card.view")}
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
             </div>

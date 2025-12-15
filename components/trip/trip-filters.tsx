@@ -1,28 +1,43 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useLanguage } from "@/lib/language-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
 import { X, MapPin, Weight } from "@/components/icons"
-import { countries } from "@/lib/mock-data"
+import { getCountries, type Country } from "@/lib/db/countries"
 
 interface TripFiltersProps {
+  filters: {
+    departure: string
+    arrival: string
+    minKg: string
+    maxPrice: string
+  }
+  onFilterChange: (filterName: string, value: string) => void
   onClose: () => void
+  onReset: () => void
 }
 
-export function TripFilters({ onClose }: TripFiltersProps) {
-  const [departure, setDeparture] = useState("")
-  const [arrival, setArrival] = useState("")
-  const [minKg, setMinKg] = useState("")
-  const [maxPrice, setMaxPrice] = useState("")
+export function TripFilters({ filters, onFilterChange, onClose, onReset }: TripFiltersProps) {
+  const { t, language } = useLanguage()
+  const [countries, setCountries] = useState<Country[]>([])
+
+  useEffect(() => {
+    async function fetchCountries() {
+      const countryList = await getCountries()
+      setCountries(countryList)
+    }
+    fetchCountries()
+  }, [])
 
   return (
     <Card className="mb-6">
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold">Filtrer les trajets</h3>
+          <h3 className="font-semibold">{t("trip.filters.title")}</h3>
           <Button variant="ghost" size="icon" onClick={onClose}>
             <X className="h-4 w-4" />
           </Button>
@@ -32,62 +47,78 @@ export function TripFilters({ onClose }: TripFiltersProps) {
           <div className="space-y-2">
             <Label className="text-xs text-muted-foreground flex items-center gap-1.5">
               <MapPin className="h-3 w-3" />
-              Départ
+              {t("trip.filters.departure")}
             </Label>
             <select
-              className="w-full h-10 px-3 rounded-lg border border-input bg-background text-sm"
-              value={departure}
-              onChange={(e) => setDeparture(e.target.value)}
+              className="w-full h-10 px-3 rounded-lg border border-input bg-background"
+              value={filters.departure}
+              onChange={(e) => onFilterChange("departure", e.target.value)}
             >
-              <option value="">Tous les pays</option>
-              {countries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
-                </option>
-              ))}
+              <option value="">{t("trip.filters.allCountries")}</option>
+              {countries.map((country) => {
+                const name = language === 'en' ? country.nameEn || country.name : country.name
+                return (
+                  <option key={country.id} value={name}>
+                    {name}
+                  </option>
+                )
+              })}
             </select>
           </div>
 
           <div className="space-y-2">
             <Label className="text-xs text-muted-foreground flex items-center gap-1.5">
               <MapPin className="h-3 w-3" />
-              Arrivée
+              {t("trip.filters.arrival")}
             </Label>
             <select
-              className="w-full h-10 px-3 rounded-lg border border-input bg-background text-sm"
-              value={arrival}
-              onChange={(e) => setArrival(e.target.value)}
+              className="w-full h-10 px-3 rounded-lg border border-input bg-background"
+              value={filters.arrival}
+              onChange={(e) => onFilterChange("arrival", e.target.value)}
             >
-              <option value="">Tous les pays</option>
-              {countries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
-                </option>
-              ))}
+              <option value="">{t("trip.filters.allCountries")}</option>
+              {countries.map((country) => {
+                const name = language === 'en' ? country.nameEn || country.name : country.name
+                return (
+                  <option key={country.id} value={name}>
+                    {name}
+                  </option>
+                )
+              })}
             </select>
           </div>
 
           <div className="space-y-2">
             <Label className="text-xs text-muted-foreground flex items-center gap-1.5">
               <Weight className="h-3 w-3" />
-              Kilos minimum
+              {t("trip.filters.minKg")}
             </Label>
-            <Input type="number" placeholder="Ex: 5" value={minKg} onChange={(e) => setMinKg(e.target.value)} />
+            <Input
+              type="number"
+              placeholder={t("trip.filters.minKgPlaceholder")}
+              value={filters.minKg}
+              onChange={(e) => onFilterChange("minKg", e.target.value)}
+            />
           </div>
 
           <div className="space-y-2">
-            <Label className="text-xs text-muted-foreground">Prix max (€/kg)</Label>
-            <Input type="number" placeholder="Ex: 15" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} />
+            <Label className="text-xs text-muted-foreground">{t("trip.filters.maxPrice")}</Label>
+            <Input
+              type="number"
+              placeholder={t("trip.filters.maxPricePlaceholder")}
+              value={filters.maxPrice}
+              onChange={(e) => onFilterChange("maxPrice", e.target.value)}
+            />
           </div>
         </div>
 
         <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border">
-          <Button variant="outline" size="sm" onClick={onClose}>
-            Réinitialiser
+          <Button variant="outline" size="sm" onClick={onReset}>
+            {t("trip.filters.reset")}
           </Button>
-          <Button size="sm">Appliquer</Button>
         </div>
       </CardContent>
     </Card>
   )
 }
+

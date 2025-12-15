@@ -1,8 +1,8 @@
 "use client"
 
-import { useEffect, useState, useCallback } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { createClient } from "@/lib/supabase/client"
-import type { User } from "@supabase/supabase-js"
+import type { User, Session } from "@supabase/supabase-js"
 import type { DbProfile } from "@/lib/db/types"
 
 export function useAuth() {
@@ -12,38 +12,91 @@ export function useAuth() {
 
   const fetchProfile = useCallback(async (userId: string) => {
     const supabase = createClient()
-    const { data } = await supabase.from("profiles").select("*").eq("id", userId).single()
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("*")
+      .eq("id", userId)
+      .single()
+
+    if (error) {
+      console.error("Error fetching profile:", error)
+      return
+    }
 
     setProfile(data as DbProfile | null)
   }, [])
 
   useEffect(() => {
     const supabase = createClient()
+    let mounted = true
 
-    // Récupérer la session initiale
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        fetchProfile(session.user.id)
+    const initializeAuth = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession()
+        
+        if (!mounted) return
+
+        if (error) {
+          console.error("Error getting session:", error)
+          setLoading(false)
+          return
+        }
+
+        const currentUser = session?.user ?? null
+        setUser(currentUser)
+
+        if (currentUser) {
+          // Fire and forget profile fetch - don't await it to block loading state
+          fetchProfile(currentUser.id).catch(err => 
+            console.error("Background profile fetch failed:", err)
+          )
+        } else {
+          setProfile(null)
+        }
+      } catch (err) {
+        console.error("Error initializing auth:", err)
+      } finally {
+        // Always unblock UI immediately after initial session check
+        if (mounted) setLoading(false)
       }
-      setLoading(false)
-    })
+    }
 
-    // Écouter les changements d'auth
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      setUser(session?.user ?? null)
-      if (session?.user) {
-        await fetchProfile(session.user.id)
-      } else {
-        setProfile(null)
+    initializeAuth()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event: string, session: Session | null) => {
+        console.log('useAuth - Auth state changed:', event)
+        if (!mounted) return
+
+        const currentUser = session?.user ?? null
+        setUser(currentUser)
+        
+        // Immediate UI unblock on auth change
+        setLoading(false)
+
+        if (currentUser) {
+           // For SIGNED_IN or TOKEN_REFRESHED, refresh profile asynchronously
+           if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION' || !profile) {
+             fetchProfile(currentUser.id).catch(err => 
+               console.error("Background profile fetch failed:", err)
+             )
+           }
+        } else {
+          setProfile(null)
+        }
       }
-      setLoading(false)
-    })
+    )
 
-    return () => subscription.unsubscribe()
-  }, [fetchProfile])
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [fetchProfile]) // Removed profile from dependency array to prevent infinite loops
 
-  return { user, profile, loading, isAuthenticated: !!user }
+  const refreshProfile = useCallback(async () => {
+    if (user) {
+      await fetchProfile(user.id)
+    }
+  }, [user, fetchProfile])
+
+  return { user, profile, loading, isAuthenticated: !!user, refreshProfile }
 }

@@ -1,3 +1,5 @@
+export type UserRole = 'user' | 'admin' | 'moderator'
+
 export interface User {
   id: string
   name: string
@@ -13,7 +15,10 @@ export interface User {
   languages?: string[]
   responseRate?: number
   responseTime?: string
+  role?: UserRole
 }
+
+export type TransportTypeCode = 'plane' | 'train' | 'bus' | 'car' | 'boat'
 
 export interface Trip {
   id: string
@@ -21,8 +26,10 @@ export interface Trip {
   user: User
   departure: string
   departureCountry: string
+  departureCityId?: string      // Lien vers table cities (optionnel pour migration)
   arrival: string
   arrivalCountry: string
+  arrivalCityId?: string        // Lien vers table cities (optionnel pour migration)
   departureDate: Date
   availableKg: number
   totalKg: number
@@ -33,6 +40,8 @@ export interface Trip {
   rejectedItems: string[]
   createdAt: Date
   status: "active" | "completed" | "cancelled" | "pending"
+  transportType?: TransportTypeCode  // avion, train, bus, etc.
+  transportTypeId?: string      // Lien vers table transport_types
   bookings?: Booking[]
   views?: number
   inquiries?: number

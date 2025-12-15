@@ -1,9 +1,29 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { ArrowRight, ChevronRight } from "@/components/icons"
-import { popularRoutes } from "@/lib/mock-data"
+import { fetchTrips } from "@/lib/services/data-service"
+import type { Trip } from "@/lib/types"
 
-export function PopularRoutes() {
+export async function PopularRoutes() {
+  const trips = await fetchTrips()
+
+  // Logic to determine popular routes
+  const routeCounts = trips.reduce(
+    (acc, trip) => {
+      const routeKey = `${trip.departure}-${trip.arrival}`
+      if (!acc[routeKey]) {
+        acc[routeKey] = { from: trip.departure, to: trip.arrival, count: 0 }
+      }
+      acc[routeKey].count++
+      return acc
+    },
+    {} as Record<string, { from: string; to: string; count: number }>,
+  )
+
+  const popularRoutes = Object.values(routeCounts)
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 5)
+
   return (
     <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">

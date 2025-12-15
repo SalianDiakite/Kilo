@@ -1,10 +1,14 @@
 {
-  "/dashboard/bookings/page": "app/dashboard/bookings/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/messages/page": "app/messages/page.js",
-  "/notifications/page": "app/notifications/page.js",
+  "/(protected)/dashboard/analytics/page": "app/(protected)/dashboard/analytics/page.js",
+  "/(protected)/dashboard/bookings/page": "app/(protected)/dashboard/bookings/page.js",
+  "/(protected)/dashboard/page": "app/(protected)/dashboard/page.js",
+  "/(protected)/dashboard/trips/page": "app/(protected)/dashboard/trips/page.js",
+  "/(protected)/messages/page": "app/(protected)/messages/page.js",
+  "/(protected)/notifications/page": "app/(protected)/notifications/page.js",
+  "/(protected)/profile/edit/page": "app/(protected)/profile/edit/page.js",
+  "/(protected)/profile/page": "app/(protected)/profile/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/settings/page": "app/settings/page.js",
   "/trips/[id]/page": "app/trips/[id]/page.js",
   "/trips/page": "app/trips/page.js"
 }

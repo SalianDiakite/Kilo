@@ -35,12 +35,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     handleSetTheme(theme === "light" ? "dark" : "light")
   }
 
-  if (!mounted) {
-    return <>{children}</>
-  }
-
+  // Prevent hydration mismatch by waiting for mount, 
+  // BUT we must still provide the context so useTheme doesn't throw.
+  // We can just render the provider. The theme value will default to "light" 
+  // until the effect runs, which is acceptable or can be handled by consumers checking strict equality if needed.
+  
   return (
-    <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme, toggleTheme }}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   )
 }
 

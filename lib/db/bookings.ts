@@ -1,6 +1,11 @@
 import { createClient } from "@/lib/supabase/client"
 import type { DbBooking, DbBookingInsert, DbBookingUpdate } from "./types"
 
+export interface BookingFilters {
+  dateFrom?: string
+  dateTo?: string
+}
+
 export async function getBooking(bookingId: string) {
   const supabase = createClient()
   const { data, error } = await supabase
@@ -25,25 +30,43 @@ export async function getTripBookings(tripId: string) {
   return data as DbBooking[]
 }
 
-export async function getUserBookings(userId: string, role: "sender" | "owner") {
+export async function getUserBookings(userId: string, role: "sender" | "owner", filters?: BookingFilters) {
   const supabase = createClient()
 
   if (role === "sender") {
-    const { data, error } = await supabase
+    let query = supabase
       .from("bookings")
       .select("*, trip:trips(*, user:profiles(*))")
       .eq("sender_id", userId)
       .order("created_at", { ascending: false })
 
+    if (filters?.dateFrom) {
+      query = query.gte("created_at", filters.dateFrom)
+    }
+    if (filters?.dateTo) {
+      query = query.lte("created_at", filters.dateTo)
+    }
+
+    const { data, error } = await query
+
     if (error) throw error
     return data as DbBooking[]
   } else {
     // Pour le propriétaire, récupérer toutes les réservations de ses trajets
-    const { data, error } = await supabase
+    let query = supabase
       .from("bookings")
       .select("*, sender:profiles(*), trip:trips!inner(*)")
       .eq("trip.user_id", userId)
       .order("created_at", { ascending: false })
+
+    if (filters?.dateFrom) {
+      query = query.gte("created_at", filters.dateFrom)
+    }
+    if (filters?.dateTo) {
+      query = query.lte("created_at", filters.dateTo)
+    }
+
+    const { data, error } = await query
 
     if (error) throw error
     return data as DbBooking[]

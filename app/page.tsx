@@ -11,6 +11,8 @@ import { SponsorsSection } from "@/components/home/sponsors-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { StatsSection } from "@/components/home/stats-section"
 
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">

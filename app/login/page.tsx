@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -12,12 +12,20 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Plane, ArrowRight, Loader2, AlertCircle, CheckCircle } from "@/components/icons"
 import { signIn, signUp } from "@/lib/db/auth"
 import { useLanguage } from "@/lib/language-context"
+import { useAuth } from "@/lib/hooks/use-auth"
 
 export default function LoginPage() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const redirect = searchParams.get("redirect") || "/dashboard"
   const { t } = useLanguage()
+  const { isAuthenticated } = useAuth()
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      router.push(redirect)
+    }
+  }, [isAuthenticated, router, redirect])
 
   const [isLoading, setIsLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false)
@@ -27,6 +35,8 @@ export default function LoginPage() {
   const [name, setName] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -56,7 +66,6 @@ export default function LoginPage() {
         // Sign in with Supabase
         await signIn(email, password)
         router.push(redirect)
-        router.refresh()
       }
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : "Une erreur est survenue"

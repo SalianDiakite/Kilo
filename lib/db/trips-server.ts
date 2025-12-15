@@ -2,11 +2,14 @@ import { createClient } from "@/lib/supabase/server"
 import type { DbTrip } from "./types"
 import type { TripFilters } from "./trips"
 
+const PUBLIC_USER_COLUMNS =
+  "id, name, avatar, bio, rating, review_count, verified, languages, response_rate, response_time, created_at"
+
 export async function getTripsServer(filters?: TripFilters, page = 1, limit = 10) {
   const supabase = await createClient()
   let query = supabase
     .from("trips")
-    .select("*, user:profiles(*)", { count: "exact" })
+    .select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`, { count: "exact" })
     .order("created_at", { ascending: false })
     .eq("status", "active")
 
@@ -29,7 +32,7 @@ export async function getTripsServer(filters?: TripFilters, page = 1, limit = 10
 
 export async function getTripServer(tripId: string) {
   const supabase = await createClient()
-  const { data, error } = await supabase.from("trips").select("*, user:profiles(*)").eq("id", tripId).single()
+  const { data, error } = await supabase.from("trips").select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`).eq("id", tripId).single()
 
   if (error) throw error
   return data as DbTrip

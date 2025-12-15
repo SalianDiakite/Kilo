@@ -5,22 +5,24 @@ import { usePathname } from "next/navigation"
 import { LayoutDashboard, Package, Users, Wallet, BarChart3, Settings, HelpCircle, Plus } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-const sidebarItems = [
-  { href: "/dashboard", icon: LayoutDashboard, label: "Vue d'ensemble" },
-  { href: "/dashboard/trips", icon: Package, label: "Mes trajets" },
-  { href: "/dashboard/bookings", icon: Users, label: "Réservations" },
-  { href: "/dashboard/earnings", icon: Wallet, label: "Revenus" },
-  { href: "/dashboard/analytics", icon: BarChart3, label: "Statistiques" },
-]
-
-const bottomItems = [
-  { href: "/settings", icon: Settings, label: "Paramètres" },
-  { href: "/help", icon: HelpCircle, label: "Aide" },
-]
+import { useLanguage } from "@/lib/language-context"
 
 export function DashboardSidebar() {
   const pathname = usePathname()
+  const { t } = useLanguage()
+
+  const sidebarItems = [
+    { href: "/dashboard", icon: LayoutDashboard, label: t("dashboard.overview") },
+    { href: "/dashboard/trips", icon: Package, label: t("dashboard.myTrips") },
+    { href: "/dashboard/bookings", icon: Users, label: t("dashboard.bookings") },
+    { href: "/dashboard/earnings", icon: Wallet, label: t("dashboard.earnings") },
+    { href: "/dashboard/analytics", icon: BarChart3, label: t("dashboard.analytics") },
+  ]
+
+  const bottomItems = [
+    { href: "/settings", icon: Settings, label: t("nav.settings") },
+    { href: "/help", icon: HelpCircle, label: t("dashboard.sidebar.help") },
+  ]
 
   return (
     <aside className="hidden lg:flex lg:flex-col w-64 border-r border-border bg-card min-h-[calc(100vh-64px)]">
@@ -28,7 +30,7 @@ export function DashboardSidebar() {
         <Link href="/publish">
           <Button className="w-full gap-2">
             <Plus className="h-4 w-4" />
-            Nouveau trajet
+            {t("dashboard.sidebar.newTrip")}
           </Button>
         </Link>
       </div>

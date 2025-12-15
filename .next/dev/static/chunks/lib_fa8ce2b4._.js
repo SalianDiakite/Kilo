@@ -37,11 +37,10 @@ function ThemeProvider({ children }) {
     const toggleTheme = ()=>{
         handleSetTheme(theme === "light" ? "dark" : "light");
     };
-    if (!mounted) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-            children: children
-        }, void 0, false);
-    }
+    // Prevent hydration mismatch by waiting for mount, 
+    // BUT we must still provide the context so useTheme doesn't throw.
+    // We can just render the provider. The theme value will default to "light" 
+    // until the effect runs, which is acceptable or can be handled by consumers checking strict equality if needed.
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(ThemeContext.Provider, {
         value: {
             theme,
@@ -51,7 +50,7 @@ function ThemeProvider({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/lib/theme-context.tsx",
-        lineNumber: 43,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
 }
@@ -98,6 +97,14 @@ const translations = {
     "nav.messages": {
         fr: "Messages",
         en: "Messages"
+    },
+    "login": {
+        fr: "Connexion",
+        en: "Login"
+    },
+    "register": {
+        fr: "Inscription",
+        en: "Register"
     },
     "nav.dashboard": {
         fr: "Dashboard",
@@ -1178,8 +1185,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/@supabase/ssr/dist/module/index.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@supabase/ssr/dist/module/createBrowserClient.js [app-client] (ecmascript)");
 ;
+let client = null;
 function createClient() {
-    return (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createBrowserClient"])(("TURBOPACK compile-time value", "https://vnghkdxyurxdlvrvuttn.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuZ2hrZHh5dXJ4ZGx2cnZ1dHRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyMjIxNTUsImV4cCI6MjA4MDc5ODE1NX0.WAGi5Lw7unVvZ2ExAb921Ad-jJOekfP5PGG7WNDhaSg"));
+    if (!client) {
+        client = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createBrowserClient$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createBrowserClient"])(("TURBOPACK compile-time value", "https://vnghkdxyurxdlvrvuttn.supabase.co"), ("TURBOPACK compile-time value", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZuZ2hrZHh5dXJ4ZGx2cnZ1dHRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUyMjIxNTUsImV4cCI6MjA4MDc5ODE1NX0.WAGi5Lw7unVvZ2ExAb921Ad-jJOekfP5PGG7WNDhaSg"));
+    }
+    return client;
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -1206,50 +1217,97 @@ function useAuth() {
     const fetchProfile = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "useAuth.useCallback[fetchProfile]": async (userId)=>{
             const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
-            const { data } = await supabase.from("profiles").select("*").eq("id", userId).single();
+            const { data, error } = await supabase.from("profiles").select("*").eq("id", userId).single();
+            if (error) {
+                console.error("Error fetching profile:", error);
+                return;
+            }
             setProfile(data);
         }
     }["useAuth.useCallback[fetchProfile]"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "useAuth.useEffect": ()=>{
             const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createClient"])();
-            // Récupérer la session initiale
-            supabase.auth.getSession().then({
-                "useAuth.useEffect": ({ data: { session } })=>{
-                    setUser(session?.user ?? null);
-                    if (session?.user) {
-                        fetchProfile(session.user.id);
+            let mounted = true;
+            const initializeAuth = {
+                "useAuth.useEffect.initializeAuth": async ()=>{
+                    try {
+                        const { data: { session }, error } = await supabase.auth.getSession();
+                        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+                        ;
+                        if (error) {
+                            console.error("Error getting session:", error);
+                            setLoading(false);
+                            return;
+                        }
+                        const currentUser = session?.user ?? null;
+                        setUser(currentUser);
+                        if (currentUser) {
+                            // Fire and forget profile fetch - don't await it to block loading state
+                            fetchProfile(currentUser.id).catch({
+                                "useAuth.useEffect.initializeAuth": (err)=>console.error("Background profile fetch failed:", err)
+                            }["useAuth.useEffect.initializeAuth"]);
+                        } else {
+                            setProfile(null);
+                        }
+                    } catch (err) {
+                        console.error("Error initializing auth:", err);
+                    } finally{
+                        // Always unblock UI immediately after initial session check
+                        if ("TURBOPACK compile-time truthy", 1) setLoading(false);
                     }
-                    setLoading(false);
                 }
-            }["useAuth.useEffect"]);
-            // Écouter les changements d'auth
+            }["useAuth.useEffect.initializeAuth"];
+            initializeAuth();
             const { data: { subscription } } = supabase.auth.onAuthStateChange({
                 "useAuth.useEffect": async (event, session)=>{
-                    setUser(session?.user ?? null);
-                    if (session?.user) {
-                        await fetchProfile(session.user.id);
+                    console.log('useAuth - Auth state changed:', event);
+                    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+                    ;
+                    const currentUser = session?.user ?? null;
+                    setUser(currentUser);
+                    // Immediate UI unblock on auth change
+                    setLoading(false);
+                    if (currentUser) {
+                        // For SIGNED_IN or TOKEN_REFRESHED, refresh profile asynchronously
+                        if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION' || !profile) {
+                            fetchProfile(currentUser.id).catch({
+                                "useAuth.useEffect": (err)=>console.error("Background profile fetch failed:", err)
+                            }["useAuth.useEffect"]);
+                        }
                     } else {
                         setProfile(null);
                     }
-                    setLoading(false);
                 }
             }["useAuth.useEffect"]);
             return ({
-                "useAuth.useEffect": ()=>subscription.unsubscribe()
+                "useAuth.useEffect": ()=>{
+                    subscription.unsubscribe();
+                }
             })["useAuth.useEffect"];
         }
     }["useAuth.useEffect"], [
+        fetchProfile
+    ]); // Removed profile from dependency array to prevent infinite loops
+    const refreshProfile = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "useAuth.useCallback[refreshProfile]": async ()=>{
+            if (user) {
+                await fetchProfile(user.id);
+            }
+        }
+    }["useAuth.useCallback[refreshProfile]"], [
+        user,
         fetchProfile
     ]);
     return {
         user,
         profile,
         loading,
-        isAuthenticated: !!user
+        isAuthenticated: !!user,
+        refreshProfile
     };
 }
-_s(useAuth, "AGZo6K2Y7Wq9bxakpee3N7ZWcOc=");
+_s(useAuth, "I5HJpofLNR9MEDGFZTOvtOQkKdg=");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -1266,6 +1324,10 @@ __turbopack_context__.s([
     ()=>mockBookings,
     "mockConversations",
     ()=>mockConversations,
+    "mockCountriesList",
+    ()=>mockCountriesList,
+    "mockCurrencies",
+    ()=>mockCurrencies,
     "mockNotifications",
     ()=>mockNotifications,
     "mockReviews",
@@ -1863,6 +1925,72 @@ const popularRoutes = [
         count: 76
     }
 ];
+const mockCountriesList = [
+    {
+        id: "1",
+        code: "FR",
+        name: "France",
+        flag: "🇫🇷",
+        currencyCode: "EUR",
+        continent: "Europe"
+    },
+    {
+        id: "2",
+        code: "SN",
+        name: "Sénégal",
+        flag: "🇸🇳",
+        currencyCode: "XOF",
+        continent: "Afrique"
+    },
+    {
+        id: "3",
+        code: "MA",
+        name: "Maroc",
+        flag: "🇲🇦",
+        currencyCode: "MAD",
+        continent: "Afrique"
+    },
+    {
+        id: "4",
+        code: "CI",
+        name: "Côte d'Ivoire",
+        flag: "🇨🇮",
+        currencyCode: "XOF",
+        continent: "Afrique"
+    },
+    {
+        id: "5",
+        code: "ML",
+        name: "Mali",
+        flag: "🇲🇱",
+        currencyCode: "XOF",
+        continent: "Afrique"
+    },
+    {
+        id: "6",
+        code: "BF",
+        name: "Burkina Faso",
+        flag: "🇧🇫",
+        currencyCode: "XOF",
+        continent: "Afrique"
+    },
+    {
+        id: "7",
+        code: "BE",
+        name: "Belgique",
+        flag: "🇧🇪",
+        currencyCode: "EUR",
+        continent: "Europe"
+    },
+    {
+        id: "8",
+        code: "ES",
+        name: "Espagne",
+        flag: "🇪🇸",
+        currencyCode: "EUR",
+        continent: "Europe"
+    }
+];
 const countries = [
     "France",
     "Sénégal",
@@ -1930,6 +2058,36 @@ const cities = {
         "Valence"
     ]
 };
+const mockCurrencies = [
+    {
+        code: "EUR",
+        name: "Euro",
+        symbol: "€",
+        rateToEur: 1,
+        updatedAt: new Date()
+    },
+    {
+        code: "USD",
+        name: "US Dollar",
+        symbol: "$",
+        rateToEur: 0.95,
+        updatedAt: new Date()
+    },
+    {
+        code: "XOF",
+        name: "CFA BCEAO",
+        symbol: "CFA",
+        rateToEur: 655.957,
+        updatedAt: new Date()
+    },
+    {
+        code: "MAD",
+        name: "Dirham Marocain",
+        symbol: "DH",
+        rateToEur: 10.8,
+        updatedAt: new Date()
+    }
+];
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -1947,6 +2105,8 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     ()=>USE_MOCK_DATA,
     "createNewBooking",
     ()=>createNewBooking,
+    "createNewReview",
+    ()=>createNewReview,
     "createNewTrip",
     ()=>createNewTrip,
     "dbBookingToBooking",
@@ -1959,10 +2119,20 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     ()=>dbReviewToReview,
     "dbTripToTrip",
     ()=>dbTripToTrip,
+    "dbUserSettingsToUserSettings",
+    ()=>dbUserSettingsToUserSettings,
+    "fetchCities",
+    ()=>fetchCities,
     "fetchConversations",
     ()=>fetchConversations,
+    "fetchCountries",
+    ()=>fetchCountries,
+    "fetchCurrencies",
+    ()=>fetchCurrencies,
     "fetchNotifications",
     ()=>fetchNotifications,
+    "fetchPublicProfile",
+    ()=>fetchPublicProfile,
     "fetchTrip",
     ()=>fetchTrip,
     "fetchTripBookings",
@@ -1975,16 +2145,24 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     ()=>fetchUserBookings,
     "fetchUserReviews",
     ()=>fetchUserReviews,
+    "fetchUserSettings",
+    ()=>fetchUserSettings,
     "fetchUserTrips",
     ()=>fetchUserTrips,
     "markAllNotificationsRead",
     ()=>markAllNotificationsRead,
     "markNotificationRead",
-    ()=>markNotificationRead
+    ()=>markNotificationRead,
+    "updateUserProfile",
+    ()=>updateUserProfile,
+    "updateUserSettings",
+    ()=>updateUserSettings,
+    "uploadUserAvatar",
+    ()=>uploadUserAvatar
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/mock-data.ts [app-client] (ecmascript)");
 ;
-const USE_MOCK_DATA = true;
+const USE_MOCK_DATA = false;
 function dbProfileToUser(profile) {
     return {
         id: profile.id,
@@ -2068,117 +2246,360 @@ function dbReviewToReview(dbReview) {
     };
 }
 async function fetchTrips() {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getTrips } = await __turbopack_context__.A("[project]/lib/db/trips.ts [app-client] (ecmascript, async loader)");
+    try {
+        const { trips } = await getTrips({
+            status: "active"
+        }, 1, 100);
+        return trips.map(dbTripToTrip);
+    } catch  {
+        console.warn("DB fetch failed, falling back to mock data");
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"];
     }
-    //TURBOPACK unreachable
-    ;
-    const getTrips = undefined;
 }
 async function fetchTrip(tripId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getTrip } = await __turbopack_context__.A("[project]/lib/db/trips.ts [app-client] (ecmascript, async loader)");
+    try {
+        const trip = await getTrip(tripId);
+        return dbTripToTrip(trip);
+    } catch  {
+        // Fallback sur mock
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"].find((t)=>t.id === tripId) || null;
     }
-    //TURBOPACK unreachable
-    ;
-    const getTrip = undefined;
 }
-async function fetchUserTrips(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+async function fetchUserTrips(userId, filters) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getUserTrips } = await __turbopack_context__.A("[project]/lib/db/trips.ts [app-client] (ecmascript, async loader)");
+    try {
+        const trips = await getUserTrips(userId, filters);
+        return trips.map(dbTripToTrip);
+    } catch  {
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"].filter((t)=>t.userId === userId);
     }
-    //TURBOPACK unreachable
-    ;
-    const getUserTrips = undefined;
 }
 async function fetchUser(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getProfile } = await __turbopack_context__.A("[project]/lib/db/profiles.ts [app-client] (ecmascript, async loader)");
+    try {
+        const profile = await getProfile(userId);
+        return dbProfileToUser(profile);
+    } catch  {
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockUsers"].find((u)=>u.id === userId) || null;
     }
-    //TURBOPACK unreachable
-    ;
-    const getProfile = undefined;
 }
 async function fetchTripBookings(tripId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getTripBookings } = await __turbopack_context__.A("[project]/lib/db/bookings.ts [app-client] (ecmascript, async loader)");
+    try {
+        const bookings = await getTripBookings(tripId);
+        return bookings.map(dbBookingToBooking);
+    } catch  {
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockBookings"].filter((b)=>b.tripId === tripId);
     }
-    //TURBOPACK unreachable
-    ;
-    const getTripBookings = undefined;
 }
-async function fetchUserBookings(userId, role) {
-    if ("TURBOPACK compile-time truthy", 1) {
+async function fetchUserBookings(userId, role, filters) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getUserBookings } = await __turbopack_context__.A("[project]/lib/db/bookings.ts [app-client] (ecmascript, async loader)");
+    try {
+        const bookings = await getUserBookings(userId, role, filters);
+        return bookings.map(dbBookingToBooking);
+    } catch  {
         if (role === "sender") {
             return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockBookings"].filter((b)=>b.senderId === userId);
         }
-        // Owner: bookings on user's trips
         const userTripIds = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"].filter((t)=>t.userId === userId).map((t)=>t.id);
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockBookings"].filter((b)=>userTripIds.includes(b.tripId));
     }
-    //TURBOPACK unreachable
-    ;
-    const getUserBookings = undefined;
 }
 async function fetchNotifications(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getNotifications } = await __turbopack_context__.A("[project]/lib/db/notifications.ts [app-client] (ecmascript, async loader)");
+    try {
+        const notifs = await getNotifications(userId);
+        return notifs.map(dbNotificationToNotification);
+    } catch  {
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockNotifications"].filter((n)=>n.userId === userId);
     }
-    //TURBOPACK unreachable
-    ;
-    const getNotifications = undefined;
 }
 async function fetchUserReviews(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getReviews } = await __turbopack_context__.A("[project]/lib/db/reviews.ts [app-client] (ecmascript, async loader)");
+    try {
+        const reviews = await getReviews(userId, "received");
+        return reviews.map(dbReviewToReview);
+    } catch  {
         return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockReviews"].filter((r)=>r.reviewedId === userId);
     }
-    //TURBOPACK unreachable
-    ;
-    const getReviews = undefined;
 }
 async function fetchConversations(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockConversations"].filter((c)=>c.participants.some((p)=>p.id === userId));
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
+    // Pour les conversations, on utilise déjà le hook realtime
+    // Cette fonction est principalement pour le fallback mock
+    return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockConversations"].filter((c)=>c.participants.some((p)=>p.id === userId));
 }
 async function createNewTrip(input) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        // En mode mock, on simule juste un succès
-        console.log("Mock: Creating trip", input);
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { createTrip } = await __turbopack_context__.A("[project]/lib/db/trips.ts [app-client] (ecmascript, async loader)");
+    try {
+        const trip = await createTrip({
+            user_id: input.userId,
+            departure: input.departure,
+            departure_country: input.departureCountry,
+            arrival: input.arrival,
+            arrival_country: input.arrivalCountry,
+            departure_date: input.departureDate,
+            available_kg: input.availableKg,
+            total_kg: input.availableKg,
+            price_per_kg: input.pricePerKg,
+            currency: "€",
+            description: input.description || null,
+            accepted_items: input.acceptedItems || [],
+            rejected_items: input.rejectedItems || [],
+            status: "active"
+        });
+        return dbTripToTrip(trip);
+    } catch (error) {
+        console.error("Failed to create trip:", error);
         return null;
     }
-    //TURBOPACK unreachable
-    ;
-    const createTrip = undefined;
 }
 async function createNewBooking(input) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        console.log("Mock: Creating booking", input);
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { createBooking } = await __turbopack_context__.A("[project]/lib/db/bookings.ts [app-client] (ecmascript, async loader)");
+    try {
+        const booking = await createBooking({
+            trip_id: input.tripId,
+            sender_id: input.senderId,
+            kg_requested: input.kgRequested,
+            kg_confirmed: null,
+            total_price: input.totalPrice,
+            status: "pending",
+            item_description: input.itemDescription,
+            notes: null
+        });
+        return dbBookingToBooking(booking);
+    } catch (error) {
+        console.error("Failed to create booking:", error);
         return null;
     }
-    //TURBOPACK unreachable
-    ;
-    const createBooking = undefined;
 }
 async function markNotificationRead(notificationId) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        console.log("Mock: Marking notification as read", notificationId);
-        return;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const markNotificationAsRead = undefined;
+    const { markNotificationAsRead } = await __turbopack_context__.A("[project]/lib/db/notifications.ts [app-client] (ecmascript, async loader)");
+    try {
+        await markNotificationAsRead(notificationId);
+    } catch (error) {
+        console.error("Failed to mark notification as read:", error);
+    }
 }
 async function markAllNotificationsRead(userId) {
-    if ("TURBOPACK compile-time truthy", 1) {
-        console.log("Mock: Marking all notifications as read for user", userId);
-        return;
-    }
-    //TURBOPACK unreachable
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
     ;
-    const markAllNotificationsAsRead = undefined;
+    const { markAllNotificationsAsRead } = await __turbopack_context__.A("[project]/lib/db/notifications.ts [app-client] (ecmascript, async loader)");
+    try {
+        await markAllNotificationsAsRead(userId);
+    } catch (error) {
+        console.error("Failed to mark all notifications as read:", error);
+    }
+}
+async function createNewReview(input) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { createReview } = await __turbopack_context__.A("[project]/lib/db/reviews.ts [app-client] (ecmascript, async loader)");
+    try {
+        const review = await createReview({
+            trip_id: input.tripId || null,
+            reviewer_id: input.reviewerId,
+            reviewed_id: input.reviewedId,
+            rating: input.rating,
+            comment: input.comment
+        });
+        return dbReviewToReview(review);
+    } catch (error) {
+        console.error("Failed to create review:", error);
+        return null;
+    }
+}
+async function fetchCountries() {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getCountries } = await __turbopack_context__.A("[project]/lib/db/countries.ts [app-client] (ecmascript, async loader)");
+    try {
+        return await getCountries();
+    } catch (error) {
+        console.warn("DB fetch failed for countries, falling back to mock data");
+        return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockCountriesList"];
+    }
+}
+async function fetchCurrencies() {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getCurrencies } = await __turbopack_context__.A("[project]/lib/db/currencies.ts [app-client] (ecmascript, async loader)");
+    try {
+        return await getCurrencies();
+    } catch (error) {
+        console.warn("DB fetch failed for currencies, falling back to mock data");
+        return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockCurrencies"];
+    }
+}
+async function fetchCities(countryId) {
+    const { getCitiesByCountry } = await __turbopack_context__.A("[project]/lib/db/countries.ts [app-client] (ecmascript, async loader)");
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    try {
+        return await getCitiesByCountry(countryId);
+    } catch (error) {
+        console.warn("DB fetch failed for cities", error);
+        return [];
+    }
+}
+function dbUserSettingsToUserSettings(dbSettings) {
+    return {
+        notifications: {
+            email: dbSettings.notifications_email,
+            push: dbSettings.notifications_push,
+            sms: dbSettings.notifications_sms,
+            newBookings: dbSettings.notifications_new_bookings,
+            messages: dbSettings.notifications_messages,
+            reviews: dbSettings.notifications_reviews,
+            promotions: dbSettings.notifications_promotions,
+            reminders: dbSettings.notifications_reminders
+        },
+        privacy: {
+            showPhone: dbSettings.privacy_show_phone,
+            showEmail: dbSettings.privacy_show_email,
+            showLastSeen: dbSettings.privacy_show_last_seen,
+            allowSearchEngines: dbSettings.privacy_allow_search_engines
+        },
+        preferences: {
+            language: dbSettings.preferences_language,
+            currency: dbSettings.preferences_currency,
+            timezone: dbSettings.preferences_timezone,
+            darkMode: dbSettings.preferences_dark_mode
+        }
+    };
+}
+async function fetchUserSettings(userId) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getUserSettings } = await __turbopack_context__.A("[project]/lib/db/settings.ts [app-client] (ecmascript, async loader)");
+    try {
+        const dbSettings = await getUserSettings(userId);
+        return dbUserSettingsToUserSettings(dbSettings);
+    } catch (error) {
+        console.error("Failed to fetch user settings:", error);
+        throw error;
+    }
+}
+async function updateUserSettings(userId, settings) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { updateUserSettings } = await __turbopack_context__.A("[project]/lib/db/settings.ts [app-client] (ecmascript, async loader)");
+    try {
+        // Convert app types back to flat DB structure
+        const updates = {
+            notifications_email: settings.notifications.email,
+            notifications_push: settings.notifications.push,
+            notifications_sms: settings.notifications.sms,
+            notifications_new_bookings: settings.notifications.newBookings,
+            notifications_messages: settings.notifications.messages,
+            notifications_reviews: settings.notifications.reviews,
+            notifications_promotions: settings.notifications.promotions,
+            notifications_reminders: settings.notifications.reminders,
+            privacy_show_phone: settings.privacy.showPhone,
+            privacy_show_email: settings.privacy.showEmail,
+            privacy_show_last_seen: settings.privacy.showLastSeen,
+            privacy_allow_search_engines: settings.privacy.allowSearchEngines,
+            preferences_language: settings.preferences.language,
+            preferences_currency: settings.preferences.currency,
+            preferences_timezone: settings.preferences.timezone,
+            preferences_dark_mode: settings.preferences.darkMode
+        };
+        const updatedDbSettings = await updateUserSettings(userId, updates);
+        return dbUserSettingsToUserSettings(updatedDbSettings);
+    } catch (error) {
+        console.error("Failed to update user settings:", error);
+        throw error;
+    }
+}
+async function updateUserProfile(userId, updates) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { updateProfile } = await __turbopack_context__.A("[project]/lib/db/profiles.ts [app-client] (ecmascript, async loader)");
+    try {
+        // Convert App User Partial to DbProfileUpdate
+        const dbUpdates = {} // Using any to simplify mapping Partial<User> to DbProfileUpdate
+        ;
+        if (updates.name !== undefined) dbUpdates.name = updates.name;
+        if (updates.email !== undefined) dbUpdates.email = updates.email;
+        if (updates.phone !== undefined) dbUpdates.phone = updates.phone;
+        if (updates.whatsapp !== undefined) dbUpdates.whatsapp = updates.whatsapp;
+        if (updates.bio !== undefined) dbUpdates.bio = updates.bio;
+        if (updates.avatar !== undefined) dbUpdates.avatar = updates.avatar;
+        if (updates.languages !== undefined) dbUpdates.languages = updates.languages;
+        if (updates.responseRate !== undefined) dbUpdates.response_rate = updates.responseRate;
+        if (updates.responseTime !== undefined) dbUpdates.response_time = updates.responseTime;
+        const updatedProfile = await updateProfile(userId, dbUpdates);
+        return dbProfileToUser(updatedProfile);
+    } catch (error) {
+        console.error("Failed to update user profile:", error);
+        throw error;
+    }
+}
+async function uploadUserAvatar(userId, file) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { uploadAvatar } = await __turbopack_context__.A("[project]/lib/db/storage.ts [app-client] (ecmascript, async loader)");
+    try {
+        const updatedProfile = await uploadAvatar(userId, file);
+        return updatedProfile.avatar || "";
+    } catch (error) {
+        console.error("Failed to upload avatar:", error);
+        throw error;
+    }
+}
+async function fetchPublicProfile(userId) {
+    if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+    ;
+    const { getPublicProfileById } = await __turbopack_context__.A("[project]/lib/db/profiles.ts [app-client] (ecmascript, async loader)");
+    try {
+        const profile = await getPublicProfileById(userId);
+        if (!profile) return null;
+        // Manually map the public profile data to the User type
+        return {
+            id: profile.id,
+            name: profile.name,
+            email: undefined,
+            phone: undefined,
+            whatsapp: undefined,
+            avatar: profile.avatar,
+            bio: profile.bio,
+            rating: profile.rating,
+            reviewCount: profile.review_count,
+            verified: profile.verified,
+            createdAt: new Date(profile.created_at),
+            languages: profile.languages,
+            responseRate: profile.response_rate,
+            responseTime: profile.response_time
+        };
+    } catch  {
+        // Fallback on mock data
+        return __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockUsers"].find((u)=>u.id === userId) || null;
+    }
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -2208,12 +2629,14 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 const DataContext = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])(undefined);
 function DataProvider({ children }) {
     _s();
-    const { user, profile, loading: authLoading, isAuthenticated: authIsAuthenticated } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$hooks$2f$use$2d$auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
+    const { user, profile, loading: authLoading, isAuthenticated: authIsAuthenticated, refreshProfile } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$hooks$2f$use$2d$auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"])();
     // State pour les données
-    const [trips, setTrips] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"]);
-    const [bookings, setBookings] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockBookings"]);
-    const [notifications, setNotifications] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockNotifications"]);
-    const [reviews, setReviews] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockReviews"]);
+    const [trips, setTrips] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockTrips"] : []);
+    const [bookings, setBookings] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockBookings"] : []);
+    const [notifications, setNotifications] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockNotifications"] : []);
+    const [reviews, setReviews] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockReviews"] : []);
+    const [countries, setCountries] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [currencies, setCurrencies] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [dataLoading, setDataLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Utilisateur courant
     const currentUser = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
@@ -2223,12 +2646,30 @@ function DataProvider({ children }) {
                 ;
             }
             if (profile) {
+                console.log("DataProvider - Derived currentUser from profile:", profile.id);
                 return (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["dbProfileToUser"])(profile);
             }
+            // Fallback: Use auth user data if profile is still loading (prevents empty UI)
+            if (user && !__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"]) {
+                console.log("DataProvider - Using auth user fallback while profile loads");
+                return {
+                    id: user.id,
+                    name: user.user_metadata?.name || user.email?.split('@')[0] || 'User',
+                    email: user.email,
+                    rating: 0,
+                    reviewCount: 0,
+                    verified: false,
+                    createdAt: new Date(user.created_at),
+                    languages: [],
+                    responseRate: 0
+                };
+            }
+            console.log("DataProvider - No profile available to derive currentUser");
             return null;
         }
     }["DataProvider.useMemo[currentUser]"], [
-        profile
+        profile,
+        user
     ]);
     const currentUserId = __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? "1" : user?.id;
     // Charger les données au montage
@@ -2239,25 +2680,52 @@ function DataProvider({ children }) {
                     if (!currentUserId) return;
                     setDataLoading(true);
                     try {
-                        const [tripsData, bookingsData, notifsData, reviewsData] = await Promise.all([
+                        const [tripsData, ownerBookings, senderBookings, notifsData, reviewsData, countriesData, currenciesData] = await Promise.all([
                             (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchTrips"])(),
                             (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchUserBookings"])(currentUserId, "owner"),
+                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchUserBookings"])(currentUserId, "sender"),
                             (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchNotifications"])(currentUserId),
-                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchUserReviews"])(currentUserId)
+                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchUserReviews"])(currentUserId),
+                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchCountries"])(),
+                            (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchCurrencies"])()
                         ]);
+                        // Merge bookings and remove duplicates if any
+                        const allBookings = [
+                            ...ownerBookings
+                        ];
+                        senderBookings.forEach({
+                            "DataProvider.useEffect.loadData": (sb)=>{
+                                if (!allBookings.some({
+                                    "DataProvider.useEffect.loadData": (b)=>b.id === sb.id
+                                }["DataProvider.useEffect.loadData"])) {
+                                    allBookings.push(sb);
+                                }
+                            }
+                        }["DataProvider.useEffect.loadData"]);
                         setTrips(tripsData);
-                        setBookings(bookingsData);
+                        setBookings(allBookings);
                         setNotifications(notifsData);
                         setReviews(reviewsData);
+                        setCountries(countriesData);
+                        setCurrencies(currenciesData);
                     } catch (error) {
                         console.error("Error loading data:", error);
-                    // En cas d'erreur, on garde les données mock
+                    // En cas d'erreur, on garde les données mock si activé
                     } finally{
                         setDataLoading(false);
                     }
                 }
             }["DataProvider.useEffect.loadData"];
-            loadData();
+            // Charger les données si on est en mode réel ou pour recharger
+            // Note: Si USE_MOCK_DATA est true, on a déjà les données via useState
+            // mais on laisse loadData potentiellement faire autre chose si besoin
+            if (!__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"]) {
+                loadData();
+            } else {
+                // Load mock countries and currencies if using mock data
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchCountries"])().then(setCountries);
+                (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchCurrencies"])().then(setCurrencies);
+            }
         }
     }["DataProvider.useEffect"], [
         currentUserId
@@ -2300,6 +2768,54 @@ function DataProvider({ children }) {
             return trip;
         }
     }["DataProvider.useCallback[handleCreateTrip]"], []);
+    const handleCreateReview = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "DataProvider.useCallback[handleCreateReview]": async (input)=>{
+            const review = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createNewReview"])(input);
+            if (review) {
+                setReviews({
+                    "DataProvider.useCallback[handleCreateReview]": (prev)=>[
+                            review,
+                            ...prev
+                        ]
+                }["DataProvider.useCallback[handleCreateReview]"]);
+            // Update local user rating if needed, but easier to just refresh reviews or rely on optimistic update
+            }
+            return review;
+        }
+    }["DataProvider.useCallback[handleCreateReview]"], []);
+    const handleUpdateProfile = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "DataProvider.useCallback[handleUpdateProfile]": async (updates)=>{
+            if (!currentUserId || !profile) return false;
+            try {
+                // Optimistic update done in DataService for mock, but here we can force refresh auth profile
+                // For now, assume success and maybe refresh auth?
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateUserProfile"])(currentUserId, updates);
+                await refreshProfile();
+                return true;
+            } catch (error) {
+                console.error("Error updating profile:", error);
+                return false;
+            }
+        }
+    }["DataProvider.useCallback[handleUpdateProfile]"], [
+        currentUserId,
+        profile
+    ]);
+    const handleUploadAvatar = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
+        "DataProvider.useCallback[handleUploadAvatar]": async (file)=>{
+            if (!currentUserId) return false;
+            try {
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["uploadUserAvatar"])(currentUserId, file);
+                await refreshProfile();
+                return true;
+            } catch (error) {
+                console.error("Error uploading avatar:", error);
+                return false;
+            }
+        }
+    }["DataProvider.useCallback[handleUploadAvatar]"], [
+        currentUserId
+    ]);
     const value = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "DataProvider.useMemo[value]": ()=>({
                 currentUser,
@@ -2307,13 +2823,18 @@ function DataProvider({ children }) {
                 loading: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"] ? false : authLoading || dataLoading,
                 trips,
                 users: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockUsers"],
-                conversations: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$mock$2d$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["mockConversations"],
+                conversations: mockConversations,
                 bookings,
                 notifications,
                 reviews,
+                countries,
+                currencies,
                 refreshTrips,
                 refreshNotifications,
                 createTrip: handleCreateTrip,
+                createReview: handleCreateReview,
+                updateUserProfile: handleUpdateProfile,
+                uploadProfileAvatar: handleUploadAvatar,
                 useMockData: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$services$2f$data$2d$service$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["USE_MOCK_DATA"]
             })
     }["DataProvider.useMemo[value]"], [
@@ -2325,20 +2846,26 @@ function DataProvider({ children }) {
         bookings,
         notifications,
         reviews,
+        countries,
+        currencies,
         refreshTrips,
         refreshNotifications,
-        handleCreateTrip
+        handleCreateTrip,
+        handleCreateReview,
+        handleUpdateProfile,
+        handleUploadAvatar,
+        refreshProfile
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(DataContext.Provider, {
         value: value,
         children: children
     }, void 0, false, {
         fileName: "[project]/lib/data-provider.tsx",
-        lineNumber: 154,
+        lineNumber: 252,
         columnNumber: 10
     }, this);
 }
-_s(DataProvider, "T89mWg47hTUf9ND2H+MphgUuiOc=", false, function() {
+_s(DataProvider, "2iULDEEjGrZ+kWSEobXcJ9lSedw=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$hooks$2f$use$2d$auth$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useAuth"]
     ];

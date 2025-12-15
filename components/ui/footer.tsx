@@ -3,9 +3,11 @@
 import Link from "next/link"
 import { Plane } from "@/components/icons"
 import { useLanguage } from "@/lib/language-context"
+import { useCurrency } from "@/lib/hooks/use-currency"
 
 export function Footer() {
   const { language, setLanguage, t } = useLanguage()
+  const { currentCurrency } = useCurrency()
 
   const toggleLanguage = () => {
     setLanguage(language === "fr" ? "en" : "fr")
@@ -100,7 +102,7 @@ export function Footer() {
             >
               {language === "fr" ? "🇫🇷 Français" : "🇬🇧 English"}
             </button>
-            <span>€ EUR</span>
+            <span>{currentCurrency.symbol} {currentCurrency.code}</span>
           </div>
         </div>
       </div>

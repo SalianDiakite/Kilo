@@ -1,4 +1,6 @@
 import type { Trip, User, Conversation, Booking, Notification, Review, Message } from "./types"
+import type { Country } from "./db/countries"
+import type { Currency } from "./db/currencies"
 
 export const mockUsers: User[] = [
   {
@@ -515,6 +517,17 @@ export const popularRoutes = [
   { from: "Paris", to: "Bamako", count: 76 },
 ]
 
+export const mockCountriesList: Country[] = [
+  { id: "1", code: "FR", name: "France", flag: "🇫🇷", currencyCode: "EUR", continent: "Europe" },
+  { id: "2", code: "SN", name: "Sénégal", flag: "🇸🇳", currencyCode: "XOF", continent: "Afrique" },
+  { id: "3", code: "MA", name: "Maroc", flag: "🇲🇦", currencyCode: "MAD", continent: "Afrique" },
+  { id: "4", code: "CI", name: "Côte d'Ivoire", flag: "🇨🇮", currencyCode: "XOF", continent: "Afrique" },
+  { id: "5", code: "ML", name: "Mali", flag: "🇲🇱", currencyCode: "XOF", continent: "Afrique" },
+  { id: "6", code: "BF", name: "Burkina Faso", flag: "🇧🇫", currencyCode: "XOF", continent: "Afrique" },
+  { id: "7", code: "BE", name: "Belgique", flag: "🇧🇪", currencyCode: "EUR", continent: "Europe" },
+  { id: "8", code: "ES", name: "Espagne", flag: "🇪🇸", currencyCode: "EUR", continent: "Europe" },
+]
+
 export const countries = [
   "France",
   "Sénégal",
@@ -546,3 +559,11 @@ export const cities: Record<string, string[]> = {
   Belgique: ["Bruxelles", "Anvers", "Liège"],
   Espagne: ["Madrid", "Barcelone", "Valence"],
 }
+
+export const mockCurrencies: Currency[] = [
+  { code: "EUR", name: "Euro", symbol: "€", rateToEur: 1, updatedAt: new Date() },
+  { code: "USD", name: "US Dollar", symbol: "$", rateToEur: 0.95, updatedAt: new Date() },
+  { code: "XOF", name: "CFA BCEAO", symbol: "CFA", rateToEur: 655.957, updatedAt: new Date() },
+  { code: "MAD", name: "Dirham Marocain", symbol: "DH", rateToEur: 10.8, updatedAt: new Date() },
+]
+

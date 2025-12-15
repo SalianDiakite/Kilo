@@ -1,6 +1,9 @@
 import { createClient } from "@/lib/supabase/client"
 import type { DbTrip, DbTripInsert, DbTripUpdate } from "./types"
 
+const PUBLIC_USER_COLUMNS =
+  "id, name, avatar, bio, rating, review_count, verified, languages, response_rate, response_time, created_at"
+
 export interface TripFilters {
   departure?: string
   arrival?: string
@@ -18,7 +21,7 @@ export async function getTrips(filters?: TripFilters, page = 1, limit = 10) {
   const supabase = createClient()
   let query = supabase
     .from("trips")
-    .select("*, user:profiles(*)", { count: "exact" })
+    .select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`, { count: "exact" })
     .order("created_at", { ascending: false })
 
   if (filters?.departure) {
@@ -63,22 +66,28 @@ export async function getTrips(filters?: TripFilters, page = 1, limit = 10) {
 
 export async function getTrip(tripId: string) {
   const supabase = createClient()
-  const { data, error } = await supabase.from("trips").select("*, user:profiles(*)").eq("id", tripId).single()
+  const { data, error } = await supabase.from("trips").select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`).eq("id", tripId).single()
 
   if (error) throw error
   return data as DbTrip
 }
 
-export async function getUserTrips(userId: string, status?: string) {
+export async function getUserTrips(userId: string, filters?: TripFilters) {
   const supabase = createClient()
   let query = supabase
     .from("trips")
-    .select("*, user:profiles(*)")
+    .select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`)
     .eq("user_id", userId)
     .order("created_at", { ascending: false })
 
-  if (status) {
-    query = query.eq("status", status)
+  if (filters?.status) {
+    query = query.eq("status", filters.status)
+  }
+  if (filters?.dateFrom) {
+    query = query.gte("created_at", filters.dateFrom)
+  }
+  if (filters?.dateTo) {
+    query = query.lte("created_at", filters.dateTo)
   }
 
   const { data, error } = await query
@@ -89,7 +98,7 @@ export async function getUserTrips(userId: string, status?: string) {
 
 export async function createTrip(trip: DbTripInsert) {
   const supabase = createClient()
-  const { data, error } = await supabase.from("trips").insert(trip).select("*, user:profiles(*)").single()
+  const { data, error } = await supabase.from("trips").insert(trip).select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`).single()
 
   if (error) throw error
   return data as DbTrip
@@ -101,7 +110,7 @@ export async function updateTrip(tripId: string, updates: DbTripUpdate) {
     .from("trips")
     .update({ ...updates, updated_at: new Date().toISOString() })
     .eq("id", tripId)
-    .select("*, user:profiles(*)")
+    .select(`*, user:profiles(${PUBLIC_USER_COLUMNS})`)
     .single()
 
   if (error) throw error
