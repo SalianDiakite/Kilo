@@ -179,7 +179,7 @@ export default function PublishPage() {
                     )}
                   >
                     <step.icon className="h-4 w-4" />
-                    <span className="text-sm font-medium hidden sm:inline">{t(`publish.step.${step.key}`)}</span>
+                    <span className="text-sm font-medium hidden sm:inline">{t(`publish.step.${step.key}` as any)}</span>
                     <span className="text-sm font-medium sm:hidden">{step.id}</span>
                   </div>
                   {index < steps.length - 1 && <ChevronRight className="h-4 w-4 text-muted-foreground mx-2" />}

@@ -44,7 +44,7 @@ export default function AnalyticsPage() {
         if (error) throw error
 
         // Transform numeric earnings to actual numbers
-        const transformedData = (data || []).map(item => ({
+        const transformedData = (data || []).map((item: any) => ({
             ...item,
             earnings: Number(item.earnings)
         }))

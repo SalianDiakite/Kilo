@@ -99,6 +99,10 @@ import {
   Target,
   Award,
   ShoppingBag,
+  Save,
+  DollarSign,
+  AlertTriangle,
+  Ban,
 } from "lucide-react"
 
 export const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -208,4 +212,8 @@ export {
   Target,
   Award,
   ShoppingBag,
+  Save,
+  DollarSign,
+  AlertTriangle,
+  Ban,
 }

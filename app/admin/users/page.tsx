@@ -42,7 +42,7 @@ export default function AdminUsersPage() {
     if (error) {
       console.error("Error fetching users:", error)
     } else {
-      setUsers(data?.map(p => ({
+      setUsers(data?.map((p: any) => ({
         id: p.id,
         name: p.name,
         email: p.email,

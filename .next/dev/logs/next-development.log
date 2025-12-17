@@ -2282,3 +2282,4 @@ https://nextjs.org/docs/messages/module-not-found
 [09:09:41.635] Browser WARN    Currency conversion warning: € or CAD not found
 [09:09:41.635] Browser WARN    Currency conversion warning: € or CAD not found
 [09:09:44.075] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013759488}
+[09:29:28.551] Server  LOG      ✓ Compiled in 1612ms
