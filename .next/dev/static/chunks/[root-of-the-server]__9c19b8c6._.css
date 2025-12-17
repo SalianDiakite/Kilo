@@ -946,6 +946,10 @@
     margin-left: calc(var(--spacing) * 2);
   }
 
+  .ml-4 {
+    margin-left: calc(var(--spacing) * 4);
+  }
+
   .ml-5 {
     margin-left: calc(var(--spacing) * 5);
   }
@@ -3150,11 +3154,6 @@
     border-color: var(--ring);
   }
 
-  .focus-visible\:ring-2:focus-visible {
-    --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-
   .focus-visible\:ring-\[3px\]:focus-visible {
     --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -3170,10 +3169,6 @@
     }
   }
 
-  .focus-visible\:ring-ring:focus-visible {
-    --tw-ring-color: var(--ring);
-  }
-
   .focus-visible\:ring-ring\/50:focus-visible {
     --tw-ring-color: var(--ring);
   }
@@ -3184,11 +3179,6 @@
     }
   }
 
-  .focus-visible\:ring-offset-2:focus-visible {
-    --tw-ring-offset-width: 2px;
-    --tw-ring-offset-shadow: var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  }
-
   .focus-visible\:outline-1:focus-visible {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -3196,11 +3186,6 @@
 
   .focus-visible\:outline-ring:focus-visible {
     outline-color: var(--ring);
-  }
-
-  .focus-visible\:outline-none:focus-visible {
-    --tw-outline-style: none;
-    outline-style: none;
   }
 
   .disabled\:pointer-events-none:disabled {
@@ -4332,6 +4317,158 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #9e9e9e;
   background: lab(65.2% 0 0);
+}
+
+.PhoneInput {
+  align-items: center;
+  display: flex;
+}
+
+.PhoneInputInput {
+  height: calc(var(--spacing) * 10);
+  border-radius: calc(var(--radius)  - 2px);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-color: var(--input);
+  width: 100%;
+  padding-inline: calc(var(--spacing) * 3);
+  padding-block: calc(var(--spacing) * 2);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-ring-offset-color: var(--background);
+  background-color: #0000;
+  display: flex;
+}
+
+.PhoneInputInput::file-selector-button {
+  border-style: var(--tw-border-style);
+  border-width: 0;
+}
+
+.PhoneInputInput::file-selector-button {
+  background-color: #0000;
+}
+
+.PhoneInputInput::file-selector-button {
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+}
+
+.PhoneInputInput::file-selector-button {
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
+}
+
+.PhoneInputInput::placeholder {
+  color: var(--muted-foreground);
+}
+
+.PhoneInputInput:focus-visible {
+  --tw-ring-shadow: var(--tw-ring-inset, ) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  --tw-ring-color: var(--ring);
+  --tw-ring-offset-width: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset, ) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-outline-style: none;
+  outline-style: none;
+}
+
+.PhoneInputInput:disabled {
+  cursor: not-allowed;
+  opacity: .5;
+}
+
+.PhoneInputInput {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.PhoneInputCountry {
+  height: calc(var(--spacing) * 10);
+  border-radius: calc(var(--radius)  - 2px);
+  border-style: var(--tw-border-style);
+  border-width: 1px;
+  border-right-style: var(--tw-border-style);
+  border-right-width: 0;
+  border-color: var(--input);
+  background-color: #0000;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+.PhoneInputCountryIcon {
+  box-sizing: content-box;
+  height: calc(var(--spacing) * 4);
+  border-radius: calc(var(--radius)  - 4px);
+}
+
+.PhoneInputCountrySelectArrow {
+  margin-left: calc(var(--spacing) * 2);
+  height: calc(var(--spacing) * 4);
+  width: calc(var(--spacing) * 4);
+  opacity: .5;
+}
+
+.PhoneInputCountrySelect-menu {
+  z-index: 50;
+  margin-top: calc(var(--spacing) * 1);
+  max-height: calc(var(--spacing) * 60);
+  border-radius: calc(var(--radius)  - 2px);
+  border-style: var(--tw-border-style);
+  background-color: var(--popover);
+  padding: calc(var(--spacing) * 1);
+  color: var(--popover-foreground);
+  --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, #0000001a), 0 2px 4px -2px var(--tw-shadow-color, #0000001a);
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  border-width: 1px;
+  overflow: auto;
+}
+
+.PhoneInputCountryOption {
+  cursor: default;
+  border-radius: calc(var(--radius)  - 4px);
+  width: 100%;
+  padding-block: calc(var(--spacing) * 1.5);
+  padding-right: calc(var(--spacing) * 2);
+  padding-left: calc(var(--spacing) * 8);
+  font-size: var(--text-sm);
+  line-height: var(--tw-leading, var(--text-sm--line-height));
+  --tw-outline-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+  outline-style: none;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+
+@media (hover: hover) {
+  .PhoneInputCountryOption:hover {
+    background-color: var(--accent);
+  }
+}
+
+@media (hover: hover) {
+  .PhoneInputCountryOption:hover {
+    color: var(--accent-foreground);
+  }
+}
+
+.PhoneInputCountryOption[data-selected="true"] {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.PhoneInputCountryOption .PhoneInputCountryIcon {
+  left: calc(var(--spacing) * 2);
+  height: calc(var(--spacing) * 4);
+  width: calc(var(--spacing) * 6);
+  border-radius: calc(var(--radius)  - 4px);
+  position: absolute;
 }
 
 @property --tw-translate-x {

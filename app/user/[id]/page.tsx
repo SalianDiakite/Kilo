@@ -32,6 +32,7 @@ import {
   ThumbsUp,
   Weight,
   ArrowRight,
+  Eye,
   Edit3,
 } from "@/components/icons"
 import { WhatsAppIcon } from "@/components/icons"
@@ -49,13 +50,19 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
   useEffect(() => {
     const loadProfile = async () => {
       setLoading(true)
-      const userProfile = await fetchPublicProfile(id)
-      if (userProfile) {
-        setUser(userProfile)
-      } else {
+      try {
+        const userProfile = await fetchPublicProfile(id)
+        if (userProfile) {
+          setUser(userProfile)
+        } else {
+          notFound()
+        }
+      } catch (error) {
+        console.error("Failed to load profile:", error)
         notFound()
+      } finally {
+        setLoading(false)
       }
-      setLoading(false)
     }
     loadProfile()
   }, [id])
@@ -77,6 +84,8 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
       </div>
     )
   }
+
+  const isOwner = currentUser?.id === user.id
 
   const userTrips = trips.filter((t) => t.userId === user.id && t.status === "active")
   const userReviews = reviews.filter((r) => r.reviewedId === user.id)
@@ -158,6 +167,11 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
                 <div className="flex-1 text-center sm:text-left">
                   <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
                     <h1 className="text-2xl font-bold text-foreground">{user.name}</h1>
+                    {isOwner && (
+                      <Link href={`/public-profile/${user.id}`} className="text-sm text-accent underline ml-4">
+                        (Voir profil public)
+                      </Link>
+                    )}
                     {user.verified && (
                       <Badge className="bg-accent/10 text-accent border-accent/20 w-fit mx-auto sm:mx-0">
                         <Shield className="h-3 w-3 mr-1" />

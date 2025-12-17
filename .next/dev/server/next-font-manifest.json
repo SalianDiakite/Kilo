@@ -1,26 +1,10 @@
 {
   "app": {
-    "[project]/app/(protected)/dashboard/analytics/page": [
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/797e433ab948586e-s.p.dbea232f.woff2"
-    ],
-    "[project]/app/(protected)/dashboard/bookings/page": [
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/797e433ab948586e-s.p.dbea232f.woff2"
-    ],
     "[project]/app/(protected)/dashboard/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ],
-    "[project]/app/(protected)/dashboard/trips/page": [
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/797e433ab948586e-s.p.dbea232f.woff2"
-    ],
     "[project]/app/(protected)/messages/page": [
-      "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
-      "static/media/797e433ab948586e-s.p.dbea232f.woff2"
-    ],
-    "[project]/app/(protected)/notifications/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ],
@@ -32,11 +16,11 @@
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ],
-    "[project]/app/_not-found/page": [
+    "[project]/app/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ],
-    "[project]/app/page": [
+    "[project]/app/public-profile/[id]/page": [
       "static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2",
       "static/media/797e433ab948586e-s.p.dbea232f.woff2"
     ],

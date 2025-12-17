@@ -195,7 +195,8 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="relative h-16 w-16 rounded-full overflow-hidden flex-shrink-0">
+                  <Link href={`/public-profile/${trip.user.id}`} className="flex-shrink-0">
+                    <div className="relative h-16 w-16 rounded-full overflow-hidden">
                       <Image
                         src={trip.user.avatar || "/placeholder.svg?height=64&width=64&query=user avatar"}
                         alt={trip.user.name}
@@ -203,9 +204,12 @@ export default async function TripDetailPage({ params }: { params: Promise<{ id:
                         className="object-cover"
                       />
                     </div>
+                  </Link>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
+                        <Link href={`/public-profile/${trip.user.id}`} className="hover:underline">
                         <h3 className="font-semibold truncate">{trip.user.name}</h3>
+                      </Link>
                         {trip.user.verified && <Shield className="h-4 w-4 text-accent flex-shrink-0" />}
                       </div>
                       <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">

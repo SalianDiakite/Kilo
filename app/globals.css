@@ -154,3 +154,43 @@
 ::-webkit-scrollbar-thumb:hover {
   background: oklch(0.7 0 0);
 }
+
+/* Custom styles for react-phone-number-input to match shadcn/ui theme */
+.PhoneInput {
+  @apply flex items-center;
+}
+
+/* Style the input field itself */
+.PhoneInputInput {
+  @apply flex h-10 w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  /* Remove left border and radius to merge with country selector */
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Style the country select button part */
+.PhoneInputCountry {
+  @apply relative flex h-10 items-center rounded-md rounded-r-none border border-r-0 border-input bg-transparent;
+}
+
+.PhoneInputCountryIcon {
+  @apply box-content h-4 rounded-sm;
+}
+
+.PhoneInputCountrySelectArrow {
+  @apply ml-2 h-4 w-4 opacity-50;
+}
+
+/* Dropdown menu styling */
+.PhoneInputCountrySelect-menu {
+  @apply z-50 mt-1 max-h-60 overflow-auto rounded-md border bg-popover p-1 text-popover-foreground shadow-md;
+}
+
+.PhoneInputCountryOption {
+  @apply relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground;
+}
+
+.PhoneInputCountryOption .PhoneInputCountryIcon {
+  @apply absolute left-2 h-4 w-6 rounded-sm;
+}

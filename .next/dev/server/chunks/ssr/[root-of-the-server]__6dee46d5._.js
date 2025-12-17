@@ -2461,22 +2461,30 @@ async function TripDetailPage({ params }) {
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: "flex items-start gap-4 mb-4",
                                                         children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "relative h-16 w-16 rounded-full overflow-hidden flex-shrink-0",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
-                                                                    src: trip.user.avatar || "/placeholder.svg?height=64&width=64&query=user avatar",
-                                                                    alt: trip.user.name,
-                                                                    fill: true,
-                                                                    className: "object-cover"
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                                href: `/public-profile/${trip.user.id}`,
+                                                                className: "flex-shrink-0",
+                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "relative h-16 w-16 rounded-full overflow-hidden",
+                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                                        src: trip.user.avatar || "/placeholder.svg?height=64&width=64&query=user avatar",
+                                                                        alt: trip.user.name,
+                                                                        fill: true,
+                                                                        className: "object-cover"
+                                                                    }, void 0, false, {
+                                                                        fileName: "[project]/app/trips/[id]/page.tsx",
+                                                                        lineNumber: 200,
+                                                                        columnNumber: 23
+                                                                    }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/trips/[id]/page.tsx",
                                                                     lineNumber: 199,
-                                                                    columnNumber: 23
+                                                                    columnNumber: 21
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
                                                                 lineNumber: 198,
-                                                                columnNumber: 21
+                                                                columnNumber: 19
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                 className: "flex-1 min-w-0",
@@ -2484,25 +2492,33 @@ async function TripDetailPage({ params }) {
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                         className: "flex items-center gap-2 mb-1",
                                                                         children: [
-                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                                                className: "font-semibold truncate",
-                                                                                children: trip.user.name
+                                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
+                                                                                href: `/public-profile/${trip.user.id}`,
+                                                                                className: "hover:underline",
+                                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                                                                    className: "font-semibold truncate",
+                                                                                    children: trip.user.name
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/app/trips/[id]/page.tsx",
+                                                                                    lineNumber: 211,
+                                                                                    columnNumber: 25
+                                                                                }, this)
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                                lineNumber: 208,
+                                                                                lineNumber: 210,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             trip.user.verified && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$shield$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Shield$3e$__["Shield"], {
                                                                                 className: "h-4 w-4 text-accent flex-shrink-0"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                                lineNumber: 209,
+                                                                                lineNumber: 213,
                                                                                 columnNumber: 48
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                        lineNumber: 207,
+                                                                        lineNumber: 209,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2512,7 +2528,7 @@ async function TripDetailPage({ params }) {
                                                                                 className: "h-4 w-4 fill-warning text-warning"
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                                lineNumber: 212,
+                                                                                lineNumber: 216,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2520,7 +2536,7 @@ async function TripDetailPage({ params }) {
                                                                                 children: trip.user.rating
                                                                             }, void 0, false, {
                                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                                lineNumber: 213,
+                                                                                lineNumber: 217,
                                                                                 columnNumber: 25
                                                                             }, this),
                                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2531,13 +2547,13 @@ async function TripDetailPage({ params }) {
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                                lineNumber: 214,
+                                                                                lineNumber: 218,
                                                                                 columnNumber: 25
                                                                             }, this)
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                        lineNumber: 211,
+                                                                        lineNumber: 215,
                                                                         columnNumber: 23
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2548,13 +2564,13 @@ async function TripDetailPage({ params }) {
                                                                         ]
                                                                     }, void 0, true, {
                                                                         fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                        lineNumber: 216,
+                                                                        lineNumber: 220,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                lineNumber: 206,
+                                                                lineNumber: 208,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
@@ -2570,7 +2586,7 @@ async function TripDetailPage({ params }) {
                                                                 className: "h-4 w-4 text-accent"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                lineNumber: 222,
+                                                                lineNumber: 226,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2578,13 +2594,13 @@ async function TripDetailPage({ params }) {
                                                                 children: "Profil vérifié"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                lineNumber: 223,
+                                                                lineNumber: 227,
                                                                 columnNumber: 23
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/trips/[id]/page.tsx",
-                                                        lineNumber: 221,
+                                                        lineNumber: 225,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$trip$2f$trip$2d$contact$2d$actions$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["TripContactActions"], {
@@ -2597,7 +2613,7 @@ async function TripDetailPage({ params }) {
                                                         variant: "desktop"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/trips/[id]/page.tsx",
-                                                        lineNumber: 227,
+                                                        lineNumber: 231,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
@@ -2622,7 +2638,7 @@ async function TripDetailPage({ params }) {
                                                             className: "h-5 w-5 text-muted-foreground mt-0.5"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/trips/[id]/page.tsx",
-                                                            lineNumber: 243,
+                                                            lineNumber: 247,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2633,7 +2649,7 @@ async function TripDetailPage({ params }) {
                                                                     children: "Vérifiez toujours l'identité du voyageur avant de lui confier votre colis."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                    lineNumber: 245,
+                                                                    lineNumber: 249,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$react$2d$server$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"], {
@@ -2642,29 +2658,29 @@ async function TripDetailPage({ params }) {
                                                                     children: "Conseils de sécurité →"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/trips/[id]/page.tsx",
-                                                                    lineNumber: 246,
+                                                                    lineNumber: 250,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/trips/[id]/page.tsx",
-                                                            lineNumber: 244,
+                                                            lineNumber: 248,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/trips/[id]/page.tsx",
-                                                    lineNumber: 242,
+                                                    lineNumber: 246,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                lineNumber: 241,
+                                                lineNumber: 245,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/trips/[id]/page.tsx",
-                                            lineNumber: 240,
+                                            lineNumber: 244,
                                             columnNumber: 15
                                         }, this)
                                     ]
@@ -2699,12 +2715,12 @@ async function TripDetailPage({ params }) {
                                                 perKg: true
                                             }, void 0, false, {
                                                 fileName: "[project]/app/trips/[id]/page.tsx",
-                                                lineNumber: 262,
+                                                lineNumber: 266,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/trips/[id]/page.tsx",
-                                            lineNumber: 261,
+                                            lineNumber: 265,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2715,13 +2731,13 @@ async function TripDetailPage({ params }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/trips/[id]/page.tsx",
-                                            lineNumber: 268,
+                                            lineNumber: 272,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/trips/[id]/page.tsx",
-                                    lineNumber: 260,
+                                    lineNumber: 264,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$trip$2f$trip$2d$contact$2d$actions$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["TripContactActions"], {
@@ -2734,18 +2750,18 @@ async function TripDetailPage({ params }) {
                                     variant: "mobile"
                                 }, void 0, false, {
                                     fileName: "[project]/app/trips/[id]/page.tsx",
-                                    lineNumber: 270,
+                                    lineNumber: 274,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/trips/[id]/page.tsx",
-                            lineNumber: 259,
+                            lineNumber: 263,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/trips/[id]/page.tsx",
-                        lineNumber: 258,
+                        lineNumber: 262,
                         columnNumber: 9
                     }, this)
                 ]
@@ -2756,12 +2772,12 @@ async function TripDetailPage({ params }) {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$footer$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Footer"], {}, void 0, false, {
                 fileName: "[project]/app/trips/[id]/page.tsx",
-                lineNumber: 282,
+                lineNumber: 286,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$mobile$2d$nav$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["MobileNav"], {}, void 0, false, {
                 fileName: "[project]/app/trips/[id]/page.tsx",
-                lineNumber: 283,
+                lineNumber: 287,
                 columnNumber: 7
             }, this)
         ]

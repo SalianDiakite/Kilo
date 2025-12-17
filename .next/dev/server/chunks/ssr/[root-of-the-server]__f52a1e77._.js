@@ -1750,6 +1750,261 @@ const translations = {
     "common.inTransit": {
         fr: "En transit",
         en: "In transit"
+    },
+    // Profile Edit
+    "profile.edit.title": {
+        fr: "Modifier le profil",
+        en: "Edit profile"
+    },
+    "profile.edit.subtitle": {
+        fr: "Mettez à jour vos informations",
+        en: "Update your information"
+    },
+    "profile.edit.profilePicture": {
+        fr: "Photo de profil",
+        en: "Profile picture"
+    },
+    "profile.edit.profilePictureDescription": {
+        fr: "Votre photo sera visible par tous les utilisateurs",
+        en: "Your photo will be visible to all users"
+    },
+    "profile.edit.uploading": {
+        fr: "Chargement...",
+        en: "Uploading..."
+    },
+    "profile.edit.changePicture": {
+        fr: "Changer la photo",
+        en: "Change photo"
+    },
+    "profile.edit.pictureFormat": {
+        fr: "JPG, PNG ou GIF. Max 5MB.",
+        en: "JPG, PNG or GIF. Max 5MB."
+    },
+    "profile.edit.personalInfo": {
+        fr: "Informations personnelles",
+        en: "Personal information"
+    },
+    "profile.edit.fullName": {
+        fr: "Nom complet",
+        en: "Full name"
+    },
+    "profile.edit.email": {
+        fr: "Email",
+        en: "Email"
+    },
+    "profile.edit.phone": {
+        fr: "Téléphone",
+        en: "Phone"
+    },
+    "profile.edit.phoneNumber": {
+        fr: "Numéro de téléphone",
+        en: "Phone number"
+    },
+    "profile.edit.bio": {
+        fr: "Bio",
+        en: "Bio"
+    },
+    "profile.edit.bioPlaceholder": {
+        fr: "Parlez un peu de vous...",
+        en: "Tell us a little about yourself..."
+    },
+    "profile.edit.characters": {
+        fr: "caractères",
+        en: "characters"
+    },
+    "profile.edit.spokenLanguages": {
+        fr: "Langues parlées",
+        en: "Spoken languages"
+    },
+    "profile.edit.spokenLanguagesDescription": {
+        fr: "Indiquez les langues que vous parlez",
+        en: "Indicate the languages you speak"
+    },
+    "profile.edit.addLanguage": {
+        fr: "Ajouter une langue",
+        en: "Add a language"
+    },
+    "profile.edit.saving": {
+        fr: "Sauvegarde...",
+        en: "Saving..."
+    },
+    "profile.edit.save": {
+        fr: "Enregistrer",
+        en: "Save"
+    },
+    "profile.edit.loadingProfile": {
+        fr: "Chargement du profil...",
+        en: "Loading profile..."
+    },
+    // Languages
+    "languages.french": {
+        fr: "Français",
+        en: "French"
+    },
+    "languages.english": {
+        fr: "Anglais",
+        en: "English"
+    },
+    "languages.spanish": {
+        fr: "Espagnol",
+        en: "Spanish"
+    },
+    "languages.arabic": {
+        fr: "Arabe",
+        en: "Arabic"
+    },
+    "languages.portuguese": {
+        fr: "Portugais",
+        en: "Portuguese"
+    },
+    "languages.german": {
+        fr: "Allemand",
+        en: "German"
+    },
+    "languages.italian": {
+        fr: "Italien",
+        en: "Italian"
+    },
+    "languages.wolof": {
+        fr: "Wolof",
+        en: "Wolof"
+    },
+    "languages.bambara": {
+        fr: "Bambara",
+        en: "Bambara"
+    },
+    // Public Profile
+    "profile.public.loading": {
+        fr: "Chargement du profil...",
+        en: "Loading profile..."
+    },
+    "profile.public.backToTrips": {
+        fr: "Retour aux trajets",
+        en: "Back to trips"
+    },
+    "profile.public.trips": {
+        fr: "Trajets",
+        en: "Trips"
+    },
+    "profile.public.reviews": {
+        fr: "Avis",
+        en: "Reviews"
+    },
+    "profile.public.loadMore": {
+        fr: "Charger plus",
+        en: "Load more"
+    },
+    "profile.public.noActiveTrips": {
+        fr: "Aucun trajet actif",
+        en: "No active trips"
+    },
+    "profile.public.noActiveTripsDescription": {
+        fr: "Ce voyageur n'a pas de trajet disponible pour le moment",
+        en: "This traveler does not have any trips available at the moment"
+    },
+    "profile.public.totalReviews": {
+        fr: "avis au total",
+        en: "total reviews"
+    },
+    "profile.public.noReviews": {
+        fr: "Aucun avis",
+        en: "No reviews"
+    },
+    "profile.public.noReviewsDescription": {
+        fr: "Ce voyageur n'a pas encore reçu d'avis",
+        en: "This traveler has not received any reviews yet"
+    },
+    "profile.public.beFirstToReview": {
+        fr: "Soyez le premier à laisser un avis",
+        en: "Be the first to leave a review"
+    },
+    "profile.public.verified": {
+        fr: "Vérifié",
+        en: "Verified"
+    },
+    "profile.public.review": {
+        fr: "avis",
+        en: "review"
+    },
+    "profile.public.reviewsCount": {
+        fr: "avis",
+        en: "reviews"
+    },
+    "profile.public.memberSince": {
+        fr: "Membre depuis",
+        en: "Member since"
+    },
+    "profile.public.responds": {
+        fr: "Répond",
+        en: "Responds"
+    },
+    "profile.public.contactApp": {
+        fr: "Contacter via l'app",
+        en: "Contact via app"
+    },
+    "profile.public.contactWhatsApp": {
+        fr: "Contacter via WhatsApp",
+        en: "Contact via WhatsApp"
+    },
+    "profile.public.leaveReview": {
+        fr: "Laisser un avis",
+        en: "Leave a review"
+    },
+    "profile.public.rate": {
+        fr: "Évaluer",
+        en: "Rate"
+    },
+    "profile.public.shareExperience": {
+        fr: "Partagez votre expérience avec ce voyageur",
+        en: "Share your experience with this traveler"
+    },
+    "profile.public.travelerCarrier": {
+        fr: "Voyageur/Transporteur",
+        en: "Traveler/Carrier"
+    },
+    "profile.public.yourRating": {
+        fr: "Votre note",
+        en: "Your rating"
+    },
+    "profile.public.rating1": {
+        fr: "Très insatisfait",
+        en: "Very unsatisfied"
+    },
+    "profile.public.rating2": {
+        fr: "Insatisfait",
+        en: "Unsatisfied"
+    },
+    "profile.public.rating3": {
+        fr: "Correct",
+        en: "Okay"
+    },
+    "profile.public.rating4": {
+        fr: "Satisfait",
+        en: "Satisfied"
+    },
+    "profile.public.rating5": {
+        fr: "Excellent",
+        en: "Excellent"
+    },
+    "profile.public.yourComment": {
+        fr: "Votre commentaire",
+        en: "Your comment"
+    },
+    "profile.public.commentPlaceholder": {
+        fr: "Comment s'est passée votre expérience ? Fiabilité, communication, ponctualité...",
+        en: "How was your experience? Reliability, communication, punctuality..."
+    },
+    "profile.public.publishReview": {
+        fr: "Publier l'avis",
+        en: "Publish review"
+    },
+    "profile.public.perKg": {
+        fr: "par kg",
+        en: "per kg"
+    },
+    "profile.public.useful": {
+        fr: "Utile",
+        en: "Useful"
     }
 };
 function getTranslation(key, lang) {

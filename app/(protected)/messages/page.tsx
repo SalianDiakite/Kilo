@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation"
 
 import { useState, useRef, useEffect, useCallback } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
@@ -216,7 +217,11 @@ function MessagesPage({ initialConversationId }: { initialConversationId: string
                         )}
                         onClick={() => setSelectedConversationId(conversation.id)}
                       >
-                        <div className="relative flex-shrink-0">
+                        <Link
+                          href={`/public-profile/${otherUser.id}`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="relative flex-shrink-0"
+                        >
                           <div className="relative h-12 w-12 rounded-full overflow-hidden">
                             <Image
                               src={userAvatar || "/placeholder.svg?height=48&width=48&query=user"}
@@ -226,18 +231,20 @@ function MessagesPage({ initialConversationId }: { initialConversationId: string
                             />
                           </div>
                           <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-success rounded-full border-2 border-card" />
-                        </div>
+                        </Link>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center justify-between mb-1">
                             <div className="flex items-center gap-2">
-                              <span
+                              <Link
+                                href={`/public-profile/${otherUser.id}`}
+                                onClick={(e) => e.stopPropagation()}
                                 className={cn(
                                   "font-medium text-sm truncate",
                                   hasUnread ? "text-foreground" : "text-foreground",
                                 )}
                               >
                                 {userName}
-                              </span>
+                              </Link>
                               {userVerified && <Shield className="h-3.5 w-3.5 text-accent" />}
                             </div>
                             <span className="text-xs text-muted-foreground flex-shrink-0">
@@ -302,7 +309,7 @@ function MessagesPage({ initialConversationId }: { initialConversationId: string
                       >
                         <ChevronLeft className="h-5 w-5" />
                       </Button>
-                      <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                      <Link href={`/public-profile/${otherParticipant.id}`} className="relative h-10 w-10 rounded-full overflow-hidden">
                         <Image
                           src={
                             otherParticipant.avatar ||
@@ -312,12 +319,14 @@ function MessagesPage({ initialConversationId }: { initialConversationId: string
                           fill
                           className="object-cover"
                         />
-                      </div>
+                      </Link>
                       <div>
                         <div className="flex items-center gap-2">
-                          <h3 className="font-semibold text-sm text-foreground">
-                            {otherParticipant.name}
-                          </h3>
+                          <Link href={`/public-profile/${otherParticipant.id}`}>
+                            <h3 className="font-semibold text-sm text-foreground">
+                              {otherParticipant.name}
+                            </h3>
+                          </Link>
                           {otherParticipant.is_verified && (
                             <Shield className="h-3.5 w-3.5 text-accent" />
                           )}

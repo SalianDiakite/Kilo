@@ -37,15 +37,12 @@ async function searchProfiles(query, limit = 10) {
 }
 async function getPublicProfileById(userId) {
     const supabase = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$supabase$2f$client$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createClient"])();
-    const { data, error } = await supabase.rpc('get_public_profile_by_id', {
-        user_id_in: userId
-    });
+    const { data, error } = await supabase.from("profiles").select("id, name, avatar, bio, created_at, rating, review_count, verified, languages, response_time").eq("id", userId).single();
     if (error) {
-        console.error('Error fetching public profile:', error);
+        console.error("Error fetching public profile:", error);
         throw error;
     }
-    // RPC returns an array, we expect a single object or an empty array
-    return data && data.length > 0 ? data[0] : null;
+    return data;
 }
 }),
 "[project]/lib/db/storage.ts [app-ssr] (ecmascript)", ((__turbopack_context__) => {

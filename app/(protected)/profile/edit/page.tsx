@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useData } from "@/lib/data-provider"
+import { useLanguage } from "@/lib/language-context"
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"
@@ -21,6 +22,7 @@ import "react-phone-number-input/style.css"
 
 export default function EditProfilePage() {
   const { currentUser, updateUserProfile, uploadProfileAvatar } = useData()
+  const { t } = useLanguage()
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -116,7 +118,7 @@ export default function EditProfilePage() {
       <div className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1 flex items-center justify-center">
-          <p>Chargement du profil...</p>
+          <p>{t("profile.edit.loadingProfile")}</p>
         </main>
         <Footer />
         <MobileNav />
@@ -137,8 +139,8 @@ export default function EditProfilePage() {
               </Button>
             </Link>
             <div>
-              <h1 className="text-2xl font-bold">Modifier le profil</h1>
-              <p className="text-muted-foreground">Mettez à jour vos informations</p>
+              <h1 className="text-2xl font-bold">{t("profile.edit.title")}</h1>
+              <p className="text-muted-foreground">{t("profile.edit.subtitle")}</p>
             </div>
           </div>
 
@@ -146,8 +148,8 @@ export default function EditProfilePage() {
             {/* Profile Photo */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Photo de profil</CardTitle>
-                <CardDescription>Votre photo sera visible par tous les utilisateurs</CardDescription>
+                <CardTitle className="text-base">{t("profile.edit.profilePicture")}</CardTitle>
+                <CardDescription>{t("profile.edit.profilePictureDescription")}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-6">
@@ -182,9 +184,9 @@ export default function EditProfilePage() {
                   </div>
                   <div className="space-y-2">
                     <Button variant="outline" size="sm" onClick={handleAvatarClick} disabled={isUploading}>
-                      {isUploading ? "Chargement..." : "Changer la photo"}
+                      {isUploading ? t("profile.edit.uploading") : t("profile.edit.changePicture")}
                     </Button>
-                    <p className="text-xs text-muted-foreground">JPG, PNG ou GIF. Max 5MB.</p>
+                    <p className="text-xs text-muted-foreground">{t("profile.edit.pictureFormat")}</p>
                   </div>
                 </div>
               </CardContent>
@@ -193,11 +195,11 @@ export default function EditProfilePage() {
             {/* Personal Info */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Informations personnelles</CardTitle>
+                <CardTitle className="text-base">{t("profile.edit.personalInfo")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Nom complet</Label>
+                  <Label htmlFor="name">{t("profile.edit.fullName")}</Label>
                   <Input
                     id="name"
                     value={formData.name}
@@ -205,7 +207,7 @@ export default function EditProfilePage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t("profile.edit.email")}</Label>
                   <Input
                     id="email"
                     type="email"
@@ -215,27 +217,28 @@ export default function EditProfilePage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Téléphone</Label>
+                  <Label htmlFor="phone">{t("profile.edit.phone")}</Label>
                   <div className="phone-input-container">
                     <PhoneInput
-                      placeholder="Numéro de téléphone"
+                      placeholder={t("profile.edit.phoneNumber")}
                       value={formData.phone}
                       onChange={(value: string | undefined) => setFormData({ ...formData, phone: value || "" })}
                       defaultCountry="FR"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="bio">Bio</Label>
+                  <Label htmlFor="bio">{t("profile.edit.bio")}</Label>
                   <Textarea
                     id="bio"
-                    placeholder="Parlez un peu de vous..."
+                    placeholder={t("profile.edit.bioPlaceholder")}
                     value={formData.bio}
                     onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
                     rows={4}
                   />
-                  <p className="text-xs text-muted-foreground">{formData.bio.length}/500 caractères</p>
+                  <p className="text-xs text-muted-foreground">
+                    {formData.bio.length}/500 {t("profile.edit.characters")}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -243,8 +246,8 @@ export default function EditProfilePage() {
             {/* Languages */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-base">Langues parlées</CardTitle>
-                <CardDescription>Indiquez les langues que vous parlez</CardDescription>
+                <CardTitle className="text-base">{t("profile.edit.spokenLanguages")}</CardTitle>
+                <CardDescription>{t("profile.edit.spokenLanguagesDescription")}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex flex-wrap gap-2">
@@ -260,18 +263,18 @@ export default function EditProfilePage() {
                 <div className="flex gap-2">
                   <Select value={newLanguage} onValueChange={setNewLanguage}>
                     <SelectTrigger className="flex-1">
-                      <SelectValue placeholder="Ajouter une langue" />
+                      <SelectValue placeholder={t("profile.edit.addLanguage")} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Français">Français</SelectItem>
-                      <SelectItem value="Anglais">Anglais</SelectItem>
-                      <SelectItem value="Espagnol">Espagnol</SelectItem>
-                      <SelectItem value="Arabe">Arabe</SelectItem>
-                      <SelectItem value="Portugais">Portugais</SelectItem>
-                      <SelectItem value="Allemand">Allemand</SelectItem>
-                      <SelectItem value="Italien">Italien</SelectItem>
-                      <SelectItem value="Wolof">Wolof</SelectItem>
-                      <SelectItem value="Bambara">Bambara</SelectItem>
+                      <SelectItem value="Français">{t("languages.french")}</SelectItem>
+                      <SelectItem value="Anglais">{t("languages.english")}</SelectItem>
+                      <SelectItem value="Espagnol">{t("languages.spanish")}</SelectItem>
+                      <SelectItem value="Arabe">{t("languages.arabic")}</SelectItem>
+                      <SelectItem value="Portugais">{t("languages.portuguese")}</SelectItem>
+                      <SelectItem value="Allemand">{t("languages.german")}</SelectItem>
+                      <SelectItem value="Italien">{t("languages.italian")}</SelectItem>
+                      <SelectItem value="Wolof">{t("languages.wolof")}</SelectItem>
+                      <SelectItem value="Bambara">{t("languages.bambara")}</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button variant="outline" size="icon" onClick={handleAddLanguage} disabled={!newLanguage}>
@@ -285,7 +288,7 @@ export default function EditProfilePage() {
             <div className="flex gap-3">
               <Link href="/profile" className="flex-1">
                 <Button variant="outline" className="w-full bg-transparent">
-                  Annuler
+                  {t("common.cancel")}
                 </Button>
               </Link>
               <Button onClick={handleSave} disabled={isSaving || isUploading} className="flex-1 gap-2">
@@ -294,7 +297,7 @@ export default function EditProfilePage() {
                 ) : (
                   <Check className="h-4 w-4" />
                 )}
-                {isSaving ? "Sauvegarde..." : "Enregistrer"}
+                {isSaving ? t("profile.edit.saving") : t("profile.edit.save")}
               </Button>
             </div>
           </div>
