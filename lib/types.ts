@@ -11,6 +11,9 @@ export interface User {
   rating: number
   reviewCount: number
   verified: boolean
+  isEmailVerified?: boolean
+  isPhoneVerified?: boolean
+  isIdentityVerified?: boolean
   createdAt: Date
   languages?: string[]
   responseRate?: number

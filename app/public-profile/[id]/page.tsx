@@ -145,13 +145,14 @@ export default function UserProfilePage({ params }: { params: Promise<{ id: stri
       <Header />
       <main className="flex-1 pb-20 md:pb-0 bg-secondary/20">
         <div className="container mx-auto px-4 py-6 max-w-6xl">
-          <Link
-            href="/trips"
+          <Button
+            onClick={() => window.history.back()}
+            variant="link"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground mb-6"
           >
             <ChevronLeft className="h-4 w-4" />
             {t("profile.public.backToTrips")}
-          </Link>
+          </Button>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Sidebar: Profile Card */}

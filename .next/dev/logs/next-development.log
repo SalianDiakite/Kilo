@@ -1,285 +1,2284 @@
-[00:00:02.614] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
-[00:00:02.759] Server  LOG      ✓ Ready in 2.4s
-[00:01:55.323] Server  LOG      ○ Compiling /profile ...
-[00:01:56.303] Server  LOG     DataProvider - No profile available to derive currentUser
-[00:01:56.338] Server  LOG     DataProvider - No profile available to derive currentUser
-[00:01:56.555] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:56.946] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:01:56.946] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:01:56.946] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:01:56.946] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:01:56.946] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:56.946] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/profile","route":"/profile"}
-[00:01:56.946] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926206258}
-[00:01:56.946] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[00:01:56.946] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:01:56.946] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:01:56.946] Browser WARN    Image with src "/placeholder.svg?height=96&width=96&query=user avatar" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[00:00:03.341] Server  WARN     ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+[00:00:03.492] Server  LOG      ✓ Ready in 3.1s
+[00:00:10.270] Server  LOG      ○ Compiling /trips ...
+[00:00:16.588] Server  LOG     DataProvider - No profile available to derive currentUser
+[00:00:16.879] Server  LOG     DataProvider - No profile available to derive currentUser
+[00:00:17.232] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:17.384] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:17.384] Browser LOG     DataProvider - No profile available to derive currentUser
+[00:00:17.385] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[00:00:17.385] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:17.385] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/trips","route":"/trips"}
+[00:00:17.385] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765980796647}
+[00:00:17.773] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:17.773] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:17.773] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:17.773] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:18.087] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:18.087] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:18.087] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:18.087] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[00:00:18.087] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:18.087] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:27.722] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765980807022}
+[00:00:28.286] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:28.286] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:28.455] Browser WARN    Currency conversion warning: € or CAD not found
+[00:00:28.455] Browser WARN    Currency conversion warning: € or CAD not found
+[03:46:43.514] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[03:46:43.514] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:46:43.514] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:46:43.514] Browser WARN    Currency conversion warning: € or CAD not found
+[03:46:43.514] Browser WARN    Currency conversion warning: € or CAD not found
+[03:46:44.933] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:46:44.933] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:46:44.933] Browser WARN    Currency conversion warning: € or CAD not found
+[03:46:44.933] Browser WARN    Currency conversion warning: € or CAD not found
+[03:46:58.807] Server  LOG     DataProvider - No profile available to derive currentUser
+[03:46:59.114] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[03:46:59.306] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:46:59.306] Browser LOG     DataProvider - No profile available to derive currentUser
+[03:46:59.306] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[03:46:59.306] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.306] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.475] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.475] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.475] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:46:59.475] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[03:46:59.475] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[03:46:59.475] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994394867}
+[03:46:59.475] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.475] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[03:46:59.475] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:01:57.478] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:01:57.478] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:01:57.478] Browser WARN    Currency conversion warning: € or CAD not found
-[00:01:57.478] Browser WARN    Currency conversion warning: € or CAD not found
-[00:01:57.478] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:01:57.478] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:01:57.478] Browser WARN    Currency conversion warning: € or CAD not found
-[00:01:57.478] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:21.736] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926231075}
-[00:02:21.736] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:21.736] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:25.497] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926234896}
-[00:02:26.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:26.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:26.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:02:26.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:40.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:40.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:40.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:40.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:44.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:44.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:44.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:44.610] Browser WARN    Currency conversion warning: € or CAD not found
-[00:04:56.561] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926385957}
-[00:04:56.992] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:04:56.992] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:05:12.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:05:12.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:05:12.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:05:12.225] Browser WARN    Currency conversion warning: € or CAD not found
-[00:05:12.225] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926401625}
-[00:05:16.133] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926405536}
-[00:05:16.237] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:05:16.237] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:06:26.696] Server  LOG      ✓ Compiled in 65ms
-[00:07:02.281] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:02.281] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:02.281] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:02.281] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:02.281] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926511672}
-[00:07:06.557] Server  LOG     DataProvider - No profile available to derive currentUser
-[00:07:06.754] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:07.332] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:07:07.332] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:07:07.332] Browser LOG     useAuth - Auth state changed: SIGNED_IN
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:07:07.332] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","route":"/trips/[id]"}
-[00:07:07.332] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926516309}
-[00:07:07.332] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.332] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:07:07.363] Server  WARN    Currency conversion warning: € or EUR not found
-[00:07:07.387] Server  WARN    Currency conversion warning: € or EUR not found
-[00:07:07.549] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:07.549] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:07.549] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:07.549] Browser WARN    Currency conversion warning: € or CAD not found
-[00:07:11.275] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926520679}
-[00:07:11.396] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:07:11.396] Browser ERROR   Error fetching public profile: {"code":"PGRST202","details":"Searched for the function public.get_public_profile_by_id with parameter user_id_in or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.","hint":null,"message":"Could not find the function public.get_public_profile_by_id(user_id_in) in the schema cache"}
-[00:10:00.564] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/db/profiles.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:10:00.594] Server  LOG      ✓ Compiled in 69ms
-[00:10:01.149] Server  LOG     DataProvider - No profile available to derive currentUser
-[00:10:01.317] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:10:01.564] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:10:01.564] Browser LOG     DataProvider - No profile available to derive currentUser
-[00:10:01.564] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:10:01.564] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:10:01.564] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[00:10:01.564] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:10:01.564] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[00:10:01.564] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:10:01.564] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","route":"/public-profile/[id]"}
-[00:10:01.564] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765926690963}
-[00:10:02.174] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:10:02.174] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:10:02.174] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:10:02.174] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:10:02.174] Browser WARN    Image with src "/placeholder.svg?height=128&width=128&query=user avatar" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or EUR not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:00.380] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:08.499] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994403850}
+[03:47:08.499] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:08.499] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:21.145] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994416507}
+[03:47:21.145] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:21.145] Browser WARN    Currency conversion warning: € or CAD not found
+[03:47:27.609] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994423015}
+[03:47:31.346] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/trips color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/trips","o":"http://localhost:3000/dashboard/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994426752}
+[03:47:34.269] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/bookings color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/bookings","o":"http://localhost:3000/dashboard/bookings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994429678}
+[03:47:39.894] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/earnings color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/earnings","o":"http://localhost:3000/dashboard/earnings","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994435298}
+[03:47:42.882] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/analytics color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/analytics","o":"http://localhost:3000/dashboard/analytics","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994438290}
+[03:47:51.392] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994446734}
+[03:47:51.392] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[03:48:09.937] Browser WARN    Currency conversion warning: € or CAD not found
+[03:48:09.937] Browser WARN    Currency conversion warning: € or CAD not found
+[03:48:09.937] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994465347}
+[03:48:19.376] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/reviews color: rgb(120, 120, 120) color: inherit {"dp":"/profile/reviews","o":"http://localhost:3000/profile/reviews","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994474778}
+[03:49:13.835] Browser WARN    Currency conversion warning: € or CAD not found
+[03:49:13.835] Browser WARN    Currency conversion warning: € or CAD not found
+[03:49:13.835] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994529230}
+[03:50:29.812] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/reviews color: rgb(120, 120, 120) color: inherit {"dp":"/profile/reviews","o":"http://localhost:3000/profile/reviews","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994605223}
+[03:52:31.514] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765994726925}
+[03:52:32.498] Browser WARN    Currency conversion warning: € or CAD not found
+[03:52:32.498] Browser WARN    Currency conversion warning: € or CAD not found
+[03:52:32.798] Browser WARN    Currency conversion warning: € or CAD not found
+[03:52:32.798] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:36.507] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[07:42:36.508] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:36.508] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:36.508] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:36.508] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:37.201] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:37.202] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:37.202] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:37.202] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:40.757] Server  LOG     DataProvider - No profile available to derive currentUser
+[07:42:41.040] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[07:42:41.267] Browser LOG     DataProvider - No profile available to derive currentUser
+[07:42:41.267] Browser LOG     DataProvider - No profile available to derive currentUser
+[07:42:41.267] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[07:42:41.267] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[07:42:41.267] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[07:42:41.267] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008536669}
+[07:42:41.432] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:41.433] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:41.650] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:41.650] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:41.817] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:41.817] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[07:42:43.234] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:43.234] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:43.497] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:43.497] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:43.683] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[00:22:58.994] Server  LOG      ✓ Compiled in 107ms
-[00:23:03.842] Server  LOG      ✓ Compiled in 102ms
-[00:23:16.972] Server  LOG      ✓ Compiled in 110ms
-[00:24:22.200] Browser WARN    Currency conversion warning: € or CAD not found
-[00:24:22.200] Browser WARN    Currency conversion warning: € or CAD not found
-[00:24:22.200] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765927551603}
-[00:25:24.860] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765927614250}
-[00:27:01.752] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
-[00:27:01.752] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:27:01.752] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:27:01.941] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[00:27:01.941] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:26:48.588] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
-[01:26:48.588] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:26:48.588] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:26:49.126] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:26:49.126] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:31:08.856] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931558261}
-[01:31:09.369] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:09.369] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:09.369] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:09.369] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:17.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931567397}
-[01:31:20.336] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931569727}
-[01:31:20.539] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:20.539] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:20.539] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:20.539] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:22.147] Server  LOG      ✓ Compiled in 99ms
-[01:31:22.573] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931571954}
-[01:31:45.090] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931594447}
-[01:31:45.090] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:45.091] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:49.187] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931598514}
-[01:31:49.420] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:49.420] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:49.420] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:49.420] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:57.172] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931606562}
-[01:31:57.454] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:57.454] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:57.454] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:57.454] Browser WARN    Currency conversion warning: € or CAD not found
-[01:31:59.315] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765931608698}
-[01:51:39.355] Browser LOG     useAuth - Auth state changed: SIGNED_IN
-[01:51:39.355] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:51:39.355] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:51:40.347] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:51:40.347] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:51:43.905] Browser WARN    Currency conversion warning: € or CAD not found
-[01:51:43.905] Browser WARN    Currency conversion warning: € or CAD not found
-[01:51:43.905] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765932793233}
-[01:51:48.041] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765932797360}
-[01:51:48.414] Browser WARN    Currency conversion warning: € or CAD not found
-[01:51:48.414] Browser WARN    Currency conversion warning: € or CAD not found
-[01:51:48.657] Browser WARN    Currency conversion warning: € or CAD not found
-[01:51:48.657] Browser WARN    Currency conversion warning: € or CAD not found
-[01:52:05.727] Browser WARN    Currency conversion warning: € or CAD not found
-[01:52:05.727] Browser WARN    Currency conversion warning: € or CAD not found
-[01:52:05.728] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765932815130}
-[01:57:30.289] Browser LOG     useAuth - Auth state changed: SIGNED_IN
-[01:57:30.289] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:57:30.289] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:57:30.289] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:30.289] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:30.787] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:57:30.787] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[01:57:30.787] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:30.787] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:35.824] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:35.824] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:35.824] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933145152}
-[01:57:38.881] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933148281}
-[01:57:39.407] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:39.407] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:39.407] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:39.407] Browser WARN    Currency conversion warning: € or CAD not found
-[01:57:42.778] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933152178}
-[01:58:06.480] Server  LOG      ✓ Compiled in 71ms
-[01:58:26.601] Server  LOG      ✓ Compiled in 176ms
-[02:01:47.978] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933397383}
-[02:01:48.372] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[02:01:53.225] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933402625}
-[02:02:07.027] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[02:02:07.041] Server  LOG      ✓ Compiled in 223ms
-[02:02:07.857] Server  LOG     DataProvider - No profile available to derive currentUser
-[02:02:08.197] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:02:08.554] Browser LOG     DataProvider - No profile available to derive currentUser
-[02:02:08.554] Browser LOG     DataProvider - No profile available to derive currentUser
-[02:02:08.554] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:02:08.554] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:02:08.554] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[02:02:08.554] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:02:08.554] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:02:08.554] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[02:02:08.554] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0","route":"/public-profile/[id]"}
-[02:02:08.554] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933417859}
-[02:02:08.554] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:02:08.554] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:02:08.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:02:08.972] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:02:11.453] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933420798}
-[02:02:11.454] Browser WARN    Currency conversion warning: € or CAD not found
-[02:02:11.454] Browser WARN    Currency conversion warning: € or CAD not found
-[02:02:27.758] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933437153}
-[02:02:28.145] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[02:02:34.550] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933443953}
-[02:02:56.482] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933465781}
-[02:02:56.679] Browser WARN    Currency conversion warning: € or CAD not found
-[02:02:56.679] Browser WARN    Currency conversion warning: € or CAD not found
-[02:02:56.679] Browser WARN    Currency conversion warning: € or CAD not found
-[02:02:56.679] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:02.517] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[02:03:02.524] Server  LOG      ✓ Compiled in 214ms
-[02:03:03.748] Server  LOG     DataProvider - No profile available to derive currentUser
-[02:03:04.461] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[02:03:04.621] Browser LOG     DataProvider - No profile available to derive currentUser
-[02:03:04.621] Browser LOG     DataProvider - No profile available to derive currentUser
-[02:03:04.799] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:03:04.799] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:03:04.799] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[02:03:04.799] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[02:03:04.799] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933474192}
-[02:03:04.799] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
-[02:03:04.799] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:03:04.799] Browser LOG     DataProvider - Using auth user fallback while profile loads
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:03:05.089] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or EUR not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:05.089] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:03:05.089] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
-[02:03:05.089] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:05.089] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:08.910] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+[07:42:52.865] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008548271}
+[07:42:55.417] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:55.417] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:55.417] Browser WARN    Currency conversion warning: € or CAD not found
+[07:42:55.417] Browser WARN    Currency conversion warning: € or CAD not found
+[07:43:02.967] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008558378}
+[07:43:07.813] Browser WARN    Currency conversion warning: € or CAD not found
+[07:43:07.813] Browser WARN    Currency conversion warning: € or CAD not found
+[07:43:07.813] Browser WARN    Currency conversion warning: € or CAD not found
+[07:43:07.813] Browser WARN    Currency conversion warning: € or CAD not found
+[07:43:07.813] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008563208}
+[07:43:16.299] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008571630}
+[07:43:16.299] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[07:43:20.197] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/697fe63e-a8f8-4ab8-9d10-1f92491e0de0","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008575596}
+[07:43:24.793] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/messages color: rgb(120, 120, 120) color: inherit {"dp":"/messages","o":"http://localhost:3000/messages","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766008580152}
+[07:43:24.793] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[08:01:55.281] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:01:55.281] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:01:55.281] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:01:55.281] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:01:56.264] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:01:56.264] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:03:52.815] Browser WARN    Currency conversion warning: € or CAD not found
+[08:03:52.815] Browser WARN    Currency conversion warning: € or CAD not found
+[08:03:52.815] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766009808219}
+[08:03:56.478] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/reviews color: rgb(120, 120, 120) color: inherit {"dp":"/profile/reviews","o":"http://localhost:3000/profile/reviews","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766009811875}
+[08:04:02.462] Browser WARN    Currency conversion warning: € or CAD not found
+[08:04:02.462] Browser WARN    Currency conversion warning: € or CAD not found
+[08:04:02.462] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766009817865}
+[08:06:36.897] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/reviews color: rgb(120, 120, 120) color: inherit {"dp":"/profile/reviews","o":"http://localhost:3000/profile/reviews","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766009972298}
+[08:06:56.318] Browser WARN    Currency conversion warning: € or CAD not found
+[08:06:56.318] Browser WARN    Currency conversion warning: € or CAD not found
+[08:06:56.318] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766009991729}
+[08:07:39.493] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766010034856}
+[08:07:39.493] Browser WARN    Currency conversion warning: € or CAD not found
+[08:07:39.493] Browser WARN    Currency conversion warning: € or CAD not found
+[08:07:46.882] Browser WARN    Currency conversion warning: € or CAD not found
+[08:07:46.882] Browser WARN    Currency conversion warning: € or CAD not found
+[08:07:51.112] Browser WARN    Currency conversion warning: € or CAD not found
+[08:07:51.112] Browser WARN    Currency conversion warning: € or CAD not found
+[08:10:08.311] Server  LOG     DataProvider - No profile available to derive currentUser
+[08:11:07.316] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:11:08.832] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:11:08.832] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:11:08.832] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:11:08.832] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[08:11:08.832] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/faq","route":"/faq"}
+[08:11:08.832] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/faq color: rgb(120, 120, 120) color: inherit {"dp":"/faq","o":"http://localhost:3000/faq","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766010243489}
+[08:11:08.832] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:11:08.832] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:11:09.671] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:11:09.671] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:11:09.672] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:11:09.672] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:47:32.642] Browser LOG     useAuth - Auth state changed: TOKEN_REFRESHED
+[08:47:32.642] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:47:32.642] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:47:35.960] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:47:35.960] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:48:15.505] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766012469995}
+[08:48:21.336] Browser WARN    Currency conversion warning: € or CAD not found
+[08:48:21.336] Browser WARN    Currency conversion warning: € or CAD not found
+[08:48:21.336] Browser WARN    Currency conversion warning: € or CAD not found
+[08:48:21.336] Browser WARN    Currency conversion warning: € or CAD not found
+[08:50:02.192] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[08:51:52.418] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766012678263}
+[08:51:56.227] Server  LOG     DataProvider - No profile available to derive currentUser
+[08:52:18.292] Server  LOG      ✓ Compiled in 2465.3s
+[08:52:33.103] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:52:33.717] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:52:33.717] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:52:35.653] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:52:35.653] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:52:35.653] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[08:52:35.653] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[08:52:35.653] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766012729403}
+[08:52:35.653] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[08:52:35.653] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:52:35.653] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:52:35.653] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.653] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.653] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:52:35.654] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:52:35.654] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or EUR not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or CAD not found
+[08:52:35.654] Browser WARN    Currency conversion warning: € or CAD not found
+[08:55:44.663] Server  LOG      ✓ Compiled in 134ms
+[08:55:58.657] Browser WARN    Currency conversion warning: € or CAD not found
+[08:55:58.657] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:33.448] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:56:33.448] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:56:33.448] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:56:33.448] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:33.448] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:33.686] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:56:33.686] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:56:33.686] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:33.686] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:43.258] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:43.258] Browser WARN    Currency conversion warning: € or CAD not found
+[08:56:44.240] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
 Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
-[02:03:16.618] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:16.618] Browser WARN    Currency conversion warning: € or CAD not found
-[02:03:16.618] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933486012}
-[02:03:22.241] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
-[02:03:22.241] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
-[02:03:22.241] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/edit color: rgb(120, 120, 120) color: inherit {"dp":"/profile/edit","o":"http://localhost:3000/profile/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933491580}
-[02:04:05.423] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:05.423] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:05.423] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933534817}
-[02:04:11.422] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933540760}
-[02:04:11.422] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:11.422] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:15.786] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503 color: rgb(120, 120, 120) color: inherit {"dp":"/trips/[id]","o":"http://localhost:3000/trips/016a095b-dfa3-4bbd-9e66-407de76a4503","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933545191}
-[02:04:16.229] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:16.229] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:16.229] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:16.229] Browser WARN    Currency conversion warning: € or CAD not found
-[02:04:22.350] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606 color: rgb(120, 120, 120) color: inherit {"dp":"/public-profile/[id]","o":"http://localhost:3000/public-profile/d74045f6-340b-4750-9f24-e812ee89d606","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933551752}
-[02:04:48.293] Server  LOG      ✓ Compiled in 259ms
-[02:09:06.089] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933835491}
-[02:09:06.539] Browser WARN    Currency conversion warning: € or CAD not found
-[02:09:06.539] Browser WARN    Currency conversion warning: € or CAD not found
-[02:09:06.539] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933835859}
-[02:09:11.697] Browser WARN    Currency conversion warning: € or CAD not found
-[02:09:11.697] Browser WARN    Currency conversion warning: € or CAD not found
-[02:09:11.697] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933841100}
-[02:09:16.907] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
-[02:09:16.908] Browser ERROR   [react-phone-number-input] Expected the initial `value` to be a E.164 phone number. Got 0632430402
-[02:09:16.908] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile/edit color: rgb(120, 120, 120) color: inherit {"dp":"/profile/edit","o":"http://localhost:3000/profile/edit","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933846262}
-[02:09:30.938] Server  LOG      ✓ Compiled in 211ms
-[02:09:42.769] Server  LOG      ✓ Compiled in 484ms
-[02:10:21.585] Browser WARN    Currency conversion warning: € or CAD not found
-[02:10:21.585] Browser WARN    Currency conversion warning: € or CAD not found
-[02:10:21.585] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/profile color: rgb(120, 120, 120) color: inherit {"dp":"/profile","o":"http://localhost:3000/profile","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765933910980}
+[08:57:04.726] Browser WARN    Currency conversion warning: € or CAD not found
+[08:57:04.726] Browser WARN    Currency conversion warning: € or CAD not found
+[08:57:14.903] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/terms color: rgb(120, 120, 120) color: inherit {"dp":"/terms","o":"http://localhost:3000/terms","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013010309}
+[08:57:17.430] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[08:57:18.084] Server  LOG     DataProvider - No profile available to derive currentUser
+[08:57:18.167] Server  LOG      ✓ Compiled in 257ms
+[08:57:18.376] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:57:18.664] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:57:18.664] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:57:18.664] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:18.664] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[08:57:18.664] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/terms","route":"/terms"}
+[08:57:18.664] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/terms color: rgb(120, 120, 120) color: inherit {"dp":"/terms","o":"http://localhost:3000/terms","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013014069}
+[08:57:18.664] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:18.664] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:57:19.339] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:19.339] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:19.339] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:19.339] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:19.480] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:19.480] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:57:39.133] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <ul> p 
+
+  ...
+    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+      <LoadingBoundary name="privacy/" loading={null}>
+        <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+          <RedirectBoundary>
+            <RedirectErrorBoundary router={{...}}>
+              <InnerLayoutRouter url="/privacy" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                <SegmentViewNode type="page" pagePath="privacy/pa...">
+                  <SegmentTrieNode>
+                  <ClientPageRoot Component={function PrivacyPage} serverProvidedParams={{...}}>
+                    <PrivacyPage params={Promise} searchParams={Promise}>
+                      <div className="min-h-scre...">
+                        <Header>
+                        <main className="flex-1 py-...">
+                          <div className="container ...">
+                            <div className="prose pros...">
+                              <h1>
+                              <p>
+                              <h2>
+                              <p>
+                              <h2>
+>                             <p>
+>                               <ul>
+                              ...
+                        ...
+                ...
+              ...
+
+[08:57:39.133] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/privacy color: rgb(120, 120, 120) color: inherit {"dp":"/privacy","o":"http://localhost:3000/privacy","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013034503}
+[08:57:45.888] Server  LOG     DataProvider - No profile available to derive currentUser
+[08:58:01.611] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[08:58:01.960] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:58:01.960] Browser LOG     DataProvider - No profile available to derive currentUser
+[08:58:01.960] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[08:58:01.960] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/cookies","route":"/cookies"}
+[08:58:01.960] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/cookies color: rgb(120, 120, 120) color: inherit {"dp":"/cookies","o":"http://localhost:3000/cookies","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013057351}
+[08:58:01.960] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:01.960] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:58:02.419] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[08:59:20.569] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/how-it-works color: rgb(120, 120, 120) color: inherit {"dp":"/how-it-works","o":"http://localhost:3000/how-it-works","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013135957}
+[08:59:55.504] Server  LOG      ○ Compiling middleware ...
+[09:00:26.959] Server  LOG      ○ Compiling middleware ...
+[09:00:46.356] Server  LOG      ✓ Compiled in 19.4s
+[09:00:48.681] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[09:01:05.149] Server  LOG      ○ Compiling middleware ...
+[09:01:43.344] Server  ERROR   Error: fetch failed
+    at context.fetch (C:\Users\user\Projet-01\projet-perso\Kilo\node_modules\next\dist\server\web\sandbox\context.js:322:60)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:577:23
+    at _handleRequest (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:931:24)
+    at _request (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:918:24)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4152:225
+    at SupabaseAuthClient._useSession (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4021:26)
+    at async SupabaseAuthClient._getUser (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4137:20)
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4121:20
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:3969:28 {
+  
+}
+[09:01:43.369] Server  ERROR   Error getting user in middleware: AuthRetryableFetchError: fetch failed
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 0,
+  code: undefined
+}
+[09:01:43.373] Server  LOG      ○ Compiling middleware ...
+[09:01:43.456] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./lib/translations.ts changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[09:02:04.769] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[09:02:04.769] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/profile. Falling back to browser navigation. {}
+[09:02:04.769] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/how-it-works. Falling back to browser navigation. {}
+[09:02:04.769] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/. Falling back to browser navigation. {}
+[09:02:04.769] Browser ERROR   Failed to fetch RSC payload for http://localhost:3000/trips. Falling back to browser navigation. {}
+[09:02:52.222] Server  ERROR   Error: fetch failed
+    at context.fetch (C:\Users\user\Projet-01\projet-perso\Kilo\node_modules\next\dist\server\web\sandbox\context.js:322:60)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:577:23
+    at _handleRequest (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:931:24)
+    at _request (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:918:24)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4152:225
+    at SupabaseAuthClient._useSession (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4021:26)
+    at async SupabaseAuthClient._getUser (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4137:20)
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4121:20
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:3969:28 {
+  
+}
+[09:02:52.226] Server  ERROR   Error getting user in middleware: AuthRetryableFetchError: fetch failed
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 0,
+  code: undefined
+}
+[09:03:14.585] Server  LOG     DataProvider - No profile available to derive currentUser
+[09:03:34.584] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:03:35.162] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:03:35.162] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:03:35.401] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[09:03:35.401] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[09:03:35.401] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013390722}
+[09:03:35.401] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:03:35.401] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:03:35.513] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[09:03:35.514] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:03:35.514] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:03:35.851] Browser WARN    Currency conversion warning: € or EUR not found
+[09:03:35.852] Browser WARN    Currency conversion warning: € or EUR not found
+[09:03:36.299] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:03:36.299] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:03:36.299] Browser WARN    Currency conversion warning: € or EUR not found
+[09:03:36.299] Browser WARN    Currency conversion warning: € or EUR not found
+[09:03:36.299] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:03:36.299] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:03:36.299] Browser WARN    Currency conversion warning: € or CAD not found
+[09:03:36.299] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:04.926] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[09:04:14.450] Server  ERROR    ⨯ ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[09:04:14.571] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:16.269] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:16.500] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:17.902] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:17.902] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:17.902] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:18.133] Server  ERROR    ⨯ ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[09:04:18.384] Browser ERROR   uncaughtError: Error: ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[09:04:18.493] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:18.638] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:23.289] Server  LOG     DataProvider - No profile available to derive currentUser
+[09:04:23.701] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:04:24.142] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:24.142] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:24.142] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:24.142] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[09:04:24.142] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:24.142] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:24.142] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[09:04:24.142] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[09:04:24.142] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013439553}
+[09:04:24.338] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.338] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.338] Browser WARN    Currency conversion warning: € or EUR not found
+[09:04:24.338] Browser WARN    Currency conversion warning: € or EUR not found
+[09:04:24.891] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.891] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.891] Browser WARN    Currency conversion warning: € or EUR not found
+[09:04:24.891] Browser WARN    Currency conversion warning: € or EUR not found
+[09:04:24.891] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:24.891] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:24.891] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.891] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:24.891] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:24.891] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:31.333] Server  LOG     DataProvider - No profile available to derive currentUser
+[09:04:31.594] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:04:32.021] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:32.021] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:32.022] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:32.022] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <ul> p 
+
+  ...
+    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+      <LoadingBoundary name="cookies/" loading={null}>
+        <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+          <RedirectBoundary>
+            <RedirectErrorBoundary router={{...}}>
+              <InnerLayoutRouter url="/cookies" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                <SegmentViewNode type="page" pagePath="cookies/pa...">
+                  <SegmentTrieNode>
+                  <ClientPageRoot Component={function CookiesPage} serverProvidedParams={{...}}>
+                    <CookiesPage params={Promise} searchParams={Promise}>
+                      <div className="min-h-scre...">
+                        <Header>
+                        <main className="flex-1 py-...">
+                          <div className="container ...">
+                            <div className="prose pros...">
+                              <h1>
+                              <p>
+                              <h2>
+                              <p>
+                              <h2>
+>                             <p>
+>                               <ul>
+                              ...
+                        ...
+                ...
+              ...
+
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:32.022] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[09:04:32.022] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/cookies","route":"/cookies"}
+[09:04:32.022] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/cookies color: rgb(120, 120, 120) color: inherit {"dp":"/cookies","o":"http://localhost:3000/cookies","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013447302}
+[09:04:32.022] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:32.022] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:32.022] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:32.022] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:32.022] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:32.171] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:32.171] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:44.613] Server  LOG     DataProvider - No profile available to derive currentUser
+[09:04:45.803] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:04:45.986] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:46.635] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:46.635] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:04:46.635] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="fr" suppressHydrationWarning={true}>
+                          <body
+                            className="font-sans antialiased"
+-                           style={{overflow-x:"hidden",overflow-y:"hidden"}}
+                          >
+                  ...
+
+[09:04:46.635] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[09:04:46.635] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[09:04:46.635] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013461679}
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:04:46.635] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:46.635] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:46.635] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:04:46.635] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:46.635] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:46.635] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[09:04:46.635] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:46.635] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:46.976] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:46.976] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:04:47.217] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:47.217] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:47.336] Browser WARN    Currency conversion warning: € or CAD not found
+[09:04:47.336] Browser WARN    Currency conversion warning: € or CAD not found
+[09:05:40.028] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:07:24.088] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[09:07:24.088] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:24.088] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:24.088] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:24.088] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:24.408] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:24.408] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:24.408] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:24.408] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:33.892] Server  LOG     DataProvider - No profile available to derive currentUser
+[09:07:34.300] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[09:07:34.486] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:07:34.486] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:07:34.487] Browser LOG     DataProvider - No profile available to derive currentUser
+[09:07:34.487] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="fr" suppressHydrationWarning={true}>
+                          <body
+                            className="font-sans antialiased"
+-                           style={{overflow-x:"hidden",overflow-y:"hidden"}}
+                          >
+                  ...
+
+[09:07:34.616] Browser LOG     useAuth - Auth state changed: SIGNED_IN
+[09:07:34.616] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:07:34.616] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.616] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.801] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:07:34.801] Browser WARN    Image with src "/traveler-with-suitcase-at-airport-modern-illustrat.jpg" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[09:07:34.801] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[09:07:34.801] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[09:07:34.801] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013630138}
+[09:07:34.801] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.801] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.801] Browser LOG     useAuth - Auth state changed: INITIAL_SESSION
+[09:07:34.801] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.801] Browser LOG     DataProvider - Using auth user fallback while profile loads
+[09:07:34.801] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser WARN    Currency conversion warning: € or EUR not found
+[09:07:35.319] Browser WARN    Currency conversion warning: € or EUR not found
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser WARN    Currency conversion warning: € or EUR not found
+[09:07:35.319] Browser WARN    Currency conversion warning: € or EUR not found
+[09:07:35.319] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:35.319] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser LOG     DataProvider - Derived currentUser from profile: d74045f6-340b-4750-9f24-e812ee89d606
+[09:07:35.319] Browser WARN    Currency conversion warning: € or CAD not found
+[09:07:35.319] Browser WARN    Currency conversion warning: € or CAD not found
+[09:08:04.586] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:05.180] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:05.516] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:05.516] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:05.812] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:06.647] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:08.426] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:08.925] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:09.448] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:09.712] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:10.635] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:10.794] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:11.945] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:11.945] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:12.198] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:12.198] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:12.198] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:12.667] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:13.770] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:13.770] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:14.222] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:15.130] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:16.214] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:16.214] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:17.338] Browser ERROR   ./app/faq/page.tsx:7:1
+Module not found: Can't resolve '@/components/ui/accordion'
+   5 | import { MobileNav } from "@/components/ui/mobile-nav"
+   6 | import { useLanguage } from "@/lib/language-context"
+>  7 | import {
+     | ^^^^^^^^
+>  8 |   Accordion,
+     | ^^^^^^^^^^^^
+>  9 |   AccordionContent,
+     | ^^^^^^^^^^^^
+> 10 |   AccordionItem,
+     | ^^^^^^^^^^^^
+> 11 |   AccordionTrigger,
+     | ^^^^^^^^^^^^
+> 12 | } from "@/components/ui/accordion"
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  13 |
+  14 | export default function FAQPage() {
+  15 |   const { t } = useLanguage()
+
+Import map: aliased to relative './components/ui/accordion' inside of [project]/
+
+Import traces:
+  Client Component Browser:
+    ./app/faq/page.tsx [Client Component Browser]
+    ./app/faq/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./app/faq/page.tsx [Client Component SSR]
+    ./app/faq/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+[09:08:20.887] Server  LOG      ✓ Compiled in 423ms
+[09:08:21.703] Browser WARN    Currency conversion warning: € or CAD not found
+[09:08:21.703] Browser WARN    Currency conversion warning: € or CAD not found
+[09:08:30.556] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/faq color: rgb(120, 120, 120) color: inherit {"dp":"/faq","o":"http://localhost:3000/faq","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013685963}
+[09:08:44.902] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/contact color: rgb(120, 120, 120) color: inherit {"dp":"/contact","o":"http://localhost:3000/contact","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013700310}
+[09:09:03.927] Server  ERROR   Error: fetch failed
+    at context.fetch (C:\Users\user\Projet-01\projet-perso\Kilo\node_modules\next\dist\server\web\sandbox\context.js:322:60)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:577:23
+    at _handleRequest (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:931:24)
+    at _request (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:918:24)
+    at C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4152:225
+    at SupabaseAuthClient._useSession (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4021:26)
+    at async SupabaseAuthClient._getUser (C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4137:20)
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:4121:20
+    at async C:\Users\user\Projet-01\projet-perso\Kilo\.next\dev\server\edge\chunks\node_modules_@supabase_auth-js_dist_module_33c852e9._.js:3969:28 {
+  
+}
+[09:09:03.933] Server  ERROR   Error getting user in middleware: AuthRetryableFetchError: fetch failed
+    at ignore-listed frames {
+  __isAuthError: true,
+  status: 0,
+  code: undefined
+}
+[09:09:05.222] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/faq color: rgb(120, 120, 120) color: inherit {"dp":"/faq","o":"http://localhost:3000/faq","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013720624}
+[09:09:08.538] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/help color: rgb(120, 120, 120) color: inherit {"dp":"/help","o":"http://localhost:3000/help","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013723940}
+[09:09:13.875] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/how-it-works color: rgb(120, 120, 120) color: inherit {"dp":"/how-it-works","o":"http://localhost:3000/how-it-works","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013729282}
+[09:09:16.649] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013732036}
+[09:09:17.274] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:17.274] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:17.274] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:17.274] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:41.635] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/trips color: rgb(120, 120, 120) color: inherit {"dp":"/trips","o":"http://localhost:3000/trips","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013756987}
+[09:09:41.635] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:41.635] Browser WARN    Currency conversion warning: € or CAD not found
+[09:09:44.075] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1766013759488}

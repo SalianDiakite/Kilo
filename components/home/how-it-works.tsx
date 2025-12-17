@@ -4,43 +4,31 @@ import { Search, MessageCircle, Package, Check, ArrowRight } from "@/components/
 import { useLanguage } from "@/lib/language-context"
 
 export function HowItWorks() {
-  const { language } = useLanguage()
+  const { t } = useLanguage()
 
   const steps = [
     {
       icon: Search,
-      title: language === "fr" ? "Trouvez un trajet" : "Find a trip",
-      description:
-        language === "fr"
-          ? "Recherchez parmi des centaines de voyageurs vers votre destination."
-          : "Search among hundreds of travelers to your destination.",
+      title: t("howItWorks.find.title"),
+      description: t("howItWorks.find.desc"),
       color: "bg-accent/10 text-accent",
     },
     {
       icon: MessageCircle,
-      title: language === "fr" ? "Contactez le voyageur" : "Contact the traveler",
-      description:
-        language === "fr"
-          ? "Discutez des détails de votre colis et convenez des modalités."
-          : "Discuss your package details and agree on terms.",
+      title: t("howItWorks.contact.title"),
+      description: t("howItWorks.contact.desc"),
       color: "bg-success/10 text-success",
     },
     {
       icon: Package,
-      title: language === "fr" ? "Remettez votre colis" : "Hand over your package",
-      description:
-        language === "fr"
-          ? "Rencontrez le voyageur pour lui confier votre colis en toute sécurité."
-          : "Meet the traveler to hand over your package safely.",
+      title: t("howItWorks.handover.title"),
+      description: t("howItWorks.handover.desc"),
       color: "bg-warning/10 text-warning",
     },
     {
       icon: Check,
-      title: language === "fr" ? "Livraison confirmée" : "Delivery confirmed",
-      description:
-        language === "fr"
-          ? "Votre colis arrive à destination. Laissez un avis au voyageur."
-          : "Your package arrives at destination. Leave a review for the traveler.",
+      title: t("howItWorks.delivery.title"),
+      description: t("howItWorks.delivery.desc"),
       color: "bg-primary text-primary-foreground",
     },
   ]
@@ -50,10 +38,10 @@ export function HowItWorks() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-3 text-foreground">
-            {language === "fr" ? "Comment ça marche" : "How it works"}
+            {t("howItWorks.title")}
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            {language === "fr" ? "Envoyez vos colis en 4 étapes simples" : "Send your packages in 4 simple steps"}
+            {t("howItWorks.subtitle_simple")}
           </p>
         </div>
 

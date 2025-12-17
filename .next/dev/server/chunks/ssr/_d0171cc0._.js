@@ -2920,30 +2920,30 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2
 ;
 ;
 function HowItWorks() {
-    const { language } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
+    const { t } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$language$2d$context$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLanguage"])();
     const steps = [
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$search$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Search$3e$__["Search"],
-            title: language === "fr" ? "Trouvez un trajet" : "Find a trip",
-            description: language === "fr" ? "Recherchez parmi des centaines de voyageurs vers votre destination." : "Search among hundreds of travelers to your destination.",
+            title: t("howItWorks.find.title"),
+            description: t("howItWorks.find.desc"),
             color: "bg-accent/10 text-accent"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$message$2d$circle$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__MessageCircle$3e$__["MessageCircle"],
-            title: language === "fr" ? "Contactez le voyageur" : "Contact the traveler",
-            description: language === "fr" ? "Discutez des détails de votre colis et convenez des modalités." : "Discuss your package details and agree on terms.",
+            title: t("howItWorks.contact.title"),
+            description: t("howItWorks.contact.desc"),
             color: "bg-success/10 text-success"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$package$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Package$3e$__["Package"],
-            title: language === "fr" ? "Remettez votre colis" : "Hand over your package",
-            description: language === "fr" ? "Rencontrez le voyageur pour lui confier votre colis en toute sécurité." : "Meet the traveler to hand over your package safely.",
+            title: t("howItWorks.handover.title"),
+            description: t("howItWorks.handover.desc"),
             color: "bg-warning/10 text-warning"
         },
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$check$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Check$3e$__["Check"],
-            title: language === "fr" ? "Livraison confirmée" : "Delivery confirmed",
-            description: language === "fr" ? "Votre colis arrive à destination. Laissez un avis au voyageur." : "Your package arrives at destination. Leave a review for the traveler.",
+            title: t("howItWorks.delivery.title"),
+            description: t("howItWorks.delivery.desc"),
             color: "bg-primary text-primary-foreground"
         }
     ];
@@ -2957,24 +2957,24 @@ function HowItWorks() {
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             className: "text-2xl md:text-3xl font-bold mb-3 text-foreground",
-                            children: language === "fr" ? "Comment ça marche" : "How it works"
+                            children: t("howItWorks.title")
                         }, void 0, false, {
                             fileName: "[project]/components/home/how-it-works.tsx",
-                            lineNumber: 52,
+                            lineNumber: 40,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "text-muted-foreground max-w-xl mx-auto",
-                            children: language === "fr" ? "Envoyez vos colis en 4 étapes simples" : "Send your packages in 4 simple steps"
+                            children: t("howItWorks.subtitle_simple")
                         }, void 0, false, {
                             fileName: "[project]/components/home/how-it-works.tsx",
-                            lineNumber: 55,
+                            lineNumber: 43,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/home/how-it-works.tsx",
-                    lineNumber: 51,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2992,7 +2992,7 @@ function HowItWorks() {
                                                 children: index + 1
                                             }, void 0, false, {
                                                 fileName: "[project]/components/home/how-it-works.tsx",
-                                                lineNumber: 66,
+                                                lineNumber: 54,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3001,12 +3001,12 @@ function HowItWorks() {
                                                     className: "h-7 w-7"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/home/how-it-works.tsx",
-                                                    lineNumber: 74,
+                                                    lineNumber: 62,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/home/how-it-works.tsx",
-                                                lineNumber: 71,
+                                                lineNumber: 59,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -3014,7 +3014,7 @@ function HowItWorks() {
                                                 children: step.title
                                             }, void 0, false, {
                                                 fileName: "[project]/components/home/how-it-works.tsx",
-                                                lineNumber: 77,
+                                                lineNumber: 65,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3022,13 +3022,13 @@ function HowItWorks() {
                                                 children: step.description
                                             }, void 0, false, {
                                                 fileName: "[project]/components/home/how-it-works.tsx",
-                                                lineNumber: 78,
+                                                lineNumber: 66,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/home/how-it-works.tsx",
-                                        lineNumber: 64,
+                                        lineNumber: 52,
                                         columnNumber: 17
                                     }, this),
                                     index < steps.length - 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3037,39 +3037,39 @@ function HowItWorks() {
                                             className: "h-5 w-5 text-border"
                                         }, void 0, false, {
                                             fileName: "[project]/components/home/how-it-works.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 72,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/home/how-it-works.tsx",
-                                        lineNumber: 83,
+                                        lineNumber: 71,
                                         columnNumber: 19
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/components/home/how-it-works.tsx",
-                                lineNumber: 63,
+                                lineNumber: 51,
                                 columnNumber: 15
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/components/home/how-it-works.tsx",
-                        lineNumber: 61,
+                        lineNumber: 49,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/components/home/how-it-works.tsx",
-                    lineNumber: 60,
+                    lineNumber: 48,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/components/home/how-it-works.tsx",
-            lineNumber: 50,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/home/how-it-works.tsx",
-        lineNumber: 49,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
