@@ -1,3 +1,10 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Trajets disponibles - KiloShare",
+  description: "Parcourez les trajets disponibles sur KiloShare. Trouvez un voyageur pour envoyer votre colis à prix réduit vers de nombreuses destinations.",
+}
+
 import { Header } from "@/components/ui/header"
 import { Footer } from "@/components/ui/footer"
 import { MobileNav } from "@/components/ui/mobile-nav"

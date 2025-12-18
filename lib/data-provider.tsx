@@ -61,6 +61,9 @@ interface DataContextType {
   createReview: (input: CreateReviewInput) => Promise<Review | null>
   updateUserProfile: (updates: Partial<User>) => Promise<boolean>
   uploadProfileAvatar: (file: File) => Promise<boolean>
+  markNotificationRead: (id: string) => Promise<void>
+  markAllNotificationsRead: () => Promise<void>
+  deleteNotification: (id: string) => Promise<void>
 
   // Helpers
   useMockData: boolean
@@ -126,34 +129,51 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   // Charger les données au montage
   useEffect(() => {
     const loadData = async () => {
-      if (!currentUserId) return
-      
       setDataLoading(true)
       try {
-        const [tripsData, ownerBookings, senderBookings, notifsData, reviewsData, countriesData, currenciesData] = await Promise.all([
-          fetchTrips(),
-          fetchUserBookings(currentUserId, "owner"),
-          fetchUserBookings(currentUserId, "sender"),
-          fetchNotifications(currentUserId),
-          fetchUserReviews(currentUserId),
-          fetchCountries(),
-          fetchCurrencies(),
-        ])
-        
-        // Merge bookings and remove duplicates if any
-        const allBookings = [...ownerBookings]
-        senderBookings.forEach(sb => {
-          if (!allBookings.some(b => b.id === sb.id)) {
-            allBookings.push(sb)
-          }
-        })
+        if (currentUserId) {
+          // Utilisateur connecté : charger toutes les données
+          const [tripsData, ownerBookings, senderBookings, notifsData, reviewsData, countriesData, currenciesData] = await Promise.all([
+            fetchTrips(),
+            fetchUserBookings(currentUserId, "owner"),
+            fetchUserBookings(currentUserId, "sender"),
+            fetchNotifications(currentUserId),
+            fetchUserReviews(currentUserId),
+            fetchCountries(),
+            fetchCurrencies(),
+          ])
+          
+          // Merge bookings and remove duplicates if any
+          const allBookings = [...ownerBookings]
+          senderBookings.forEach(sb => {
+            if (!allBookings.some(b => b.id === sb.id)) {
+              allBookings.push(sb)
+            }
+          })
 
-        setTrips(tripsData)
-        setBookings(allBookings)
-        setNotifications(notifsData)
-        setReviews(reviewsData)
-        setCountries(countriesData)
-        setCurrencies(currenciesData)
+          setTrips(tripsData)
+          setBookings(allBookings)
+          setNotifications(notifsData)
+          setReviews(reviewsData)
+          setCountries(countriesData)
+          setCurrencies(currenciesData)
+        } else {
+          // Mode public : charger uniquement les données accessibles
+          const [tripsData, countriesData, currenciesData] = await Promise.all([
+            fetchTrips(),
+            fetchCountries(),
+            fetchCurrencies(),
+          ])
+          
+          setTrips(tripsData)
+          setCountries(countriesData)
+          setCurrencies(currenciesData)
+          
+          // Réinitialiser les données privées
+          setBookings([])
+          setNotifications([])
+          setReviews([])
+        }
       } catch (error) {
         console.error("Error loading data:", error)
         // En cas d'erreur, on garde les données mock si activé
@@ -256,6 +276,45 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     }
   }, [currentUserId])
 
+  const handleMarkNotificationRead = useCallback(async (id: string) => {
+    // Optimistic update
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, read: true } : n))
+    
+    try {
+      const { markNotificationRead } = await import("@/lib/services/data-service")
+      await markNotificationRead(id)
+    } catch (error) {
+      console.error("Error marking notification as read:", error)
+      // Revert optimistic update? For now just log
+    }
+  }, [])
+
+  const handleMarkAllNotificationsRead = useCallback(async () => {
+    if (!currentUserId) return
+    
+    // Optimistic update
+    setNotifications(prev => prev.map(n => ({ ...n, read: true })))
+    
+    try {
+      const { markAllNotificationsRead } = await import("@/lib/services/data-service")
+      await markAllNotificationsRead(currentUserId)
+    } catch (error) {
+      console.error("Error marking all notifications as read:", error)
+    }
+  }, [currentUserId])
+
+  const handleDeleteNotification = useCallback(async (id: string) => {
+    // Optimistic update
+    setNotifications(prev => prev.filter(n => n.id !== id))
+    
+    try {
+      const { removeNotification } = await import("@/lib/services/data-service")
+      await removeNotification(id)
+    } catch (error) {
+      console.error("Error deleting notification:", error)
+    }
+  }, [])
+
   const value = useMemo(
     () => ({
       currentUser,
@@ -278,6 +337,9 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       createReview: handleCreateReview,
       updateUserProfile: handleUpdateProfile,
       uploadProfileAvatar: handleUploadAvatar,
+      markNotificationRead: handleMarkNotificationRead,
+      markAllNotificationsRead: handleMarkAllNotificationsRead,
+      deleteNotification: handleDeleteNotification,
       useMockData: USE_MOCK_DATA,
     }),
     [currentUser, authIsAuthenticated, authLoading, dataLoading, trips, conversations, bookings, notifications, reviews, countries, currencies, totalUnreadMessages, totalUnreadNotifications, refreshTrips, refreshNotifications, refreshBookings, handleCreateTrip, handleCreateReview, handleUpdateProfile, handleUploadAvatar, refreshProfile],

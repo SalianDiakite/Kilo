@@ -21,6 +21,7 @@ import {
   mockConversations,
   mockCountriesList,
   mockCurrencies,
+  cities as mockCitiesMap,
 } from "@/lib/mock-data"
 
 // ========================================
@@ -417,6 +418,23 @@ export async function markAllNotificationsRead(userId: string): Promise<void> {
   }
 }
 
+/**
+ * Supprime une notification
+ */
+export async function removeNotification(notificationId: string): Promise<void> {
+  if (USE_MOCK_DATA) {
+    console.log("Mock: Deleting notification", notificationId)
+    return
+  }
+
+  const { deleteNotification } = await import("@/lib/db/notifications")
+  try {
+    await deleteNotification(notificationId)
+  } catch (error) {
+    console.error("Failed to delete notification:", error)
+  }
+}
+
 export interface CreateReviewInput {
   tripId: string
   reviewerId: string
@@ -502,43 +520,36 @@ export async function fetchCities(countryId: string): Promise<City[]> {
   const { getCitiesByCountry } = await import("@/lib/db/countries")
 
   if (USE_MOCK_DATA) {
-    // Find the country name first to look up in mock cities map
     const country = mockCountriesList.find((c) => c.id === countryId)
     if (!country) return []
     
-    // Get simple string array from mock-data
-    // We need to fetch the imported 'cities' object from mock-data, 
-    // but it is not exported in the list of imports at the top of this file.
-    // Let's assume we can import it dynamically or just rely on database if USE_MOCK_DATA is false. 
-    // Actually, let's just use the dynamic import of mock-data or add it to imports.
-    // Since we can't easily change imports at top without re-reading, 
-    // I will assume for now I can access 'mockCities' if I export it or just use an empty list for mock if simpler.
-    // Wait, I saw 'cities' exported in mock-data.ts. I should add it to imports.
-    
-    // For now to avoid import mess in this tool call, I'll dynamic import or just mock return empty. 
-    // Actually, better to just look at line 19 of data-service.ts, 'mockCountriesList' is imported.
-    // I'll add 'cities as mockCitiesMap' to the import in a separate step or just use a dynamic fix.
-    
-    // Simpler approach for mock fallback without changing imports yet:
-    // Just return empty or static list if mock.
-    // BUT the user wants this to work.
-    
-    // Let's try to call DB even if mock flag is set for *this* specific feature if possible? 
-    // No, standard pattern is to respect flag.
-    
-    // I will try to fetch from DB first even in mock function body as a "smart" mock if DB is available? 
-    // No, that breaks the principle.
-    
-    // Let's implement full DB call.
-    try {
-      return await getCitiesByCountry(countryId)
-    } catch {
-       return []
-    }
+    const mockCityNames = mockCitiesMap[country.name] || []
+    return mockCityNames.map((name, index) => ({
+      id: `mock-city-${country.id}-${index}`,
+      countryId: country.id,
+      name: name,
+      isCapital: index === 0,
+      isRegionalCapital: false
+    }))
   }
 
   try {
-    return await getCitiesByCountry(countryId)
+    const cities = await getCitiesByCountry(countryId)
+    if (cities.length === 0) {
+      // Fallback to mock if DB returns nothing for this country
+      const country = mockCountriesList.find((c) => c.id === countryId)
+      if (country) {
+        const mockCityNames = mockCitiesMap[country.name] || []
+        return mockCityNames.map((name, index) => ({
+          id: `mock-city-${country.id}-${index}`,
+          countryId: country.id,
+          name: name,
+          isCapital: index === 0,
+          isRegionalCapital: false
+        }))
+      }
+    }
+    return cities
   } catch (error) {
     console.warn("DB fetch failed for cities", error)
     return []

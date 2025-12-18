@@ -1,8 +1,8 @@
 import { type NextRequest } from "next/server"
-import { proxy } from "@/lib/supabase/proxy"
+import { proxy as supabaseProxy } from "@/lib/supabase/proxy"
 
-export async function middleware(request: NextRequest) {
-  return await proxy(request)
+export async function proxy(request: NextRequest) {
+  return await supabaseProxy(request)
 }
 
 export const config = {
@@ -18,4 +18,3 @@ export const config = {
     "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js|woff|woff2|ttf|eot)$).*)",
   ],
 }
-

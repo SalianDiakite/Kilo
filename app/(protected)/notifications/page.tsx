@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useMemo } from "react"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 import { useData } from "@/lib/data-provider"
@@ -62,22 +63,44 @@ function formatTimeAgo(date: Date): string {
 }
 
 export default function NotificationsPage() {
-  const { currentUser, notifications, refreshNotifications } = useData()
+  const router = useRouter()
+  const { 
+    currentUser, 
+    notifications, 
+    markNotificationRead, 
+    markAllNotificationsRead, 
+    deleteNotification 
+  } = useData()
 
-  // Actions - these should call functions from the data provider in the future
-  const handleMarkAsRead = (id: string) => {
-    console.log(`TODO: Mark notification ${id} as read`)
-    // Optimistic update example:
-    // const newNotifs = notifications.map((n) => (n.id === id ? { ...n, read: true } : n));
-    // setNotifications(newNotifs); // Assuming setNotifications is exposed by useData
+  const handleNotificationClick = async (notif: Notification) => {
+    // 1. Mark as read
+    if (!notif.read) {
+      await markNotificationRead(notif.id)
+    }
+
+    // 2. Redirect if link exists
+    if (notif.link) {
+      router.push(notif.link)
+    } else if (notif.type === "message" && notif.metadata?.tripId) {
+      // Fallback if link is missing but we have metadata
+      router.push(`/messages?conversation=${notif.metadata.tripId}`)
+    } else if (notif.type === "booking") {
+      router.push("/dashboard/bookings")
+    }
+  }
+
+  const handleMarkAsRead = (id: string, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
+    markNotificationRead(id)
   }
 
   const handleMarkAllAsRead = () => {
-    console.log("TODO: Mark all notifications as read")
+    markAllNotificationsRead()
   }
 
-  const handleDeleteNotification = (id: string) => {
-    console.log(`TODO: Delete notification ${id}`)
+  const handleDeleteNotification = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation()
+    deleteNotification(id)
   }
 
   const sortedNotifications = useMemo(
@@ -156,7 +179,7 @@ export default function NotificationsPage() {
                         "transition-colors cursor-pointer hover:shadow-sm group",
                         !notif.read && "bg-accent/5 border-accent/20",
                       )}
-                      onClick={() => handleMarkAsRead(notif.id)}
+                      onClick={() => handleNotificationClick(notif)}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">
@@ -182,21 +205,24 @@ export default function NotificationsPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start justify-between gap-2">
                               <div>
-                                <p className={cn("text-sm", !notif.read && "font-medium")}>{notif.title}</p>
-                                <p className="text-sm text-muted-foreground mt-0.5">{notif.message}</p>
+                                  <p className={cn("text-sm", !notif.read && "font-medium")}>{notif.title}</p>
+                                  <p className="text-sm text-muted-foreground mt-0.5">{notif.message}</p>
+                                </div>
+                                {!notif.read && (
+                                  <button 
+                                    className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-2 hover:scale-125 transition-transform" 
+                                    onClick={(e) => handleMarkAsRead(notif.id, e)}
+                                    title="Marquer comme lu"
+                                  />
+                                )}
                               </div>
-                              {!notif.read && <div className="w-2 h-2 rounded-full bg-accent flex-shrink-0 mt-2" />}
-                            </div>
                             <p className="text-xs text-muted-foreground mt-2">{formatTimeAgo(notif.createdAt)}</p>
                           </div>
                           <Button
                             variant="ghost"
                             size="icon"
                             className="h-8 w-8 flex-shrink-0 opacity-0 group-hover:opacity-100"
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              handleDeleteNotification(notif.id)
-                            }}
+                            onClick={(e) => handleDeleteNotification(notif.id, e)}
                           >
                             <Trash2 className="h-4 w-4 text-muted-foreground" />
                           </Button>
@@ -224,7 +250,7 @@ export default function NotificationsPage() {
                     <Card
                       key={notif.id}
                       className="bg-accent/5 border-accent/20 transition-colors cursor-pointer hover:shadow-sm"
-                      onClick={() => handleMarkAsRead(notif.id)}
+                      onClick={() => handleNotificationClick(notif)}
                     >
                       <CardContent className="p-4">
                         <div className="flex items-start gap-3">

@@ -16,6 +16,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 import { Calendar, Weight, ChevronRight, ChevronLeft, Check, Plane, Info, Loader2 } from "@/components/icons"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils"
 
 const steps = [
@@ -53,8 +54,13 @@ export default function PublishPage() {
       if (formData.departureCountryId) {
         const cities = await fetchCities(formData.departureCountryId)
         setDepartureCities(cities)
+        // Reset city if not in new list
+        if (!cities.some((c) => c.id === formData.departureCityId)) {
+          setFormData((prev) => ({ ...prev, departureCityId: "" }))
+        }
       } else {
         setDepartureCities([])
+        setFormData((prev) => ({ ...prev, departureCityId: "" }))
       }
     }
     loadCities()
@@ -66,8 +72,13 @@ export default function PublishPage() {
       if (formData.arrivalCountryId) {
         const cities = await fetchCities(formData.arrivalCountryId)
         setArrivalCities(cities)
+        // Reset city if not in new list
+        if (!cities.some((c) => c.id === formData.arrivalCityId)) {
+          setFormData((prev) => ({ ...prev, arrivalCityId: "" }))
+        }
       } else {
         setArrivalCities([])
+        setFormData((prev) => ({ ...prev, arrivalCityId: "" }))
       }
     }
     loadCities()
@@ -80,13 +91,19 @@ export default function PublishPage() {
     }
     setIsSubmitting(true)
     try {
-      const acceptedItems = formData.acceptedItems.split(',').map(item => item.trim()).filter(item => item.length > 0)
-      const rejectedItems = formData.rejectedItems.split(',').map(item => item.trim()).filter(item => item.length > 0)
+      const acceptedItems = formData.acceptedItems
+        .split(",")
+        .map((item) => item.trim())
+        .filter((item) => item.length > 0)
+      const rejectedItems = formData.rejectedItems
+        .split(",")
+        .map((item) => item.trim())
+        .filter((item) => item.length > 0)
 
-      const departureCountry = countries.find(c => c.id === formData.departureCountryId)?.name || ""
-      const departureCity = departureCities.find(c => c.id === formData.departureCityId)?.name || ""
-      const arrivalCountry = countries.find(c => c.id === formData.arrivalCountryId)?.name || ""
-      const arrivalCity = arrivalCities.find(c => c.id === formData.arrivalCityId)?.name || ""
+      const departureCountry = countries.find((c) => c.id === formData.departureCountryId)?.name || ""
+      const departureCity = departureCities.find((c) => c.id === formData.departureCityId)?.name || ""
+      const arrivalCountry = countries.find((c) => c.id === formData.arrivalCountryId)?.name || ""
+      const arrivalCity = arrivalCities.find((c) => c.id === formData.arrivalCityId)?.name || ""
 
       const newTrip = await createTrip({
         userId: currentUser.id,
@@ -173,9 +190,7 @@ export default function PublishPage() {
                   <div
                     className={cn(
                       "flex items-center gap-2 px-4 py-2 rounded-full transition-colors",
-                      currentStep >= step.id
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-secondary text-muted-foreground",
+                      currentStep >= step.id ? "bg-primary text-primary-foreground" : "bg-secondary text-muted-foreground",
                     )}
                   >
                     <step.icon className="h-4 w-4" />
@@ -201,34 +216,43 @@ export default function PublishPage() {
                         </h3>
                         <div className="space-y-2">
                           <Label>{t("publish.country")}</Label>
-                          <select
-                            className="w-full h-10 px-3 rounded-lg border border-input bg-background"
+                          <Select
                             value={formData.departureCountryId}
-                            onChange={(e) => updateForm("departureCountryId", e.target.value)}
+                            onValueChange={(value) => updateForm("departureCountryId", value)}
                           >
-                            <option value="">{t("publish.select")}</option>
-                            {countries.map((country) => (
-                              <option key={country.id} value={country.id}>
-                                {country.flag} {language === 'en' ? country.nameEn : country.name}
-                              </option>
-                            ))}
-                          </select>
+                            <SelectTrigger className="w-full bg-background">
+                              <SelectValue placeholder={t("publish.select")} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {countries.map((country) => (
+                                <SelectItem key={country.id} value={country.id}>
+                                  <span className="flex items-center gap-2">
+                                    <span>{country.flag}</span>
+                                    <span>{language === "en" ? country.nameEn || country.name : country.name}</span>
+                                  </span>
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                         </div>
                         <div className="space-y-2">
                           <Label>{t("publish.city")}</Label>
-                            <select
-                              className="w-full h-10 px-3 rounded-lg border border-input bg-background"
-                              value={formData.departureCityId}
-                              onChange={(e) => updateForm("departureCityId", e.target.value)}
-                              disabled={!formData.departureCountryId}
-                            >
-                              <option value="">{t("publish.select")}</option>
+                          <Select
+                            value={formData.departureCityId}
+                            onValueChange={(value) => updateForm("departureCityId", value)}
+                            disabled={!formData.departureCountryId}
+                          >
+                            <SelectTrigger className="w-full bg-background">
+                              <SelectValue placeholder={t("publish.select")} />
+                            </SelectTrigger>
+                            <SelectContent>
                               {departureCities.map((city) => (
-                                <option key={city.id} value={city.id}>
-                                  {language === 'en' ? city.nameEn : city.name}
-                                </option>
+                                <SelectItem key={city.id} value={city.id}>
+                                  {language === "en" ? city.nameEn || city.name : city.name}
+                                </SelectItem>
                               ))}
-                            </select>
+                            </SelectContent>
+                          </Select>
                         </div>
                       </div>
 
@@ -239,34 +263,36 @@ export default function PublishPage() {
                         </h3>
                         <div className="space-y-2">
                           <Label>{t("publish.country")}</Label>
-                          <select
-                            className="w-full h-10 px-3 rounded-lg border border-input bg-background"
-                            value={formData.arrivalCountryId}
-                            onChange={(e) => updateForm("arrivalCountryId", e.target.value)}
-                          >
-                            <option value="">{t("publish.select")}</option>
-                            {countries.map((country) => (
-                              <option key={country.id} value={country.id}>
-                                {country.flag} {language === 'en' ? country.nameEn : country.name}
-                              </option>
-                            ))}
-                          </select>
+                          <Select value={formData.arrivalCountryId} onValueChange={(value) => updateForm("arrivalCountryId", value)}>
+                            <SelectTrigger className="w-full bg-background">
+                              <SelectValue placeholder={t("publish.select")} />
+                            </SelectTrigger>
+                            <SelectContent>
+                              {countries.map((country) => (
+                                <SelectItem key={country.id} value={country.id}>
+                                  <span className="flex items-center gap-2">
+                                    <span>{country.flag}</span>
+                                    <span>{language === "en" ? country.nameEn || country.name : country.name}</span>
+                                  </span>
+                                </SelectItem>
+                              ))}
+                            </SelectContent>
+                          </Select>
                         </div>
                         <div className="space-y-2">
                           <Label>{t("publish.city")}</Label>
-                            <select
-                              className="w-full h-10 px-3 rounded-lg border border-input bg-background"
-                              value={formData.arrivalCityId}
-                              onChange={(e) => updateForm("arrivalCityId", e.target.value)}
-                              disabled={!formData.arrivalCountryId}
-                            >
-                              <option value="">{t("publish.select")}</option>
+                          <Select value={formData.arrivalCityId} onValueChange={(value) => updateForm("arrivalCityId", value)} disabled={!formData.arrivalCountryId}>
+                            <SelectTrigger className="w-full bg-background">
+                              <SelectValue placeholder={t("publish.select")} />
+                            </SelectTrigger>
+                            <SelectContent>
                               {arrivalCities.map((city) => (
-                                <option key={city.id} value={city.id}>
-                                  {language === 'en' ? city.nameEn : city.name}
-                                </option>
+                                <SelectItem key={city.id} value={city.id}>
+                                  {language === "en" ? city.nameEn || city.name : city.name}
+                                </SelectItem>
                               ))}
-                            </select>
+                            </SelectContent>
+                          </Select>
                         </div>
                       </div>
                     </div>
@@ -277,6 +303,7 @@ export default function PublishPage() {
                         {t("publish.departureDate")}
                       </Label>
                       <Input
+                        className="w-full h-10 px-3 rounded-lg border border-input bg-background dark:[color-scheme:dark]"
                         type="date"
                         value={formData.departureDate}
                         onChange={(e) => updateForm("departureDate", e.target.value)}

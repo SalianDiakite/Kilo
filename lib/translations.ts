@@ -216,6 +216,11 @@ export const translations = {
   "messages.tripInfo": { fr: "Infos trajet", en: "Trip info" },
   "messages.archive": { fr: "Archiver", en: "Archive" },
   "messages.delete": { fr: "Supprimer", en: "Delete" },
+  "messages.loading": { fr: "Chargement...", en: "Loading..." },
+  "messages.noConversationFound": { fr: "Aucune conversation trouvée", en: "No conversation found" },
+  "messages.noConversations": { fr: "Aucune conversation", en: "No conversations" },
+  "messages.you": { fr: "Vous :", en: "You:" },
+  "messages.mute": { fr: "Mettre en sourdine", en: "Mute" },
 
   // Dashboard
   "dashboard.title": { fr: "Tableau de bord", en: "Dashboard" },
@@ -343,17 +348,6 @@ export const translations = {
   "dashboard.earnings.default": { fr: "Par défaut", en: "Default" },
   "dashboard.earnings.bankAccount": { fr: "Compte bancaire", en: "Bank account" },
   "dashboard.earnings.addMethod": { fr: "Ajouter une méthode", en: "Add method" },
-
-  // Messages
-  "messages.title": { fr: "Messages", en: "Messages" },
-  "messages.search": { fr: "Rechercher une conversation...", en: "Search for a conversation..." },
-  "messages.loading": { fr: "Chargement...", en: "Loading..." },
-  "messages.noConversationFound": { fr: "Aucune conversation trouvée", en: "No conversation found" },
-  "messages.noConversations": { fr: "Aucune conversation", en: "No conversations" },
-  "messages.you": { fr: "Vous :", en: "You:" },
-  "messages.mute": { fr: "Mettre en sourdine", en: "Mute" },
-  "messages.archive": { fr: "Archiver", en: "Archive" },
-  "messages.delete": { fr: "Supprimer", en: "Delete" },
   "messages.kgAvailable": { fr: "kg dispo", en: "kg avail." },
   "messages.noMessages": { fr: "Aucun message", en: "No messages" },
   "messages.startConversation": { fr: "Commencez la conversation !", en: "Start the conversation!" },
@@ -585,6 +579,7 @@ export const translations = {
   "common.completed": { fr: "Terminé", en: "Completed" },
   "common.cancelled": { fr: "Annulé", en: "Cancelled" },
   "common.inTransit": { fr: "En transit", en: "In transit" },
+  "common.thisMonth": { fr: "ce mois-ci", en: "this month" },
 
   // Profile Edit
   "profile.edit.title": { fr: "Modifier le profil", en: "Edit profile" },

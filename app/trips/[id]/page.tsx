@@ -21,10 +21,55 @@ import {
   Heart,
   Info,
 } from "@/components/icons"
+import { Metadata } from "next"
 import { fetchTrip } from "@/lib/services/data-service"
 import { TripContactActions } from "@/components/trip/trip-contact-actions"
 import { TripPriceDisplay } from "@/components/trip/trip-price-display"
 import { TripViewTracker } from "@/components/trip/trip-view-tracker"
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const trip = await fetchTrip(id)
+
+  if (!trip) {
+    return {
+      title: "Trajet non trouvé",
+    }
+  }
+
+  const title = `Voyage de ${trip.departure} à ${trip.arrival} - ${trip.availableKg}kg disponibles`
+  const dateStr = new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(trip.departureDate)
+
+  const description = `Besoin d'envoyer un colis de ${trip.departure} vers ${trip.arrival} ? ${trip.user.name} propose ${trip.availableKg}kg au départ le ${dateStr}. Profitez de prix avantageux pour vos envois.`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      images: [
+        {
+          url: trip.user.avatar || "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: `Voyage de ${trip.departure} à ${trip.arrival}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [trip.user.avatar || "/og-image.jpg"],
+    },
+  }
+}
 
 export default async function TripDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params

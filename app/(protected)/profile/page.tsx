@@ -136,7 +136,7 @@ export default function ProfilePage() {
                   </div>
                   <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-border">
                     <Link href={`/public-profile/${currentUser.id}`}><Button variant="outline" className="w-full gap-2 bg-transparent"><Eye className="h-4 w-4" />{t("profile.private.viewPublicProfile")}</Button></Link>
-                    <Link href="/settings/profile"><Button className="w-full gap-2"><Edit3 className="h-4 w-4" />{t("profile.private.editProfile")}</Button></Link>
+                    <Link href="/profile/edit"><Button className="w-full gap-2"><Edit3 className="h-4 w-4" />{t("profile.private.editProfile")}</Button></Link>
                   </div>
                 </CardContent>
               </Card>

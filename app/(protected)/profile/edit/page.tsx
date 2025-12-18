@@ -1,5 +1,5 @@
 "use client"
-
+import * as React from "react"
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
@@ -15,14 +15,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Camera, ArrowLeft, Check, X, Plus, Loader2 } from "@/components/icons"
+import { Camera, ArrowLeft, Check, X, Plus, Loader2, ChevronDown } from "@/components/icons"
 import { Badge } from "@/components/ui/badge"
-import PhoneInput from "react-phone-number-input"
-import "react-phone-number-input/style.css"
+import { cn } from "@/lib/utils"
+import { PhoneInput } from "@/components/ui/phone-input"
+import frLabels from "react-phone-number-input/locale/fr.json"
+import enLabels from "react-phone-number-input/locale/en.json"
+import type { Value } from "react-phone-number-input"
+
 
 export default function EditProfilePage() {
   const { currentUser, updateUserProfile, uploadProfileAvatar } = useData()
-  const { t } = useLanguage()
+  const { t, language } = useLanguage()
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -218,14 +222,14 @@ export default function EditProfilePage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">{t("profile.edit.phone")}</Label>
-                  <div className="phone-input-container">
                     <PhoneInput
                       placeholder={t("profile.edit.phoneNumber")}
-                      value={formData.phone}
-                      onChange={(value: string | undefined) => setFormData({ ...formData, phone: value || "" })}
-                      defaultCountry="FR"
+                      value={formData.phone as Value}
+                      onChange={(value) => setFormData({ ...formData, phone: value || "" })}
+                      defaultCountry="MA"
+                      labels={language === "fr" ? frLabels : enLabels}
+                      className="w-full"
                     />
-                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="bio">{t("profile.edit.bio")}</Label>

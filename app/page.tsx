@@ -11,6 +11,13 @@ import { SponsorsSection } from "@/components/home/sponsors-section"
 import { TestimonialsSection } from "@/components/home/testimonials-section"
 import { StatsSection } from "@/components/home/stats-section"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "KiloShare - Transport de colis collaboratif entre voyageurs",
+  description: "Économisez sur vos envois de colis ou rentabilisez votre voyage en partageant vos kilos disponibles. La plateforme GP (Gratuité Partielle) moderne et sécurisée.",
+}
+
 export const dynamic = 'force-dynamic'
 
 export default function HomePage() {
